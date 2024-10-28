@@ -30,16 +30,18 @@ class POS_Product {
 	 *
 	 * @var int
 	 */
-	public $id;                 /**
-								 * Its property barcode.
-								 *
-								 * @var int
-								 */
-	public $barcode;            /**
-								 * Its property name.
-								 *
-								 * @var string
-								 */
+	public $id;
+	/**
+	 * Its property barcode.
+	 *
+	 * @var int
+	 */
+	public $barcode;
+	/**
+	 * Its property name.
+	 *
+	 * @var string
+	 */
 	public $name;
 	/**
 	 * Its property is new.
@@ -53,6 +55,7 @@ class POS_Product {
 	 * @var string
 	 */
 	public $image;
+
 	/**
 	 * Its property image.
 	 *
@@ -65,52 +68,60 @@ class POS_Product {
 	 *
 	 * @var float
 	 */
-	public $sale_price;         /**
-								 * Its property regular_price.
-								 *
-								 * @var float
-								 */
-	public $regular_price;      /**
-								 * Its property price_html.
-								 *
-								 * @var string
-								 */
-	public $price_html;             /**
-									 * Its property price.
-									 *
-									 * @var float
-									 */
-	public $price;              /**
-								 * Its property cross_sale.
-								 *
-								 * @var string
-								 */
-	public $cross_sale;         /**
-								 * Its property up_sale.
-								 *
-								 * @var string
-								 */
-	public $up_sale;            /**
-								 * Its property attributes.
-								 *
-								 * @var string
-								 */
+	public $sale_price;
+	/**
+	 * Its property regular_price.
+	 *
+	 * @var float
+	 */
+	public $regular_price;
+	/**
+	 * Its property price_html.
+	 *
+	 * @var string
+	 */
+	public $price_html;
+	/**
+	 * Its property price.
+	 *
+	 * @var float
+	 */
+	public $price;
+	/**
+	 * Its property cross_sale.
+	 *
+	 * @var string
+	 */
+	public $cross_sale;
+	/**
+	 * Its property up_sale.
+	 *
+	 * @var string
+	 */
+	public $up_sale;
+	/**
+	 * Its property attributes.
+	 *
+	 * @var string
+	 */
 	public $attributes;
 	/**
 	 * Its property variations.
 	 *
 	 * @var string
 	 */
-	public $variations;         /**
-								 * Its property group_product.
-								 *
-								 * @var string
-								 */
-	public $group_product;      /**
-								 * Its property parent_product.
-								 *
-								 * @var string
-								 */
+	public $variations;
+	/**
+	 * Its property group_product.
+	 *
+	 * @var string
+	 */
+	public $group_product;
+	/**
+	 * Its property parent_product.
+	 *
+	 * @var string
+	 */
 	public $parent_product;
 	/**
 	 * Its property status.
@@ -147,42 +158,48 @@ class POS_Product {
 	 *
 	 * @var string
 	 */
-	public $purchasable;        /**
-								 * Its property average_rating.
-								 *
-								 * @var int
-								 */
+	public $purchasable;
+	/**
+	 * Its property average_rating.
+	 *
+	 * @var int
+	 */
 	public $average_rating;
 	/**
 	 * Its property rating_count.
 	 *
 	 * @var int
 	 */
-	public $rating_count;       /**
-								 * Its property slug.
-								 *
-								 * @var string
-								 */
-	public $slug;       /**
-						 * Its property sku.
-						 *
-						 * @var string
-						 */
-	public $sku;                /**
-								 * Its property description.
-								 *
-								 * @var string
-								 */
-	public $description;        /**
-								 * Its property purchase_cost.
-								 *
-								 * @var int
-								 */
-	public $purchase_cost;      /**
-								 * Its property taxable.
-								 *
-								 * @var bool
-								 */
+	public $rating_count;
+	/**
+	 * Its property slug.
+	 *
+	 * @var string
+	 */
+	public $slug;
+	/**
+	 * Its property sku.
+	 *
+	 * @var string
+	 */
+	public $sku;
+	/**
+	 * Its property description.
+	 *
+	 * @var string
+	 */
+	public $description;
+	/**
+	 * Its property purchase_cost.
+	 *
+	 * @var int
+	 */
+	public $purchase_cost;
+	/**
+	 * Its property taxable.
+	 *
+	 * @var bool
+	 */
 
 	public $is_favorite = 'N';
 	/**
@@ -205,11 +222,13 @@ class POS_Product {
 	 */
 	public $tax_class;
 
-			/**
-			 * Its property type.
-			 *
-			 * @var string
-			 */
+
+
+	/**
+	 * Its property type.
+	 *
+	 * @var string
+	 */
 	public $type;
 	/**
 	 * Its property weight.
@@ -249,7 +268,7 @@ class POS_Product {
 	 * @param any $src_props Its string.
 	 */
 	public static function set_search_props( &$filter, $src_props ) {
-		 global $wpdb;
+		global $wpdb;
 		if ( ! empty( $src_props ) ) {
 			$filter['api_src'] = array();
 			foreach ( $src_props as $src_prop ) {
@@ -421,7 +440,7 @@ class POS_Product {
 				if ( $product->get_type() !== 'grouped' ) {
 					$pos_product = self::get_product_data( $product );
 				} else {
-					$product_obj->records--;
+					--$product_obj->records;
 				}
 				if ( ! empty( $pos_product ) ) {
 					$product_obj->products[] = $pos_product;
@@ -456,7 +475,7 @@ class POS_Product {
 					$pos_product             = self::get_product_variation_data( $product, false, true );
 					$product_obj->products[] = $pos_product;
 				} else {
-					$product_obj->records--;
+					--$product_obj->records;
 				}
 			}
 		}
@@ -488,7 +507,7 @@ class POS_Product {
 					$pos_product             = self::get_product_variation_data( $product, false, true );
 					$product_obj->products[] = $pos_product;
 				} else {
-					$product_obj->records--;
+					--$product_obj->records;
 				}
 			}
 		}
@@ -528,7 +547,7 @@ class POS_Product {
 		$orderby  = 'name';
 		$order    = 'asc';
 		$cat_args = array(
-			'taxonomy' => 'product_cat',
+			'taxonomy'   => 'product_cat',
 			'orderby'    => $orderby,
 			'order'      => $order,
 			'hide_empty' => $hide_empty,
@@ -536,7 +555,8 @@ class POS_Product {
 		if ( ! $is_parent ) {
 			$cat_args['parent'] = 0;
 		}
-				$product_categories = get_terms( $cat_args );
+
+		$product_categories = get_terms( $cat_args );
 		$final_response     = array();
 		if ( ! empty( $product_categories ) ) {
 			foreach ( $product_categories as $key => $category ) {
@@ -590,7 +610,7 @@ class POS_Product {
 	public static function get_sub_categories( $parent = null ) {
 		$category  = array();
 		$child_arg = array(
-			'taxonomy' => 'product_cat',
+			'taxonomy'   => 'product_cat',
 			'hide_empty' => false,
 			'parent'     => $parent,
 		);
@@ -673,7 +693,7 @@ class POS_Product {
 			$image->url                   = wp_get_attachment_url( $attachment_id );
 			$pos_product->image_gallery[] = $image;
 		}
-		$pos_product->price_html     = $product->get_price_html();
+		$pos_product->price_html     = self::get_price_html( $product );
 		$pos_product->status         = $product->get_status();
 		$pos_product->price          = $product->get_price();
 		$pos_product->description    = $product->get_description();
@@ -756,6 +776,91 @@ class POS_Product {
 	}
 
 	/**
+	 * The get price html is generated by appsbd
+	 *
+	 * @param \WC_Product_Variable $product It is product param.
+	 *
+	 * @return string
+	 */
+	public static function get_price_html( $product ) {
+		if ( $product->get_type() == 'variable' ) {
+
+			$prices = $product->get_variation_prices( true );
+
+			if ( empty( $prices['price'] ) ) {
+				$price = wc_price( 0 );
+			} else {
+				$min_price     = current( $prices['price'] );
+				$max_price     = end( $prices['price'] );
+				$min_reg_price = current( $prices['regular_price'] );
+				$max_reg_price = end( $prices['regular_price'] );
+
+				if ( $min_price !== $max_price ) {
+					$price = wc_price( $min_price ) . ' &nbsp; &ndash; &nbsp; ' . wc_price( $max_price );
+				} elseif ( $product->is_on_sale() && $min_reg_price === $max_reg_price ) {
+					$price = self::format_sale_price( wc_price( $max_reg_price ), wc_price( $min_price ) );
+				} else {
+					$price = wc_price( $min_price );
+				}
+			}
+
+			return $price;
+		} else {
+			if ( '' === $product->get_price() ) {
+				$price = wc_price( 0 );
+			} elseif ( $product->is_on_sale() ) {
+				$price = self::format_sale_price(
+					wc_get_price_to_display(
+						$product,
+						array( 'price' => $product->get_regular_price() )
+					),
+					wc_get_price_to_display( $product )
+				) . $product->get_price_suffix();
+			} else {
+				$price = wc_price( wc_get_price_to_display( $product ) ) . $product->get_price_suffix();
+			}
+
+			return $price;
+		}
+	}
+	/**
+	 * Format a sale price for display.
+	 *
+	 * @since  3.0.0
+	 * @param  string $regular_price Regular price.
+	 * @param  string $sale_price    Sale price.
+	 * @return string
+	 */
+	public static function format_sale_price( $regular_price, $sale_price ) {
+
+		$formatted_regular_price = is_numeric( $regular_price ) ? wc_price( $regular_price ) : $regular_price;
+		$formatted_sale_price    = is_numeric( $sale_price ) ? wc_price( $sale_price ) : $sale_price;
+
+		$price = '<del aria-hidden="true">' . $formatted_regular_price . '</del> ';
+
+		$price .= '<span class="screen-reader-text">';
+		// translators: %s is a product's regular price.
+
+		$price .= '</span>';
+
+		$price .= '<ins aria-hidden="true">' . $formatted_sale_price . '</ins>';
+
+		$price .= '<span class="screen-reader-text">';
+		// translators: %s is a product's current (sale) price.
+		$price .= '</span>';
+
+		/**
+		 * Its is for vitepos sale price format.
+		 *
+		 * @param mixed $price It's the price.
+		 * @param mixed $regular_price It's the regular_price.
+		 * @param mixed $sale_price It's the sale_price.
+		 *
+		 * @since 3.1.0
+		 */
+		return apply_filters( 'woocommerce_format_sale_price', $price, $regular_price, $sale_price );
+	}
+	/**
 	 * The get product variation data is generated by appsbd
 	 *
 	 * @param mixed $product Its wc product.
@@ -817,19 +922,22 @@ class POS_Product {
 	public static function get_attributes2( &$product ) {
 		$return_attributes = array();
 		if ( $product->is_type( 'variable' ) ) {
+
 			foreach ( $product->get_available_variations() as $key => $variation ) {
 
 				foreach ( $variation['attributes'] as $attribute => $term_slug ) {
-										$taxonmomy = str_replace( 'attribute_', '', $attribute );
 
-										$attr_label_name = wc_attribute_label( $taxonmomy );
+					$taxonmomy = str_replace( 'attribute_', '', $attribute );
 
-										$term_name = get_term_by( 'slug', $term_slug, $taxonmomy );
+					$attr_label_name = wc_attribute_label( $taxonmomy );
+
+					$term_name = get_term_by( 'slug', $term_slug, $taxonmomy );
 					if ( ! empty( $term_name->name ) ) {
 						$attr_label_name = $term_name->name;
 					} else {
 						$attr_label_name = $term_slug;
 					}
+
 					if ( ! isset( $pos_product->attributes[ $taxonmomy ] ) ) {
 						$return_attributes[ $taxonmomy ] = array();
 					}
@@ -849,7 +957,7 @@ class POS_Product {
 	 * @since  2.5.0
 	 */
 	private static function get_grouped_products_data( $product ) {
-		 $products = array();
+		$products = array();
 
 		foreach ( $product->get_children() as $child_id ) {
 			$_product = wc_get_product( $child_id );
@@ -874,7 +982,7 @@ class POS_Product {
 	 * @return false|string
 	 */
 	public static function get_wc_product_image( $product, $size = 'woocommerce_thumbnail' ) {
-		 $image = '';
+		$image = '';
 		if ( $product->get_image_id() ) {
 			$image = wp_get_attachment_image_url( $product->get_image_id(), $size );
 		} elseif ( $product->get_parent_id() ) {
@@ -910,29 +1018,31 @@ class POS_Product {
 	 * @since 2.1
 	 */
 	private static function query_args( $args ) {
-				$query_args = array(
-					'fields'      => 'ids',
-					'post_type'   => 'product',
-					'post_status' => POS_Settings::get_module_instance()->get_product_status(),
-					'meta_query'  => array(),
-				);
 
-				if ( ! empty( $args['sku'] ) ) {
-					if ( ! is_array( $query_args['meta_query'] ) ) {
-						$query_args['meta_query'] = array();
-					}
+		$query_args = array(
+			'fields'      => 'ids',
+			'post_type'   => 'product',
 
-					$query_args['meta_query'][] = array(
-						'key'     => '_sku',
-						'value'   => $args['sku'],
-						'compare' => '=',
-					);
+			'post_status' => POS_Settings::get_module_instance()->get_product_status(),
+			'meta_query'  => array(),
+		);
 
-					$query_args['post_type'] = array( 'product', 'product_variation' );
-				}
+		if ( ! empty( $args['sku'] ) ) {
+			if ( ! is_array( $query_args['meta_query'] ) ) {
+				$query_args['meta_query'] = array();
+			}
 
-				$query_args = self::merge_query_args( $query_args, $args );
-				return $query_args;
+			$query_args['meta_query'][] = array(
+				'key'     => '_sku',
+				'value'   => $args['sku'],
+				'compare' => '=',
+			);
+
+			$query_args['post_type'] = array( 'product', 'product_variation' );
+		}
+
+		$query_args = self::merge_query_args( $query_args, $args );
+		return $query_args;
 	}
 
 	/**
@@ -1028,7 +1138,7 @@ class POS_Product {
 			unset( $request_args['in'] );
 		}
 
-				$args['paged'] = ( isset( $request_args['page'] ) ) ? absint( $request_args['page'] ) : 1;
+		$args['paged'] = ( isset( $request_args['page'] ) ) ? absint( $request_args['page'] ) : 1;
 		/**
 		 * Its for api query args.
 		 *
@@ -1123,11 +1233,11 @@ class POS_Product {
 
 			foreach ( $product->get_variation_attributes() as $attribute_name => $attribute ) {
 
-					$attributes[] = array(
-						'name'   => wc_attribute_label( str_replace( 'attribute_', '', $attribute_name ), $product ),
-						'slug'   => str_replace( 'attribute_', '', wc_attribute_taxonomy_slug( $attribute_name ) ),
-						'option' => $attribute,
-					);
+				$attributes[] = array(
+					'name'   => wc_attribute_label( str_replace( 'attribute_', '', $attribute_name ), $product ),
+					'slug'   => str_replace( 'attribute_', '', wc_attribute_taxonomy_slug( $attribute_name ) ),
+					'option' => $attribute,
+				);
 			}
 		} else {
 
@@ -1135,7 +1245,9 @@ class POS_Product {
 				$attributes[] = array(
 					'id'        => $attribute['id'],
 					'name'      => wc_attribute_label( $attribute['name'], $product ),
+
 					'slug'      => wc_sanitize_taxonomy_name( $attribute['name'] ),
+
 					'visible'   => (bool) $attribute['is_visible'],
 					'variation' => (bool) $attribute['is_variation'],
 					'options'   => self::get_attribute_options( $product->get_id(), $attribute ),
@@ -1188,11 +1300,12 @@ class POS_Product {
 	 * @since 2.1
 	 */
 	public static function parse_datetime( $datetime ) {
+
 		if ( strpos( $datetime, '.' ) !== false ) {
 			$datetime = preg_replace( '/\.\d+/', '', $datetime );
 		}
 
-				$datetime = preg_replace( '/[+-]\d+:+\d+$/', '+00:00', $datetime );
+		$datetime = preg_replace( '/[+-]\d+:+\d+$/', '+00:00', $datetime );
 
 		try {
 

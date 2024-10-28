@@ -149,7 +149,8 @@ class POS_Payment {
 		$this->outlet_obj   = Mapbd_Pos_Warehouse::find_by( 'id', $this->outlet_id );
 		$this->current_user = wp_get_current_user();
 		if ( POS_Settings::is_stockable() ) {
-						add_filter( 'woocommerce_payment_complete_reduce_order_stock', '__return_false' );
+
+			add_filter( 'woocommerce_payment_complete_reduce_order_stock', '__return_false' );
 		}
 	}
 
@@ -170,7 +171,8 @@ class POS_Payment {
 	 */
 	public function __destruct() {
 		if ( POS_Settings::is_stockable() ) {
-						remove_filter( 'woocommerce_payment_complete_reduce_order_stock', '__return_false' );
+
+			remove_filter( 'woocommerce_payment_complete_reduce_order_stock', '__return_false' );
 		}
 	}
 
@@ -232,7 +234,8 @@ class POS_Payment {
 			if ( ! empty( $customer_id ) ) {
 				$order_arg['customer_id'] = $customer_id;
 			}
-						$this->order = wc_create_order( $order_arg );
+
+			$this->order = wc_create_order( $order_arg );
 			if ( ! empty( $customer_id ) ) {
 				/**
 				 * Its for check is there any change before process
@@ -287,7 +290,8 @@ class POS_Payment {
 							$product,
 							$item['quantity'],
 							$arguments
-						);                  } else {
+						);
+					} else {
 						$product = wc_get_product( $item['product_id'] );
 						if ( ! empty( $item['addon_total'] ) ) {
 							$item_regular_price = floatval( $product->get_regular_price( '' ) );
@@ -301,35 +305,36 @@ class POS_Payment {
 							$product,
 							$item['quantity'],
 							$arguments
-						);                  }
-						$total_tax += ( $item['quantity'] * ( $item['tax_amount'] + $item['addon_total'] ) );
-						$oitem      = new \WC_Order_Item_Product( $item_id );
-						if ( ! empty( $item['attributes'] ) && is_array( $item['attributes'] ) ) {
-							$oitem->add_meta_data( '_vtp_attributes', $item['attributes'] );
-						}
+						);
+					}
+					$total_tax += ( $item['quantity'] * ( $item['tax_amount'] + $item['addon_total'] ) );
+					$oitem      = new \WC_Order_Item_Product( $item_id );
+					if ( ! empty( $item['attributes'] ) && is_array( $item['attributes'] ) ) {
+						$oitem->add_meta_data( '_vtp_attributes', $item['attributes'] );
+					}
 
-						if ( ! empty( $item_regular_price ) ) {
-							if ( ! empty( $item['addon_total'] ) ) {
-								$oitem->add_meta_data(
-									'_vtp_regular_price',
-									$item_regular_price + floatval( $item['addon_total'] )
-								);
-							}
-						} else {
-							$oitem->add_meta_data( '_vtp_regular_price', '' );
-						}
-
+					if ( ! empty( $item_regular_price ) ) {
 						if ( ! empty( $item['addon_total'] ) ) {
-							$oitem->add_meta_data( '_vtp_addon_total', floatval( $item['addon_total'] ) );
+							$oitem->add_meta_data(
+								'_vtp_regular_price',
+								$item_regular_price + floatval( $item['addon_total'] )
+							);
 						}
-						if ( ! empty( $item['addon_tax'] ) ) {
-							$oitem->add_meta_data( '_vtp_addon_tax', floatval( $item['addon_tax'] ) );
-						}
-						if ( ! empty( $item['addons'] ) ) {
-							$oitem->add_meta_data( '_vtp_items_price', $item_price );
-							$oitem->add_meta_data( '_vtp_addons', $item['addons'] );
-						}
-						$oitem->save();
+					} else {
+						$oitem->add_meta_data( '_vtp_regular_price', '' );
+					}
+
+					if ( ! empty( $item['addon_total'] ) ) {
+						$oitem->add_meta_data( '_vtp_addon_total', floatval( $item['addon_total'] ) );
+					}
+					if ( ! empty( $item['addon_tax'] ) ) {
+						$oitem->add_meta_data( '_vtp_addon_tax', floatval( $item['addon_tax'] ) );
+					}
+					if ( ! empty( $item['addons'] ) ) {
+						$oitem->add_meta_data( '_vtp_items_price', $item_price );
+						$oitem->add_meta_data( '_vtp_addons', $item['addons'] );
+					}
+					$oitem->save();
 
 				} catch ( Exception $e ) {
 					POS_Settings::get_module_instance()->add_error( $e->getMessage() );
@@ -337,7 +342,8 @@ class POS_Payment {
 			}
 
 			$this->calculate_totals( true );
-						$this->set_order_tax( $total_tax );
+
+			$this->set_order_tax( $total_tax );
 
 			$this->calculate_totals( false );
 			$rounding_factor = null;
@@ -510,6 +516,7 @@ class POS_Payment {
 	 * @return bool
 	 */
 	protected function check_items_stock() {
+
 		if ( ! POS_Settings::is_stockable() ) {
 			return true;
 		}
@@ -662,7 +669,8 @@ class POS_Payment {
 		$this->clear_order_discount_fee();
 		$this->calculate_totals( true );
 		$this->set_tax_after_discount_or_fee();
-				$total_amount = $this->order->get_subtotal();
+
+		$total_amount = $this->order->get_subtotal();
 
 		$fee_total = 0.0;
 		if ( ! empty( $this->payload['fees'] ) && is_array( $this->payload['fees'] ) ) {
@@ -764,12 +772,14 @@ class POS_Payment {
 			if ( $total_amount > 0 && $final_amount > 0 ) {
 				$items = array();
 				foreach ( $this->order->get_items() as $item ) {
-										$item_sub_total = $item->get_subtotal();
+
+					$item_sub_total = $item->get_subtotal();
 					$item_dis       = ( $final_amount / $total_amount ) * $item_sub_total;
 					if ( $is_discount ) {
 						$item->set_total( $item_sub_total - $item_dis );
 					} else {
-												$items[ $item->get_id() ] = $item_sub_total;
+
+						$items[ $item->get_id() ] = $item_sub_total;
 						$item->set_total( $item_sub_total + $item_dis );
 						$item->set_subtotal( $item_sub_total );
 					}
@@ -865,6 +875,7 @@ class POS_Payment {
 		if ( $this->create_order() ) {
 			$this->order->add_meta_data( '_vtp_is_resto', 'Y' );
 			$this->order->add_meta_data( '_vtp_order_by', $this->current_user->ID );
+
 			$this->order->add_meta_data( '_vtp_tables', $this->get_payload( 'table_id', array() ) );
 			$this->order->add_meta_data( '_vtp_persons', $this->get_payload( 'persons', 0 ) );
 			$this->order->add_meta_data( '_vtp_order_type', $this->get_payload( 'order_type', 'in_store' ) );
@@ -958,12 +969,14 @@ class POS_Payment {
 	 * @throws \WC_Data_Exception Its Exception.
 	 */
 	public function grocery_checkout( $is_offline = false ) {
-				$this->is_restaurant = false;
+
+		$this->is_restaurant = false;
 		$this->is_checkout   = true;
 		$this->is_offline    = $is_offline;
 		if ( ! $this->check_checkout_pre_order() || ! $this->check_offline_pre_order() || ( ! $is_offline && ! $this->check_items_stock() ) ) {
 			return false;
 		}
+
 		if ( $this->create_order() ) {
 			$this->order->add_meta_data( '_vtp_processed_by', $this->current_user->ID );
 			if ( $this->is_ready_to_checkout() ) {
@@ -984,7 +997,8 @@ class POS_Payment {
 	 * @throws \WC_Data_Exception Its Exception.
 	 */
 	public function restaurant_checkout_pay_first( $is_offline = false ) {
-				$this->is_restaurant = false;
+
+		$this->is_restaurant = false;
 		$this->is_checkout   = true;
 		$this->is_offline    = $is_offline;
 
@@ -1051,7 +1065,8 @@ class POS_Payment {
 	 */
 	protected function load_order( $id ) {
 		$this->order_id = $id;
-		$this->order    = new \WC_Order( $id );     if ( $this->order->get_meta( '_vtp_is_resto' ) == 'Y' ) {
+		$this->order    = new \WC_Order( $id );
+		if ( $this->order->get_meta( '_vtp_is_resto' ) == 'Y' ) {
 			$this->is_restaurant = true;
 		}
 	}
@@ -1089,7 +1104,8 @@ class POS_Payment {
 					}
 				}
 				$this->order->update_meta_data( '_vtp_payment_list', $paymentlist );
-								return $this->_complete_order();
+
+				return $this->_complete_order();
 			} elseif ( 'complete' == $status ) {
 				POS_Settings::get_module_instance()->add_info( 'Order successfully completed' );
 				$order_details = POS_Order::get_from_woo_order_details_by_id( $this->order->get_id() );
@@ -1199,6 +1215,7 @@ class POS_Payment {
 	 * @return bool
 	 */
 	protected function reverse_items_stock_on_canceled() {
+
 		if ( ! POS_Settings::is_stockable() ) {
 			return true;
 		}
@@ -1545,10 +1562,11 @@ class POS_Payment {
 
 					if ( $is_complete ) {
 						if ( empty( $this->outlet_obj->email ) || $this->outlet_obj->email != $this->order->get_billing_email( '' ) ) {
-							$payment_response->next = POS_Settings::is_enable_customer_email() ? 'SE' : '';                         } else {
+							$payment_response->next = POS_Settings::is_enable_customer_email() ? 'SE' : '';
+						} else {
 							$payment_response->next = '';
 							$this->order->add_order_note( 'Skipped customer email sent as same email of outlet' );
-							}
+						}
 					}
 					$this->set_order_details(
 						$is_complete,

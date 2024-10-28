@@ -59,6 +59,12 @@ class POS_Order_Item {
 	 */
 	public $price = 0.0;
 	/**
+	 * Its property price
+	 *
+	 * @var float
+	 */
+	public $addon_total = 0.0;
+	/**
 	 * Its property regular_price
 	 *
 	 * @var float
@@ -88,6 +94,7 @@ class POS_Order_Item {
 		$o_item->image         = self::get_wc_product_image( $product );
 		$o_item->quantity      = $item->get_quantity();
 		$o_item->price         = (float) $order->get_item_subtotal( $item, false, true );
+		$o_item->addon_total         = 0;
 		$o_item->regular_price = (float) $item->get_meta( '_vtp_regular_price' );
 		$o_item->tax_amount    = (float) $item->get_total_tax();
 		if ( ! empty( $o_item->variation_id ) ) {

@@ -234,9 +234,11 @@ class POS_Order {
 					$dis_fee_obj->type = $item->get_meta( '_vtp_cal_type' );
 					$dis_fee_obj->val  = floatval( $item->get_meta( '_vtp_cal_val' ) );
 					if ( $item->get_total() > 0 ) {
-												$v_order->fees[] = $dis_fee_obj;
+
+						$v_order->fees[] = $dis_fee_obj;
 					} else {
-												$v_order->discounts[] = $dis_fee_obj;
+
+						$v_order->discounts[] = $dis_fee_obj;
 					}
 				}
 			}
@@ -449,6 +451,7 @@ class POS_Order {
 				if ( is_array( $outlets ) ) {
 					$args['meta_query'][] = array(
 						'key'     => 'outlet_id',
+
 						'value'   => '"(' . implode( '|', $outlets ) . ')"',
 						'compare' => 'REGEXP',
 					);

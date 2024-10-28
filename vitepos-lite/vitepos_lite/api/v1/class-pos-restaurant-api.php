@@ -194,7 +194,8 @@ class Pos_Restaurant_Api extends API_Base {
 					 * @since 1.0
 					 */
 					$billing_address = apply_filters( 'vitepos/filter/billing-address', $billing_address, $order, $customer_id );
-										$order->set_address( $billing_address, 'billing' );
+
+					$order->set_address( $billing_address, 'billing' );
 				}
 
 				$total_amount = 0.0;
@@ -202,7 +203,8 @@ class Pos_Restaurant_Api extends API_Base {
 
 				$order->calculate_totals( true );
 				$total_amount = $order->get_subtotal();
-								$fee_total = 0.0;
+
+				$fee_total = 0.0;
 				if ( ! empty( $this->payload['fees'] ) && is_array( $this->payload['fees'] ) ) {
 					foreach ( $this->payload['fees'] as $item ) {
 						if ( ! empty( $item['type'] ) && ! empty( $item['val'] ) ) {
@@ -386,7 +388,8 @@ class Pos_Restaurant_Api extends API_Base {
 	 * @return \Appsbd\V1\libs\API_Response
 	 */
 	public function start_preparing() {
-						$order_id = $this->get_payload( 'order_id' );
+
+		$order_id = $this->get_payload( 'order_id' );
 		if ( ! empty( $order_id ) ) {
 			$order = new \WC_Order( $order_id );
 			if ( $order->get_status() == 'vt_in_kitchen' ) {
@@ -409,7 +412,8 @@ class Pos_Restaurant_Api extends API_Base {
 	 * @return \Appsbd\V1\libs\API_Response
 	 */
 	public function make_served() {
-						$order_id = $this->get_payload( 'order_id' );
+
+		$order_id = $this->get_payload( 'order_id' );
 		if ( ! empty( $order_id ) ) {
 			$order = new \WC_Order( $order_id );
 			if ( $order->get_status() == 'vt_ready_to_srv' ) {
@@ -497,7 +501,8 @@ class Pos_Restaurant_Api extends API_Base {
 						return $this->response->get_response();
 					}
 				} elseif ( $order->update_status( 'vt_preparing', 'Cancel request denied', true ) ) {
-											vitepos_wc_order_update_meta( $order, '_vt_can_cancel', 'N' );
+
+						vitepos_wc_order_update_meta( $order, '_vt_can_cancel', 'N' );
 						$this->add_time_by_status( $order, 'vt_preparing' );
 						$msg           = POS_Order::add_resto_order_msg( $order_id, 'Cancel is not possible' );
 						$updated_order = POS_Order::get_from_woo_order_restro_by_id( $order_id, false, true );
@@ -519,11 +524,13 @@ class Pos_Restaurant_Api extends API_Base {
 	 * @return \Appsbd\V1\libs\API_Response
 	 */
 	public function cancel_order() {
-						$order_id = $this->get_payload( 'order_id' );
+
+		$order_id = $this->get_payload( 'order_id' );
 		if ( ! empty( $order_id ) ) {
 			$order  = new \WC_Order( $order_id );
 			$status = $order->get_status();
 			if ( in_array( $status, array( 'vt_kitchen_deny', 'vt_in_kitchen' ) ) ) {
+
 				if ( $order->update_status( 'cancelled', 'Order Cancel', true ) ) {
 					$this->add_time_by_status( $order, 'vt_kitchen_deny' );
 					$msg           = POS_Order::add_resto_order_msg( $order_id, 'Order canceled' );
@@ -572,7 +579,8 @@ class Pos_Restaurant_Api extends API_Base {
 	 * @return \Appsbd\V1\libs\API_Response
 	 */
 	public function add_kitchen_msg() {
-						$order_id = $this->get_payload( 'order_id', '' );
+
+		$order_id = $this->get_payload( 'order_id', '' );
 		$msg      = $this->get_payload( 'msg', '' );
 		if ( ! empty( $order_id ) && ! empty( $msg ) ) {
 			$msgs = POS_Order::add_resto_order_msg( $order_id, $msg );
@@ -655,7 +663,8 @@ class Pos_Restaurant_Api extends API_Base {
 			if ( ! empty( $customer_id ) ) {
 				$order_arg['customer_id'] = $customer_id;
 			}
-						$order = wc_create_order( $order_arg );
+
+			$order = wc_create_order( $order_arg );
 			if ( ! empty( $customer_id ) ) {
 				/**
 				 * Its for check is there any change before process
@@ -704,7 +713,8 @@ class Pos_Restaurant_Api extends API_Base {
 							$product,
 							$item['quantity'],
 							$arguments
-						);                  } else {
+						);
+					} else {
 						$product = wc_get_product( $item['product_id'] );
 						if ( ! empty( $item['addon_total'] ) ) {
 							$item_regular_price = floatval( $product->get_regular_price( '' ) );
@@ -718,35 +728,36 @@ class Pos_Restaurant_Api extends API_Base {
 							$product,
 							$item['quantity'],
 							$arguments
-						);                  }
-						$total_tax += ( $item['quantity'] * $item['tax_amount'] );
-						$oitem      = new \WC_Order_Item_Product( $item_id );
-						if ( ! empty( $item['attributes'] ) && is_array( $item['attributes'] ) ) {
-							$oitem->add_meta_data( '_vtp_attributes', $item['attributes'] );
-						}
+						);
+					}
+					$total_tax += ( $item['quantity'] * $item['tax_amount'] );
+					$oitem      = new \WC_Order_Item_Product( $item_id );
+					if ( ! empty( $item['attributes'] ) && is_array( $item['attributes'] ) ) {
+						$oitem->add_meta_data( '_vtp_attributes', $item['attributes'] );
+					}
 
-						if ( ! empty( $item_regular_price ) ) {
-							if ( ! empty( $item['addon_total'] ) ) {
-								$oitem->add_meta_data(
-									'_vtp_regular_price',
-									$item_regular_price + floatval( $item['addon_total'] )
-								);
-							}
-						} else {
-							$oitem->add_meta_data( '_vtp_regular_price', '' );
-						}
-
+					if ( ! empty( $item_regular_price ) ) {
 						if ( ! empty( $item['addon_total'] ) ) {
-							$oitem->add_meta_data( '_vtp_addon_total', floatval( $item['addon_total'] ) );
+							$oitem->add_meta_data(
+								'_vtp_regular_price',
+								$item_regular_price + floatval( $item['addon_total'] )
+							);
 						}
-						if ( ! empty( $item['addon_tax'] ) ) {
-							$oitem->add_meta_data( '_vtp_addon_tax', floatval( $item['addon_tax'] ) );
-						}
-						if ( ! empty( $item['addons'] ) ) {
-							$oitem->add_meta_data( '_vtp_items_price', $item_price );
-							$oitem->add_meta_data( '_vtp_addons', $item['addons'] );
-						}
-						$oitem->save();
+					} else {
+						$oitem->add_meta_data( '_vtp_regular_price', '' );
+					}
+
+					if ( ! empty( $item['addon_total'] ) ) {
+						$oitem->add_meta_data( '_vtp_addon_total', floatval( $item['addon_total'] ) );
+					}
+					if ( ! empty( $item['addon_tax'] ) ) {
+						$oitem->add_meta_data( '_vtp_addon_tax', floatval( $item['addon_tax'] ) );
+					}
+					if ( ! empty( $item['addons'] ) ) {
+						$oitem->add_meta_data( '_vtp_items_price', $item_price );
+						$oitem->add_meta_data( '_vtp_addons', $item['addons'] );
+					}
+					$oitem->save();
 
 				} catch ( Exception $e ) {
 					$this->add_error( $e->getMessage() );
@@ -754,7 +765,8 @@ class Pos_Restaurant_Api extends API_Base {
 			}
 			$order->calculate_totals( true );
 			$total_amount = $order->get_subtotal();
-						$fee_total = 0.0;
+
+			$fee_total = 0.0;
 			if ( ! empty( $this->payload['fees'] ) && is_array( $this->payload['fees'] ) ) {
 				foreach ( $this->payload['fees'] as $item ) {
 					if ( ! empty( $item['type'] ) && ! empty( $item['val'] ) ) {
@@ -789,7 +801,8 @@ class Pos_Restaurant_Api extends API_Base {
 					return $this->response->get_response();
 				}
 			}
-						$discount_total = 0.0;
+
+			$discount_total = 0.0;
 			$discount       = 0.0;
 			if ( ! empty( $this->payload['discounts'] ) && is_array( $this->payload['discounts'] ) ) {
 				foreach ( $this->payload['discounts'] as $item ) {
@@ -849,7 +862,8 @@ class Pos_Restaurant_Api extends API_Base {
 			$order->add_meta_data( '_vtp_order_by', $processed_by );
 			$outlet_id  = $this->get_outlet_id();
 			$counter_id = $this->get_counter_id();
-						add_post_meta( $order->get_id(), '_vtp_outlet_id', $outlet_id );
+
+			add_post_meta( $order->get_id(), '_vtp_outlet_id', $outlet_id );
 			$order->add_meta_data( '_vtp_counter_id', $counter_id );
 
 			if ( $order->update_status( 'vt_in_kitchen', 'Sent to kitchen', true ) ) {
@@ -909,6 +923,7 @@ class Pos_Restaurant_Api extends API_Base {
 		$order_by      = $this->get_current_user_id();
 		$args          = array(
 			'status'        => array( 'vt_in_kitchen', 'vt_preparing', 'vt_served', 'vt_kitchen_deny', 'vt_ready_to_srv', 'vt_cancel_request' ),
+
 			'page'          => $this->get_payload( 'page', 1 ),
 			'orderby'       => 'date',
 			'order'         => 'DESC',
@@ -1129,7 +1144,8 @@ class Pos_Restaurant_Api extends API_Base {
 			foreach ( $orders->orders as $order ) {
 				$order_data = POS_Order::get_from_woo_order( $order );
 				if ( true || $this->get_payload( 'with_items', 'N' ) == 'Y' ) {
-										$order_data->items = array();
+
+					$order_data->items = array();
 					POS_Order::set_items_to_order( $order_data, $order );
 
 				}
@@ -1158,7 +1174,8 @@ class Pos_Restaurant_Api extends API_Base {
 		$mainobj       = new Mapbd_Pos_Message();
 
 		$mainobj->msg_panel( "in ('A','{$type}')", true );
-				$mainobj->status( 'A' );
+
+		$mainobj->status( 'A' );
 		$response_data->rowdata = $mainobj->select_all_grid_data( '', 'created_at', 'DESC' );
 		$this->response->set_response( true, 'Order found', $response_data->rowdata );
 		return $this->response;

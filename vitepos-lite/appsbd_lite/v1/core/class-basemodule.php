@@ -978,6 +978,9 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModule' ) ) {
 		public function update_request_option() {
 			$before_save = $this->options;
 			$app_posts   = AppInput::get_posted_data();
+			if ( empty( $app_posts['cam_scan'] ) ) {
+				$app_posts['cam_scan'] = array();
+			}
 			if ( ! empty( $app_posts['action'] ) ) {
 				unset( $app_posts['action'] );
 			}

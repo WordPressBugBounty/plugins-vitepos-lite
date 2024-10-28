@@ -174,6 +174,7 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 		$this_obj->closed_by( get_current_user_id() );
 		$this_obj->set_where_update( 'id', $this->id );
 		if ( $this_obj->update() ) {
+
 			if ( empty( $note ) ) {
 				$note = 'Drawer closed';
 			}
@@ -197,8 +198,6 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 		$this_obj = new self();
 		$this_obj->outlet_id( $outlet_id );
 		$this_obj->counter_id( $counter_id );
-		if ( ! POS_Settings::is_single_cash_drawer() ) {
-			$this_obj->opened_by( $user_id );       }
 		$this_obj->status( 'O' );
 		if ( $this_obj->select() ) {
 			return $this_obj;
@@ -222,7 +221,8 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 		$this_obj->outlet_id( $outlet_id );
 		$this_obj->counter_id( $counter_id );
 		if ( ! POS_Settings::is_single_cash_drawer() && ! empty( $user_id ) ) {
-			$this_obj->opened_by( $user_id );       }
+			$this_obj->opened_by( $user_id );
+		}
 		if ( ! empty( $status ) ) {
 			$this_obj->status( $status );
 		}
@@ -338,15 +338,16 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 			$this_obj->closing_time( gmdate( 'Y-m-d H:i:s' ) );
 			$this_obj->set_where_update( 'id', $cash_drawer->id );
 			if ( $this_obj->update() ) {
-								Mapbd_Pos_Cash_Drawer_Log::AddLog(
-									$cash_drawer->id,
-									'Order Processed',
-									$cash_drawer->closing_balance,
-									$amount,
-									'D',
-									'O',
-									$order_id
-								);
+
+				Mapbd_Pos_Cash_Drawer_Log::AddLog(
+					$cash_drawer->id,
+					'Order Processed',
+					$cash_drawer->closing_balance,
+					$amount,
+					'D',
+					'O',
+					$order_id
+				);
 
 				return true;
 			}
@@ -381,15 +382,16 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 			$this_obj->set_where_update( 'id', $cash_drawer->id );
 
 			if ( $this_obj->update() ) {
-								Mapbd_Pos_Cash_Drawer_Log::AddLog(
-									$cash_drawer->id,
-									$narration,
-									$cash_drawer->closing_balance,
-									$amount,
-									$type,
-									$ref_type,
-									$ref_value
-								);
+
+				Mapbd_Pos_Cash_Drawer_Log::AddLog(
+					$cash_drawer->id,
+					$narration,
+					$cash_drawer->closing_balance,
+					$amount,
+					$type,
+					$ref_type,
+					$ref_value
+				);
 
 				return true;
 			}
@@ -424,15 +426,16 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 				} else {
 					$closing_balance = $cashdrawer->closing_balance - $amount;
 				}
-								Mapbd_Pos_Cash_Drawer_Log::AddLog(
-									$cashdrawer->id,
-									'Order Change amount',
-									$cashdrawer->closing_balance,
-									$amount,
-									'C',
-									'O',
-									$order_id
-								);
+
+				Mapbd_Pos_Cash_Drawer_Log::AddLog(
+					$cashdrawer->id,
+					'Order Change amount',
+					$cashdrawer->closing_balance,
+					$amount,
+					'C',
+					'O',
+					$order_id
+				);
 
 				return true;
 			}

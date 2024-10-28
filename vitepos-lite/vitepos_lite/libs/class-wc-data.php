@@ -163,7 +163,7 @@ class WC_Data {
 					'length' => $variation->get_length(),
 					'width'  => $variation->get_width(),
 					'height' => $variation->get_height(),
-					'unit'   => get_option( 'woocommerce_dimension_unit' ),
+					'unit'   => get_option( 'vitepos-lite' ),
 				),
 				'shipping_class'     => $variation->get_shipping_class(),
 				'shipping_class_id'  => ( 0 !== $variation->get_shipping_class_id() ) ? $variation->get_shipping_class_id() : null,
@@ -190,7 +190,7 @@ class WC_Data {
 
 		$product = wc_get_product( $id );
 
-				$product_data = $this->get_product_data( $product );
+		$product_data = $this->get_product_data( $product );
 
 		if ( $product->is_type( 'variable' ) && $product->has_child() ) {
 			$product_data['variations'] = $this->get_variation_data( $product );
@@ -251,61 +251,61 @@ class WC_Data {
 	 */
 	public function query_products( $args ) {
 
-				$query_args = array(
-					'fields'      => 'ids',
-					'post_type'   => 'product',
-					'post_status' => 'publish',
-					'meta_query'  => array(),
+		$query_args = array(
+			'fields'      => 'ids',
+			'post_type'   => 'product',
+			'post_status' => 'publish',
+			'meta_query'  => array(),
+		);
+
+		$tax_query = array();
+
+		$taxonomies_arg_map = array(
+			'product_type'           => 'type',
+			'product_cat'            => 'category',
+			'product_tag'            => 'tag',
+			'product_shipping_class' => 'shipping_class',
+		);
+
+		foreach ( wc_get_attribute_taxonomy_names() as $attribute_name ) {
+			$taxonomies_arg_map[ $attribute_name ] = $attribute_name;
+		}
+
+		foreach ( $taxonomies_arg_map as $tax_name => $arg ) {
+			if ( ! empty( $args[ $arg ] ) ) {
+				$terms = explode( ',', $args[ $arg ] );
+
+				$tax_query[] = array(
+					'taxonomy' => $tax_name,
+					'field'    => 'slug',
+					'terms'    => $terms,
 				);
 
-						$tax_query = array();
+				unset( $args[ $arg ] );
+			}
+		}
 
-				$taxonomies_arg_map = array(
-					'product_type'           => 'type',
-					'product_cat'            => 'category',
-					'product_tag'            => 'tag',
-					'product_shipping_class' => 'shipping_class',
-				);
+		if ( ! empty( $tax_query ) ) {
+			$query_args['tax_query'] = $tax_query;
+		}
 
-				foreach ( wc_get_attribute_taxonomy_names() as $attribute_name ) {
-					$taxonomies_arg_map[ $attribute_name ] = $attribute_name;
-				}
+		if ( ! empty( $args['sku'] ) ) {
+			if ( ! is_array( $query_args['meta_query'] ) ) {
+				$query_args['meta_query'] = array();
+			}
 
-				foreach ( $taxonomies_arg_map as $tax_name => $arg ) {
-					if ( ! empty( $args[ $arg ] ) ) {
-						$terms = explode( ',', $args[ $arg ] );
+			$query_args['meta_query'][] = array(
+				'key'     => '_sku',
+				'value'   => $args['sku'],
+				'compare' => '=',
+			);
 
-						$tax_query[] = array(
-							'taxonomy' => $tax_name,
-							'field'    => 'slug',
-							'terms'    => $terms,
-						);
+			$query_args['post_type'] = array( 'product', 'product_variation' );
+		}
 
-						unset( $args[ $arg ] );
-					}
-				}
+		$query_args = $this->merge_query_args( $query_args, $args );
 
-				if ( ! empty( $tax_query ) ) {
-					$query_args['tax_query'] = $tax_query;
-				}
-
-				if ( ! empty( $args['sku'] ) ) {
-					if ( ! is_array( $query_args['meta_query'] ) ) {
-						$query_args['meta_query'] = array();
-					}
-
-					$query_args['meta_query'][] = array(
-						'key'     => '_sku',
-						'value'   => $args['sku'],
-						'compare' => '=',
-					);
-
-					$query_args['post_type'] = array( 'product', 'product_variation' );
-				}
-
-				$query_args = $this->merge_query_args( $query_args, $args );
-
-				return new \WP_Query( $query_args );
+		return new \WP_Query( $query_args );
 	}
 	/**
 	 * Add common request arguments to argument list before \WP_Query is run
@@ -395,7 +395,7 @@ class WC_Data {
 			unset( $request_args['in'] );
 		}
 
-				$args['paged'] = ( isset( $request_args['page'] ) ) ? absint( $request_args['page'] ) : 1;
+		$args['paged'] = ( isset( $request_args['page'] ) ) ? absint( $request_args['page'] ) : 1;
 		/**
 		 * Its for api query args.
 		 *
@@ -459,7 +459,7 @@ class WC_Data {
 				'length' => $product->get_length(),
 				'width'  => $product->get_width(),
 				'height' => $product->get_height(),
-				'unit'   => get_option( 'woocommerce_dimension_unit' ),
+				'unit'   => get_option( 'vitepos-lite' ),
 			),
 			'shipping_required'  => $product->needs_shipping(),
 			'shipping_taxable'   => $product->is_shipping_taxable(),
@@ -510,7 +510,7 @@ class WC_Data {
 			$attachment_ids[] = $product_image;
 		}
 
-				$attachment_ids = array_merge( $attachment_ids, $product->get_gallery_image_ids() );
+		$attachment_ids = array_merge( $attachment_ids, $product->get_gallery_image_ids() );
 
 		foreach ( $attachment_ids as $position => $attachment_id ) {
 
@@ -544,8 +544,8 @@ class WC_Data {
 				'created_at' => $this->format_datetime( time() ),
 				'updated_at' => $this->format_datetime( time() ),
 				'src'        => wc_placeholder_img_src(),
-				'title'      => __( 'Placeholder', 'woocommerce' ),
-				'alt'        => __( 'Placeholder', 'woocommerce' ),
+				'title'      => $this->__( 'Placeholder', 'vitepos-lite' ),
+				'alt'        => $this->__( 'Placeholder', 'vitepos-lite' ),
 				'position'   => 0,
 			);
 		}
@@ -568,11 +568,11 @@ class WC_Data {
 
 			foreach ( $product->get_variation_attributes() as $attribute_name => $attribute ) {
 
-					$attributes[] = array(
-						'name'   => wc_attribute_label( str_replace( 'attribute_', '', $attribute_name ), $product ),
-						'slug'   => str_replace( 'attribute_', '', wc_attribute_taxonomy_slug( $attribute_name ) ),
-						'option' => $attribute,
-					);
+				$attributes[] = array(
+					'name'   => wc_attribute_label( str_replace( 'attribute_', '', $attribute_name ), $product ),
+					'slug'   => str_replace( 'attribute_', '', wc_attribute_taxonomy_slug( $attribute_name ) ),
+					'option' => $attribute,
+				);
 			}
 		} else {
 

@@ -49,7 +49,9 @@ if ( ! function_exists( 'appsbd_add_query_error_v1' ) ) {
 	 */
 	function appsbd_add_query_error_v1( $msg ) {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-						return appsbd_add_error_v1_lite( $msg );
+
+			return appsbd_add_error_v1_lite( $msg );
+
 		}
 	}
 }
@@ -319,9 +321,10 @@ if ( ! function_exists( 'appsbd_get_user_title_by_user' ) ) {
 		if ( $user instanceof \WP_User ) {
 			$name = $user->user_firstname;
 			if ( ! empty( $user->user_firstname ) ) {
-				$title = $user->user_firstname . ' ' . $user->user_lastname;            } elseif ( empty( $title ) ) {
+				$title = $user->user_firstname . ' ' . $user->user_lastname;
+			} elseif ( empty( $title ) ) {
 				$title = $user->user_nicename;
-				}
+			}
 		}
 		return $title;
 	}
@@ -479,16 +482,18 @@ if ( ! function_exists( 'appsbd_is_rest' ) ) {
 	 */
 	function appsbd_is_rest() {
 		$route = \Appsbd_Lite\V1\libs\AppInput::get_value( 'rest_route' );
-		if ( defined( 'REST_REQUEST' ) && REST_REQUEST || ! empty( $route ) && strpos( $route, '/', 0 ) === 0 ) {
+		if ( defined( 'REST_REQUEST' ) && REST_REQUEST
+			|| ! empty( $route )
+			   && strpos( $route, '/', 0 ) === 0 ) {
 			return true;
 		}
 
-				$wprewrite = appsbd_get_wp_rewrite();
+		$wprewrite = appsbd_get_wp_rewrite();
 		if ( null === $wprewrite ) {
 			$wprewrite = new WP_Rewrite();
 		}
 
-				$rest_url    = wp_parse_url( trailingslashit( rest_url() ) );
+		$rest_url    = wp_parse_url( trailingslashit( rest_url() ) );
 		$current_url = wp_parse_url( add_query_arg( array() ) );
 		return strpos( ! empty( $current_url['path'] ) ? $current_url['path'] : '/', $rest_url['path'], 0 ) === 0;
 	}

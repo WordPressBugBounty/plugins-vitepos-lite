@@ -793,7 +793,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Kernel_Lite' ) ) {
 		final public function _on_init() {
 			$this->on_init();
 			foreach ( $this->module_list as $module_object ) {
-								$module_object->on_init();
+
+				$module_object->on_init();
 			}
 			/**
 			 * Its for check is there any change before process
@@ -821,10 +822,12 @@ if ( ! class_exists( __NAMESPACE__ . '\Kernel_Lite' ) ) {
 
 			if ( ! $this->check_admin_page() ) {
 				return;
-			}           $this->on_admin_scripts_lite();
+			}
+			$this->on_admin_scripts_lite();
 
 			foreach ( $this->module_list as $module_object ) {
-								$module_object->on_admin_scripts_lite();
+
+				$module_object->on_admin_scripts_lite();
 			}
 			global $wp_scripts;
 			foreach ( $wp_scripts->queue as $script ) {
@@ -858,7 +861,8 @@ if ( ! class_exists( __NAMESPACE__ . '\Kernel_Lite' ) ) {
 			$this->on_admin_styles_lite();
 
 			foreach ( $this->module_list as $module_object ) {
-								$module_object->on_admin_styles_lite();
+
+				$module_object->on_admin_styles_lite();
 			}
 			global $wp_styles;
 

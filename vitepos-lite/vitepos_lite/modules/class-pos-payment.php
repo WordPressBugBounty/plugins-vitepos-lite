@@ -15,6 +15,7 @@ use VitePos_Lite\Libs\Payment_Cash_Method;
 use VitePos_Lite\Libs\Payment_Method_Base;
 use VitePos_Lite\Libs\Payment_Other_Method;
 use VitePos_Lite\Libs\Payment_Stripe_Method;
+use vitepos_lite\libs\Payment_Stripe_Terminal_Method;
 use VitePos_Lite\Libs\Payment_Swipe_Method;
 
 
@@ -38,7 +39,7 @@ class POS_Payment extends Vitepos_Module {
 		add_filter( 'vitepos/filter/payment/methods', array( $this, 'register_default_payment_methods' ) );
 		add_filter( 'vitepos/filter/payment-name', array( $this, 'payment_name_by_id' ), 10, 2 );
 
-				add_action( $this->kernel_object->plugin_base . '/module-loaded', array( $this, 'on_all_module_loaded' ) );
+		add_action( $this->kernel_object->plugin_base . '/module-loaded', array( $this, 'on_all_module_loaded' ) );
 	}
 
 	/**
@@ -279,6 +280,8 @@ class POS_Payment extends Vitepos_Module {
 		$methods[ $obj->id ] = $obj;
 
 		$obj                 = new Payment_Stripe_Method();
+		$methods[ $obj->id ] = $obj;
+		$obj                 = new Payment_Stripe_Terminal_Method();
 		$methods[ $obj->id ] = $obj;
 		return $methods;
 	}

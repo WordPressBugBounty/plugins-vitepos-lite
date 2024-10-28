@@ -371,7 +371,8 @@ class POS_Product_Query {
 					}
 					$this->reset_where();
 				} elseif ( 'price' == $src_prop['prop'] ) {
-										$this->set_join_table( 'mtp', '_price', 'INNER' );
+
+					$this->set_join_table( 'mtp', '_price', 'INNER' );
 					if ( 'bt' == $src_prop['opr'] && isset( $src_prop['val'] ) ) {
 						$from         = floatval( $src_prop['val']['start'] );
 						$to           = floatval( $src_prop['val']['end'] );

@@ -59,7 +59,8 @@ if ( ! function_exists( 'vitepos_order_add_fee_on_order' ) ) {
 		$item_fee->set_name( $title );
 		$item_fee->set_tax_class( '' );
 		$item_fee->set_tax_status( 'none' );
-		$item_fee->set_total( $amount );        foreach ( $metas as $meta_key => $m_value ) {
+		$item_fee->set_total( $amount );
+		foreach ( $metas as $meta_key => $m_value ) {
 			$item_fee->add_meta_data( $meta_key, $m_value, true );
 		}
 		$order->add_item( $item_fee );
@@ -311,7 +312,8 @@ if ( ! function_exists( 'vitepos_get_product_by_barcode' ) ) {
 				$product_id = $product_query->posts[0]->ID;
 			}
 		} else {
-						$product_id = (int) preg_replace( '#[^0-9]#', '', $barcode );
+
+			$product_id = (int) preg_replace( '#[^0-9]#', '', $barcode );
 		}
 		if ( ! empty( $product_id ) ) {
 			return vitepos_get_product_cart_item( $product_id );
@@ -337,7 +339,7 @@ if ( ! function_exists( 'vitepos_number_format' ) ) {
 
 		$original_price = $price;
 
-				$price = (float) $price;
+		$price = (float) $price;
 
 		$negative = $price < 0;
 
@@ -454,5 +456,7 @@ if ( ! function_exists( 'vitepos_is_rest' ) ) {
 		return false;
 	}
 }
+
+
 
 

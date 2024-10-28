@@ -122,11 +122,11 @@ class Pos_Vendor_Api extends API_Base {
 				if ( $vendor_obj->save() ) {
 					$this->response->set_response( true, 'Successfully created', $vendor_obj );
 				} else {
-					$this->response->set_response( true, appsbd_get_msg_api_lite(), $vendor_obj );
+					$this->response->set_response( true, \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api(), $vendor_obj );
 				}
 				return $this->response->get_response();
 			}
-			$this->response->set_response( false, appsbd_get_msg_api_lite() );
+			$this->response->set_response( false, \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api() );
 			return $this->response;
 		} else {
 			if ( ! current_user_can( 'vendor-edit' ) ) {
@@ -144,12 +144,12 @@ class Pos_Vendor_Api extends API_Base {
 						$updated_obj = Mapbd_pos_vendor::find_by( 'id', $vendor_obj->id );
 						$this->response->set_response( true, 'Successfully updated', $updated_obj );
 					} else {
-						$this->response->set_response( false, appsbd_get_msg_api_lite(), $vendor_obj );
+						$this->response->set_response( false, \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api(), $vendor_obj );
 					}
 					return $this->response->get_response();
 				}
 			}
-			$this->response->set_response( false, appsbd_get_msg_api_lite() );
+			$this->response->set_response( false, \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api() );
 			return $this->response->get_response();
 		}
 	}
@@ -172,14 +172,14 @@ class Pos_Vendor_Api extends API_Base {
 						$updated_obj = Mapbd_pos_vendor::find_by( 'id', $vendor_obj->id );
 						$this->response->set_response( true, 'Successfully updated', $updated_obj );
 					} else {
-						$this->response->set_response( false, appsbd_get_msg_api_lite(), $vendor_obj );
+						$this->response->set_response( false, \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api(), $vendor_obj );
 					}
 					return $this->response;
 				}
-				$this->response->set_response( false, appsbd_get_msg_api_lite() );
+				$this->response->set_response( false, \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api() );
 				return $this->response;
 			}
-			$this->response->set_response( false, appsbd_get_msg_api_lite() );
+			$this->response->set_response( false, \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api() );
 			return $this->response;
 		} else {
 			$this->response->set_response( false, 'Nothing to update' );

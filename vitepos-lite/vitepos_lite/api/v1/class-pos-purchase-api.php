@@ -303,7 +303,7 @@ class Pos_Purchase_Api extends API_Base {
 		} else {
 			$this->add_error( 'No data found with request param' );
 		}
-		$this->response->set_response( false, appsbd_get_msg_api_lite() );
+		$this->response->set_response( false, \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api() );
 		return $this->response;
 	}
 

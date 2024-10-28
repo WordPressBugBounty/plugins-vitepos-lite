@@ -165,11 +165,12 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 		 *
 		 * @var int
 		 */
-		protected $cache_time = 300;        /**
-											 * Its property kernel_object
-											 *
-											 * @var null
-											 */
+		protected $cache_time = 300;
+		/**
+		 * Its property kernel_object
+		 *
+		 * @var null
+		 */
 		protected $kernel_object = null;
 		/**
 		 * Its property app_base_name
@@ -731,7 +732,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 				return false;
 			}
 
-						$primary_key = $this->primary_key;
+			$primary_key = $this->primary_key;
 			if ( ! empty( $primary_key ) && isset( $this->set_properties[ $primary_key ] ) ) {
 				$type = isset( $this->set_option_type[ $primary_key ] ) ? $this->set_option_type[ $primary_key ] : 'AND';
 				if ( ! empty( $this->set_option [ $primary_key ] ) ) {
@@ -743,6 +744,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 				$this->is_where_set = true;
 			}
 			$general_keys = array();
+
 			if ( count( $this->unique_key ) > 0 ) {
 				if ( is_array( $this->unique_key[0] ) ) {
 					$selected_key = '';
@@ -774,6 +776,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 						}
 					}
 				} else {
+
 					foreach ( $this->unique_key as $uk ) {
 						if ( ! in_array( $uk, $alreadyadded ) && isset( $this->set_properties[ $uk ] ) ) {
 							$type = isset( $this->set_option_type[ $uk ] ) ? $this->set_option_type[ $uk ] : 'AND';
@@ -820,6 +823,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 						}
 					}
 				} else {
+
 					foreach ( $this->multi_key as $uk ) {
 						if ( ! in_array( $uk, $alreadyadded ) && isset( $this->set_properties[ $uk ] ) ) {
 							$type = isset( $this->set_option_type[ $uk ] ) ? $this->set_option_type[ $uk ] : 'AND';
@@ -873,6 +877,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 					}
 				}
 			}
+
 			if ( count( $this->likes_fields ) > 0 ) {
 				foreach ( $this->likes_fields as $like_fld ) {
 					$db->like( $like_fld->field, $like_fld->value, $like_fld->likeside, $like_fld->escape, $like_fld->condition_type, $like_fld->is_not_like );
@@ -906,7 +911,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 				return false;
 			}
 
-						$primary_key = $this->primary_key;
+			$primary_key = $this->primary_key;
 			if ( ! empty( $primary_key ) && isset( $this->set_properties[ $primary_key ] ) ) {
 				if ( ! empty( $this->set_option [ $primary_key ] ) ) {
 					$db->where( $tbname . $primary_key . $this->$primary_key, '', false );
@@ -930,6 +935,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 					}
 				}
 			}
+
 			foreach ( $this->multi_key as $uk ) {
 				if ( isset( $this->set_properties[ $uk ] ) ) {
 					if ( ! empty( $this->set_option [ $uk ] ) ) {
@@ -1000,7 +1006,8 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 		protected function set_join_properties( $clear_properties = true ) {
 			if ( count( $this->join_objects ) > 0 ) {
 				foreach ( $this->join_objects as $jn ) {
-										$thistblstrproperty = $this->get_table_name_for_join_property( $jn->main_obj_property );
+
+					$thistblstrproperty = $this->get_table_name_for_join_property( $jn->main_obj_property );
 					if ( property_exists( $jn->join_obj, $jn->join_obj_property ) && ! empty( $thistblstrproperty ) ) {
 						$tablestr = $jn->join_obj->get_table_name( false );
 						$shorttbl = $jn->join_obj->get_table_name();
@@ -1021,7 +1028,8 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 		protected function set_join_where_conditions( $clear_properties = true, $is_select_db = true ) {
 			if ( count( $this->join_objects ) > 0 ) {
 				foreach ( $this->join_objects as $jn ) {
-															$jn->join_obj->set_db_join_where_condition( $this->get_select_db(), $clear_properties, $is_select_db );
+
+					$jn->join_obj->set_db_join_where_condition( $this->get_select_db(), $clear_properties, $is_select_db );
 				}
 			}
 		}
@@ -1069,7 +1077,8 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 				return false;
 			}
 			$alreadyadded = array();
-						$primary_key = $this->primary_key;
+
+			$primary_key = $this->primary_key;
 			if ( ! empty( $primary_key ) && isset( $this->update_where_extra_field[ $primary_key ] ) ) {
 				if ( in_array( $primary_key, $this->update_where_extra_field_option ) ) {
 					$this->get_update_db()->where( '(' . $primary_key . $this->update_where_extra_field[ $primary_key ] . ')', '', false );
@@ -1080,6 +1089,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 			}
 
 			$general_keys = array();
+
 			if ( count( $this->unique_key ) > 0 ) {
 				if ( is_array( $this->unique_key[0] ) ) {
 					$selected_key = '';
@@ -1109,6 +1119,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 						}
 					}
 				} else {
+
 					foreach ( $this->unique_key as $uk ) {
 						if ( isset( $this->update_where_extra_field[ $uk ] ) && ! in_array( $uk, $alreadyadded ) ) {
 							if ( in_array( $uk, $this->update_where_extra_field_option ) ) {
@@ -1151,6 +1162,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 						}
 					}
 				} else {
+
 					foreach ( $this->multi_key as $uk ) {
 						if ( isset( $this->update_where_extra_field[ $uk ] ) && ! in_array( $uk, $alreadyadded ) ) {
 							if ( in_array( $uk, $this->update_where_extra_field_option ) ) {
@@ -1291,7 +1303,8 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 					$db->like( $like_fld, $like_value, $like_side );
 				} elseif ( count( $this->join_objects ) > 0 ) {
 					foreach ( $this->join_objects as $jn ) {
-												$thistblstrproperty = $this->get_table_name_for_join_property( $like_fld );
+
+						$thistblstrproperty = $this->get_table_name_for_join_property( $like_fld );
 						if ( property_exists( $jn->join_obj, $like_fld ) && ! empty( $thistblstrproperty ) ) {
 							$like_fld = $thistblstrproperty;
 							$db->like( $like_fld, $like_value, $like_side );
@@ -2498,6 +2511,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 				if ( ! $this->is_valid_form( false ) ) {
 					return false;
 				}
+
 				if ( ! $this->set_db_property_for_insert_or_update( true ) ) {
 					return false;
 				}
@@ -2546,6 +2560,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 				if ( ! $this->is_valid_form( false ) ) {
 					return false;
 				}
+
 				if ( ! $this->set_db_property_for_insert_or_update( true ) ) {
 					return false;
 				}

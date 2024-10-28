@@ -46,11 +46,12 @@ class Product_Category {
 	 *
 	 * @var int
 	 */
-	public $parent_id;  /**
-						 * Its property term_taxonomy_id
-						 *
-						 * @var int
-						 */
+	public $parent_id;
+	/**
+	 * Its property term_taxonomy_id
+	 *
+	 * @var int
+	 */
 	public $term_taxonomy_id;
 	/**
 	 * Its property taxonomy

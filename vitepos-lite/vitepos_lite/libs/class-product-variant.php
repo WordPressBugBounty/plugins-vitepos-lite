@@ -51,21 +51,24 @@ class Product_Variant {
 	 *
 	 * @var float
 	 */
-	public $sale_price;         /**
-								 * Its property regular_price
-								 *
-								 * @var float
-								 */
-	public $regular_price;      /**
-								 * Its property price
-								 *
-								 * @var float
-								 */
-	public $price;              /**
-								 * Its property in_stock
-								 *
-								 * @var bool
-								 */
+	public $sale_price;
+	/**
+	 * Its property regular_price
+	 *
+	 * @var float
+	 */
+	public $regular_price;
+	/**
+	 * Its property price
+	 *
+	 * @var float
+	 */
+	public $price;
+	/**
+	 * Its property in_stock
+	 *
+	 * @var bool
+	 */
 	public $in_stock;
 	/**
 	 * Its property manage_stock

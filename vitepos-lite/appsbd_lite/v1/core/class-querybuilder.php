@@ -135,7 +135,8 @@ if ( ! class_exists( __NAMESPACE__ . '\QueryBuilder' ) ) {
 						$k .= ' = ';
 					}
 				} elseif ( ! $this->_has_operator( $k ) ) {
-										$k .= ' IS NULL';
+
+					$k .= ' IS NULL';
 				} elseif ( preg_match( '/\s*(!?=|<>|IS(?:\s+NOT)?)\s*$/i', $k, $match, PREG_OFFSET_CAPTURE ) ) {
 					$k = substr( $k, 0, $match[0][1] ) . ( '=' === $match[1][0] ? ' IS NULL' : ' IS NOT NULL' );
 				}
@@ -273,6 +274,7 @@ if ( ! class_exists( __NAMESPACE__ . '\QueryBuilder' ) ) {
 
 			$array = array();
 			foreach ( get_object_vars( $object ) as $key => $val ) {
+
 				if ( ! is_object( $val ) && ! is_array( $val ) ) {
 					$array[ $key ] = $val;
 				}
@@ -365,9 +367,11 @@ if ( ! class_exists( __NAMESPACE__ . '\QueryBuilder' ) ) {
 
 			if ( $url_encoded ) {
 				$non_displayables[] = '/%0[0-8bcef]/';
-				$non_displayables[] = '/%1[0-9a-f]/';               }
+				$non_displayables[] = '/%1[0-9a-f]/';
+			}
 
 			$non_displayables[] = '/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]+/S';
+
 			do {
 				$str = preg_replace( $non_displayables, '', $str, -1, $count );
 			} while ( $count );

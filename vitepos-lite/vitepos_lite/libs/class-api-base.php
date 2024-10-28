@@ -122,7 +122,8 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 			$this->response      = new API_Response();
 			$this->namespace     = $namespace;
 			$this->logged_user   = wp_get_current_user();
-						ob_start();
+
+			ob_start();
 			$this->api_base = $this->set_api_base();
 			if ( appsbd_is_rest() ) {
 				$this->routes();
@@ -159,7 +160,8 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		 */
 		public function set_outlet_location( $location, $tax_class, $customer ) {
 			if ( self::$is_vite_pos_request ) {
-								$outlet = $this->get_outlet_obj();
+
+				$outlet = $this->get_outlet_obj();
 				if ( ! empty( $outlet ) ) {
 
 					if ( ! empty( $outlet->country ) && ! empty( $outlet->state ) ) {

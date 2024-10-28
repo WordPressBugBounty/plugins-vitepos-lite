@@ -101,7 +101,7 @@ class POS_Warehouse extends Vitepos_Module {
 					$response->display_with_response( true );
 					return;
 				} else {
-					$this->add_error( appsbd_get_msg_api_lite() );
+					$this->add_error( \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api() );
 					$response->display_with_response( false );
 					return;
 				}
@@ -367,7 +367,8 @@ class POS_Warehouse extends Vitepos_Module {
 		$users_obj->username   = $user->user_nicename;
 		$users_obj->email      = $user->user_email;
 		$users_obj->city       = get_user_meta( $user->ID, 'billing_city', true );
-				$users_obj->contact_no  = get_user_meta( $user->ID, 'billing_phone', true );
+
+		$users_obj->contact_no  = get_user_meta( $user->ID, 'billing_phone', true );
 		$users_obj->street      = get_user_meta( $user->ID, 'billing_address_1', true );
 		$users_obj->country     = get_user_meta( $user->ID, 'billing_country', true );
 		$users_obj->postcode    = get_user_meta( $user->ID, 'billing_postcode', true );
@@ -481,7 +482,7 @@ class POS_Warehouse extends Vitepos_Module {
 		$param         = APBD_GetValue( 'id' );
 		$main_response = new AppsbdAjaxConfirmResponse();
 		if ( empty( $param ) ) {
-			$main_response->DisplayWithResponse( false, __( 'Invalid Request' ) );
+			$main_response->DisplayWithResponse( false, $this->__( 'Invalid Request' ) );
 			 return;
 		}
 		$mr            = new Mapbd_pos_warehouse();
@@ -496,9 +497,9 @@ class POS_Warehouse extends Vitepos_Module {
 			if ( $uo->Update() ) {
 				$status_text = appsbd_get_text_by_key( $uo->status, $status_change );
 				APBD_AddLog( 'U', $uo->settedPropertyforLog(), 'l002', 'Wp_apbd_pos_warehouse' );
-				$main_response->DisplayWithResponse( true, __( 'Successfully Updated' ), $status_text );
+				$main_response->DisplayWithResponse( true, $this->__( 'Successfully Updated' ), $status_text );
 			} else {
-				$main_response->DisplayWithResponse( false, __( 'Update failed try again' ) );
+				$main_response->DisplayWithResponse( false, $this->__( 'Update failed try again' ) );
 			}
 		}
 	}

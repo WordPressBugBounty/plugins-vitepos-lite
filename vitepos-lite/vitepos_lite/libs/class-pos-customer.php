@@ -431,10 +431,12 @@ class POS_Customer extends BaseModel {
 		add_user_meta( $user_id, 'added_by', $this->added_by );
 		add_user_meta( $user_id, 'outlet_id', $this->outlet_id );
 		add_user_meta( $user_id, 'billing_city', $this->city );
-				add_user_meta( $user_id, 'billing_country', $this->country );
+
+		add_user_meta( $user_id, 'billing_country', $this->country );
 		add_user_meta( $user_id, 'billing_postcode', $this->postcode );
 		add_user_meta( $user_id, 'designation', $this->designation );
 		add_user_meta( $user_id, 'force_pw_change', 'Y' );
+
 		if ( empty( $this->id ) && ! empty( $user_id ) ) {
 			$this->id = $user_id;
 		}
@@ -568,7 +570,8 @@ class POS_Customer extends BaseModel {
 				'get_meta_sql',
 				function ( $sql ) use ( $search ) {
 					$appdb = self::get_db_object();
-										static $nr = 0;
+
+					static $nr = 0;
 					if ( 0 != $nr++ ) {
 						return $sql;
 					}

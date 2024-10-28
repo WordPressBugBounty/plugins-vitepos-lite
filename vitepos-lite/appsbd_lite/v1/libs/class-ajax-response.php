@@ -44,7 +44,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Ajax_Response' ) ) {
 		 */
 		public function set_response( $status, $data = null ) {
 			$this->status = $status;
-			$this->msg    = appsbd_get_msg_api_lite();
+			$this->msg    = \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api();
 			$this->data   = $data;
 		}
 

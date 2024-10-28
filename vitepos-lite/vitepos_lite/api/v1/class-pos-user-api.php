@@ -391,7 +391,8 @@ class Pos_User_Api extends API_Base {
 		$users_obj->username   = $user->user_nicename;
 		$users_obj->email      = $user->user_email;
 		$users_obj->city       = get_user_meta( $user->ID, 'billing_city', true );
-				$users_obj->contact_no  = get_user_meta( $user->ID, 'billing_phone', true );
+
+		$users_obj->contact_no  = get_user_meta( $user->ID, 'billing_phone', true );
 		$users_obj->street      = get_user_meta( $user->ID, 'billing_address_1', true );
 		$users_obj->country     = get_user_meta( $user->ID, 'billing_country', true );
 		$users_obj->postcode    = get_user_meta( $user->ID, 'billing_postcode', true );
@@ -428,6 +429,7 @@ class Pos_User_Api extends API_Base {
 			if ( is_array( $outlets ) ) {
 				$args['meta_query'][] = array(
 					'key'     => 'outlet_id',
+
 					'value'   => '"(' . implode( '|', $outlets ) . ')"',
 					'compare' => 'REGEXP',
 				);
@@ -520,7 +522,8 @@ class Pos_User_Api extends API_Base {
 		$outlet_place->cash_drawer_id = ! empty( $existing_drawer->id ) ? $existing_drawer->id : 0;
 		$outlet_place->is_submitted   = $this->payload['is_submitted'];
 		if ( ! empty( $this->payload['is_new'] ) ) {
-						$outlet_place->cd_balance = $this->payload['cd_balance'];
+
+			$outlet_place->cd_balance = $this->payload['cd_balance'];
 			$cash_drawar              = Mapbd_Pos_Cash_Drawer::create_by_counter( $outlet_place->cd_balance, $outlet_place->outlet, $outlet_place->counter, $this->get_current_user_id() );
 			if ( ! empty( $cash_drawar->id ) ) {
 				$outlet_place->cash_drawer_id = ! empty( $cash_drawar->id ) ? $cash_drawar->id : 0;
@@ -627,12 +630,12 @@ class Pos_User_Api extends API_Base {
 
 						$this->response->set_response( true, 'Successfully created', $user_obj );
 					} else {
-						$this->response->set_response( false, appsbd_get_msg_api_lite(), $user_obj );
+						$this->response->set_response( false, \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api(), $user_obj );
 					}
 
 					return $this->response;
 				} else {
-					$this->response->set_response( false, appsbd_get_msg_api_lite(), $user_obj );
+					$this->response->set_response( false, \Appsbd_Lite\V1\Core\Kernel_Lite::get_msg_for_api(), $user_obj );
 					return $this->response;
 				}
 			}

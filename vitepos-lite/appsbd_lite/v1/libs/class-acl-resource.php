@@ -16,6 +16,7 @@ if ( ! class_exists( __NAMESPACE__ . '\ACL_Resource' ) ) {
 	 *
 	 * @package Appsbd\V1\libs
 	 */
+	#[\AllowDynamicProperties]
 	class ACL_Resource {
 		/**
 		 * Its property res_id

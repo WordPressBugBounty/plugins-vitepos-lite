@@ -217,6 +217,9 @@ if ( ! class_exists( __NAMESPACE__ . '\QueryBuilder' ) ) {
 		 * @param int $offset Its offset param.
 		 */
 		public function limit( $value, $offset = 0 ) {
+			if ( empty( $value ) ) {
+				return;
+			}
 			$value = preg_replace( '/[^0-9]/', '', $value );
 			if ( empty( $value ) ) {
 				return;

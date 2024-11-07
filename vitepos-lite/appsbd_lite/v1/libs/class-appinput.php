@@ -15,6 +15,7 @@ if ( ! class_exists( __NAMESPACE__ . '\AppInput' ) ) {
 	 *
 	 * @package Appsbd\V1\libs
 	 */
+	#[\AllowDynamicProperties]
 	class AppInput {
 
 		/**

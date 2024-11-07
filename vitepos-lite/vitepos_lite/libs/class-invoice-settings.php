@@ -13,6 +13,7 @@ namespace VitePos_Lite\Libs;
 /**
  * Class Invoice_Settings
  */
+#[\AllowDynamicProperties]
 class Invoice_Settings {
 	/**
 	 * Its property header

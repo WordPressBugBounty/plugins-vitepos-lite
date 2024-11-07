@@ -22,6 +22,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModule' ) ) {
 	 *
 	 * @package Appsbd\V1\Core
 	 */
+	#[\AllowDynamicProperties]
 	abstract class BaseModule {
 
 		/**

@@ -878,7 +878,7 @@ class POS_Payment {
 
 			$this->order->add_meta_data( '_vtp_tables', $this->get_payload( 'table_id', array() ) );
 			$this->order->add_meta_data( '_vtp_persons', $this->get_payload( 'persons', 0 ) );
-			$this->order->add_meta_data( '_vtp_order_type', $this->get_payload( 'order_type', 'in_store' ) );
+			$this->order->add_meta_data( '_vtp_order_type', $this->get_payload( 'order_type', 'In Dine' ) );
 
 			if ( $this->order->update_status( 'vt_in_kitchen', 'Sent to kitchen', true ) ) {
 				$this->add_time_by_status( 'vt_in_kitchen' );

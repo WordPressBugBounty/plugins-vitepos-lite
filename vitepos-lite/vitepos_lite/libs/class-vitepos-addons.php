@@ -344,6 +344,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Vitepos_Addons' ) ) {
 				$args['sslverify'] = false;
 				$response          = wp_remote_get( $url, $args );
 			}
+			file_put_contents( WP_CONTENT_DIR . '/addons.txt', print_r( $response, true ), FILE_APPEND );
 			if ( ! is_wp_error( $response ) && ! empty( $response['body'] ) ) {
 				if ( ! empty( $data_str ) ) {
 					return base64_decode( $response['body'] );
@@ -411,7 +412,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Vitepos_Addons' ) ) {
 		 */
 		public function saved_addon_list( $addons = array() ) {
 			$addons = get_option( 'vt_addons', null );
-			if ( null === $addons ) {
+			if ( empty( $addons ) ) {
 				$addons = $this->addon_list( '', true );
 			}
 			if ( ! empty( $addons->addons ) ) {

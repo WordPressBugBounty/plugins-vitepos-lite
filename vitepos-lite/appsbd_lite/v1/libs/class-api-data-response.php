@@ -15,6 +15,7 @@ namespace Appsbd_Lite\V1\libs;
  *
  * @package Appsbd\V1\libs;
  */
+#[\AllowDynamicProperties]
 class API_Data_Response {
 	/**
 	 * Its property page

@@ -16,6 +16,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Ajax_Response' ) ) {
 	 *
 	 * @package Appsbd\V1\libs
 	 */
+	#[\AllowDynamicProperties]
 	class Ajax_Response {
 		/**
 		 * Its property status

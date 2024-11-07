@@ -18,6 +18,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Ajax_Confirm_Response' ) ) {
 	 *
 	 * @package Appsbd\V1\libs
 	 */
+	#[\AllowDynamicProperties]
 	class Ajax_Confirm_Response {
 		/**
 		 * Its property status

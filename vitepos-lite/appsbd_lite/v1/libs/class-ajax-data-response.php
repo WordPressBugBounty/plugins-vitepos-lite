@@ -23,6 +23,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Ajax_Data_Response' ) ) {
 	 *
 	 * @package Appsbd\V1\libs
 	 */
+	#[\AllowDynamicProperties]
 	class Ajax_Data_Response {
 		/**
 		 * Its property page

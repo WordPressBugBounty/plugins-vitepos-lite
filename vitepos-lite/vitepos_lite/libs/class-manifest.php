@@ -15,6 +15,7 @@ namespace VitePos_Lite\Libs;
  *
  * @package VitePos\Libs
  */
+#[\AllowDynamicProperties]
 class Manifest {
 	/**
 	 * Its property name

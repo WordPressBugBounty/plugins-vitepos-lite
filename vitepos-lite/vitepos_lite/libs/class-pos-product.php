@@ -23,6 +23,7 @@ use VitePos_Lite\Modules\POS_Settings;
  *
  * @package VitePos_Lite\Libs
  */
+#[\AllowDynamicProperties]
 class POS_Product {
 
 	/**

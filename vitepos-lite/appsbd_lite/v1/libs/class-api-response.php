@@ -16,6 +16,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Response' ) ) {
 	 *
 	 * @package VitePos\Libs
 	 */
+	#[\AllowDynamicProperties]
 	class API_Response {
 
 		/**

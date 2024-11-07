@@ -18,6 +18,7 @@ if ( ! class_exists( __NAMESPACE__ . '\ObjectJoin' ) ) {
 	 *
 	 * @package Appsbd\V1\Core
 	 */
+	#[\AllowDynamicProperties]
 	class ObjectJoin {
 		/**
 		 * Its property left.

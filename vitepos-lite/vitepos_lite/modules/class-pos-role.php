@@ -497,7 +497,7 @@ class POS_Role extends Vitepos_Module {
 		$records = $mainobj->count_all( $main_response->src_item, $main_response->src_text, $main_response->multiparam, 'after' );
 		if ( $records > 0 ) {
 			$main_response->set_grid_records( $records );
-			$result = $mainobj->select_all_grid_data( '', $main_response->order_by, $main_response->order, $main_response->rows, $main_response->limit_start, $main_response->src_item, $main_response->src_text, $main_response->multiparam, 'after' );
+			$result = $mainobj->select_all_grid_data( '', '', '', $main_response->limit, $main_response->limit_start(), $main_response->src_item, $main_response->src_text, $main_response->multiparam, 'after' );
 			if ( $result ) {
 				foreach ( $result as &$data ) {
 					if ( 'Y' != $data->is_editable ) {

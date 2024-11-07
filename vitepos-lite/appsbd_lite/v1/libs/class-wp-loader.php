@@ -15,6 +15,7 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_loader' ) ) {
 	 *
 	 * @package Appsbd_Lite\V1\libs
 	 */
+	#[\AllowDynamicProperties]
 	abstract class WP_Loader {
 		/**
 		 * Its property base_file

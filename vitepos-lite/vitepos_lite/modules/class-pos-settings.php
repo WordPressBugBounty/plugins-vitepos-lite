@@ -854,9 +854,9 @@ class POS_Settings extends Vitepos_Module {
 		if ( 'R' == $basic_settings['pos_mode'] ) {
 			$basic_settings['pos_mode'] = 'P';
 		}
-		if ( ! isset( $basic_settings['cam_scan'] ) || ! is_array( $basic_settings['cam_scan'] ) || empty( $basic_settings['cam_scan'] ) ) {
+		if ( ! isset( $basic_settings['cam_scan'] ) || ! is_array( $basic_settings['cam_scan'] ) ) {
 			$basic_settings['sm_l'] = 's';
-			$basic_settings['sm_s'] = 'c';
+			$basic_settings['sm_s'] = 's';
 			unset( $basic_settings['cam_scan'] );
 		} else {
 			$basic_settings['sm_l'] = in_array( 'l', $basic_settings['cam_scan'] ) ? 'c' : 's';

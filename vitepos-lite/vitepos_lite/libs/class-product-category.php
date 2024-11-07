@@ -15,6 +15,7 @@ namespace VitePos_Lite\Libs;
  *
  * @package VitePos_Lite\Libs
  */
+#[\AllowDynamicProperties]
 class Product_Category {
 
 	/**

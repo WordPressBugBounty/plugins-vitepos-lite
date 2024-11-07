@@ -248,7 +248,6 @@ class POS_Warehouse extends Vitepos_Module {
 		$propes  = 'id,allowed_ip,email,phone,name,country,state,city,street,zip_code,wh_timezone,status';
 		$details = new Mapbd_pos_warehouse();
 		$details->id( $outlet_id );
-		$details->outlet_id( $outlet_id );
 		if ( $details->select() ) {
 			$response->display_with_response( true, $details->get_properties_api_response( $propes ) );
 		} else {

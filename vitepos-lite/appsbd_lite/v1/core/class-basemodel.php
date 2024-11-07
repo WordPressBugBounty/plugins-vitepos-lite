@@ -20,6 +20,7 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 	 *
 	 * @package Appsbd\V1\Core
 	 */
+	#[\AllowDynamicProperties]
 	abstract class BaseModel {
 		/**
 		 * Its property validations

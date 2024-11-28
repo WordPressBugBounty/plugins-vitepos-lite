@@ -5,7 +5,7 @@ Tags: pos,pos plugin,woocommerce pos,point of sale,store
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 3.1.2
+Stable tag: 3.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,76 +110,5 @@ Not at all! We were cautious about it from the start. We developed the plugin wi
 16. [Admin Panel] Settings
 
 == Change log ==
-## 3.0  [2nd April 2024]
--- Added HPOS support
--- Added many features
--- Fixed many bugs
+[https://vitepos.com/change-log](https://vitepos.com/change-log)
 
-## 2.0  [25th April 2023]
-
-### Fixed
-- Fixed npsb; all issues which has been reported
-
-### Added
-- Added restaurant module
-- Added full stock module (Pro), stop selling when product out of stock.
-- Added Stripe Payment (Pro)
-- Added Custom barcode page(Pro)
-- Added Multiple Tax Calculation module (Pro)
-- Added Multi oultet stock transfer and received feature(Pro)
-- Added Product addon for restaurant mode (Pro)
-- Added messaging between chef, waiter and cashier (Pro)
-- Link online stock to a outlet (Pro)
-- Sending Customer email
-- Display separate tax in invoice
-- And more
-## 3.0.2  [06th June 2023]
-- Minor security issue fixed
-
-## 2.0.4  [06th June 2023]
-- Fixed many minor issues
-
-## 1.3.1  [05th November 2022]
-
-### Fixed
-- Fixed npsb; issue in checkout page
-
-### Added
-- Added some  built-in languages(German, Spanish, French, Portuguese, Hindi)
-
-## 1.3  [02th November 2022]
-
-# Fixed
-- Fixed Custome Add Edit Issue.
-- Fixed large logo image issue
-- Some CSS issue fixed
-
-# Added
-- Customer Display
-- Display Product Per Row
-- Filtering products by subcategory
-- Role option and copy role permission option
-- Role permission to add discount and fee
-- Role Wise max discount control (Pro Only)
-- Set default customer
-- Make favorite your product (Pro Only)
-- Cash drawer log menu in pos panel
-- Last 7 days' cash drawer logs in user dashboard
-- Added Thousand Separator
-- Set the new product batch duration
-- Online(non POS Order) order list (Pro Only)
-- Added Price in Barcode Generator
-
-= 1.2.1 =
-* Fixed product list issues.
-
-= 1.2 =
-* POS Panel please wait issue fixed.
-
-= 1.1 =
-* Favicon icon manage
-* Some other minor issue fixed
-
-= 1.0 =
-
-* Initial Upload

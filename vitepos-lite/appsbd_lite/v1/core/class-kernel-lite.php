@@ -180,7 +180,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Kernel_Lite' ) ) {
 			if ( ! function_exists( 'get_plugin_data' ) ) {
 				require_once ABSPATH . 'wp-admin/includes/plugin.php';
 			}
-			$data = get_plugin_data( $this->plugin_file );
+			$data = get_plugin_data( $this->plugin_file, false, false );
 			if ( isset( $data['Version'] ) ) {
 				$this->plugin_version = $data['Version'];
 			}

@@ -13,6 +13,7 @@ namespace VitePos_Lite\Api\V1;
 use Appsbd_Lite\V1\libs\API_Data_Response;
 use VitePos_Lite\Libs\API_Base;
 use VitePos_Lite\Models\Database\Mapbd_pos_vendor;
+use VitePos_Lite\Modules\POS_Settings;
 
 /**
  * Class pos_vendor_api
@@ -56,10 +57,8 @@ class Pos_Vendor_Api extends API_Base {
 			case 'delete-vendor':
 				return current_user_can( 'vendor-delete' );
 			default:
-				break;
+				return POS_Settings::is_pos_user();
 		}
-
-		return parent::set_route_permission( $route );
 	}
 
 	/**

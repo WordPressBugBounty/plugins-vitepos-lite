@@ -46,7 +46,7 @@ class Pos_Api_Config extends API_Base {
 	 * @return bool
 	 */
 	public function set_route_permission( $route ) {
-		return true;
+		return POS_Settings::is_pos_user();
 	}
 
 	/**

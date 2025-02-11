@@ -64,10 +64,8 @@ class Pos_Order_Api extends API_Base {
 			case 'order_details':
 				return current_user_can( 'order-details' );
 			default:
-				break;
+				return POS_Settings::is_pos_user();
 		}
-
-		return parent::set_route_permission( $route );
 	}
 
 	/**

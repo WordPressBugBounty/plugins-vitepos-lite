@@ -65,9 +65,7 @@ class Pos_Restaurant_Api extends API_Base {
 	 * @return bool
 	 */
 	public function set_route_permission( $route ) {
-		return true;
 		switch ( $route ) {
-
 			case ( 'send-to-kitchen' ):
 				return current_user_can( 'waiter-to-kitchen' ) || current_user_can( 'cashier-to-kitchen' );
 			case ( 'start-preparing' ):
@@ -81,10 +79,8 @@ class Pos_Restaurant_Api extends API_Base {
 			case 'order_details':
 				return current_user_can( 'order-details' );
 			default:
-				break;
+				return POS_Settings::is_pos_user();
 		}
-
-		return parent::set_route_permission( $route );
 	}
 
 	/**

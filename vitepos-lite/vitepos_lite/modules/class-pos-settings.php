@@ -74,7 +74,14 @@ class POS_Settings extends Vitepos_Module {
 			add_action( 'edit_user_profile_update', array( $this, 'save_user_fields' ) );
 		}
 
+		add_action('wp_footer', array( $this, 'add_api_nonce_to_my_account'));
 		add_filter( 'woocommerce_order_item_get_formatted_meta_data', array( $this, 'vt_item_meta_filter' ), 10, 1 );
+	}
+	public function add_api_nonce_to_my_account() {
+		if (is_account_page()) {
+			$nonce = wp_create_nonce('wp_rest');
+			echo "<script>window.apiNonce = '{$nonce}';</script>";
+		}
 	}
 
 	/**

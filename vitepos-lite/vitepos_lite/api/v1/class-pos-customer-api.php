@@ -58,12 +58,12 @@ class Pos_Customer_Api extends API_Base {
 			case 'delete-customer':
 				return current_user_can( 'customer-delete' );
 			case 'create':
-				return current_user_can( 'customer-add' )||current_user_can( 'customer-edit' );
-			case 'customer_details':
-				return current_user_can( 'customer-menu' );
+				return current_user_can( 'customer-add' ) || current_user_can( 'customer-edit' );
 			default:
-				return POS_Settings::is_pos_user();
+				POS_Settings::is_pos_user();
 		}
+
+		return parent::set_route_permission( $route );
 	}
 
 	/**

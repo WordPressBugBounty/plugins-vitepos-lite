@@ -307,9 +307,6 @@ msgstr ""
 msgid "User privilege error"
 msgstr ""
 
-msgid "Please help us by contributing anonymous usage data to improve our product, without collecting any sensitive information."
-msgstr ""
-
 msgid "Missing dependency"
 msgstr ""
 
@@ -1790,6 +1787,78 @@ msgid "deny reason"
 msgstr ""
 
 msgid "Text"
+msgstr ""
+
+msgid "Report Module"
+msgstr ""
+
+msgid "User App"
+msgstr ""
+
+msgid "Vite Coupon"
+msgstr ""
+
+msgid "Vite Rewards"
+msgstr ""
+
+msgid "Enable Token No"
+msgstr ""
+
+msgid "Default Order Status (Optional)"
+msgstr ""
+
+msgid "Barcode Logo"
+msgstr ""
+
+msgid "Show Token no"
+msgstr ""
+
+msgid "Tax calculation methods"
+msgstr ""
+
+msgid "Show Available Reward Points"
+msgstr ""
+
+msgid "Show Order Used Points"
+msgstr ""
+
+msgid "Show Order Received Points"
+msgstr ""
+
+msgid "Default order status is available on the pro version."
+msgstr ""
+
+msgid "Enable Token No only support in pro version."
+msgstr ""
+
+msgid "Enabling tokens on invoices requires the pro version."
+msgstr ""
+
+msgid "Show available reward points on invoice requires pro version."
+msgstr ""
+
+msgid "Show order used points on invoice requires pro version."
+msgstr ""
+
+msgid "Show order received points on invoice requires pro version."
+msgstr ""
+
+msgid "Recommend barcode logo height %{logoHeight}."
+msgstr ""
+
+msgid "Set barcode logo only support in pro version."
+msgstr ""
+
+msgid "Installed"
+msgstr ""
+
+msgid "Vite Rewards is a comprehensive loyalty points plugin designed to incentivize customer engagement and boost sales on your WooCommerce store. With a wide range of features, ViteRewards allows you to reward customers for various actions and interactions, creating a more engaging shopping experience."
+msgstr ""
+
+msgid "Whether it’s the User App for mobile ordering or the Kiosk Mode for self-service, Vitepos empowers your business with features like payment processing, rewards, coupons, and more. Perfect for restaurants, retail stores, and online shops – boost efficiency, enhance customer satisfaction, and grow your sales effortlessly!"
+msgstr ""
+
+msgid "Choose status"
 msgstr ""
 
 msgid "Download PDF"
@@ -4039,9 +4108,6 @@ msgstr ""
 msgid "Split payment"
 msgstr ""
 
-msgid "Tax calculation methods"
-msgstr ""
-
 msgid "Customize payment"
 msgstr ""
 
@@ -4183,6 +4249,15 @@ msgstr ""
 msgid "Enable Stripe Terminal Payment support in pro version only."
 msgstr ""
 
+msgid "Tax calculation method"
+msgstr ""
+
+msgid "This feature is supported in pro version"
+msgstr ""
+
+msgid "Reports"
+msgstr ""
+
 msgid "Update failed"
 msgstr ""
 
@@ -4269,6 +4344,9 @@ msgid "Payment data missing"
 msgstr ""
 
 msgid "Once Weekly"
+msgstr ""
+
+msgid "Please help us by contributing anonymous usage data to improve our product, without collecting any sensitive information."
 msgstr ""
 
 msgid "Plugin installed and activated successfully!"

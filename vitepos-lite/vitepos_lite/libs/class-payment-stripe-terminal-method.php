@@ -35,7 +35,7 @@ class Payment_Stripe_Terminal_Method extends Payment_Method_Base {
 		$this->set_admin_name( 'stripe_terminal' );
 		$this->title = 'Stripe Terminal';
 		$this->icon  = 'vps vps vps-cc-stripe';
-		$this->id    = 'R';
+		$this->id    = 'M';
 		$this->comp  = 'basic';
 		$this->admin_data->is_pro = 'Y';
 		$this->set_next_handler( 'STP', 'StripeTerminal' );

@@ -174,7 +174,7 @@ if ( ! function_exists( 'appsbd_wc_amount' ) ) {
 	 * @return float
 	 */
 	function appsbd_wc_amount( $amount ) {
-		$amount = (float) $amount;
+		$amount   = (float) $amount;
 		$decimals = wc_get_price_decimals();
 		return round( $amount, $decimals );
 	}

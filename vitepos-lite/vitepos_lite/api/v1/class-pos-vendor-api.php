@@ -59,6 +59,7 @@ class Pos_Vendor_Api extends API_Base {
 			default:
 				return POS_Settings::is_pos_user();
 		}
+		return parent::set_route_permission( $route );
 	}
 
 	/**

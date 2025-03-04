@@ -315,6 +315,8 @@ class POS_Role extends Vitepos_Module {
 		$resources[] = ACL_Resource::get_resource( 'table-edit', 'Table Edit', '13. Table Panel', 'This roles user can see restaurant kitchen panel' );
 		$resources[] = ACL_Resource::get_resource( 'table-delete', 'Table Delete', '13. Table Panel', 'This roles user can see restaurant kitchen panel' );
 
+		$resources[] = ACL_Resource::get_resource( 'report-menu', 'Report Panel', '16. Report Panel', '' );
+
 		return $resources;
 	}
 

@@ -63,8 +63,9 @@ class Pos_Product_Api extends API_Base {
 			case 'delete-product':
 				return false;
 			default:
-				return POS_Settings::is_pos_user();
+				POS_Settings::is_pos_user();
 		}
+		return parent::set_route_permission( $route );
 	}
 
 	/**

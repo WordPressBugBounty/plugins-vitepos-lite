@@ -84,6 +84,8 @@ class POS_Payment extends Vitepos_Module {
 	public function payment_name_by_id( $title, $id ) {
 		if ( '_' == $id ) {
 			$title = 'Changed Amount';
+		} elseif ( 'R' == $id ) {
+			$title = 'Refund Amount';
 		} else {
 			$title = 'Unknown';
 		}

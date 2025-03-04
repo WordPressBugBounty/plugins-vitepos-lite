@@ -368,7 +368,7 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 	 *
 	 * @return bool
 	 */
-	public static function add_cash_entry( $type, $narration, $amount, $cash_drawer, $ref_value, $ref_type = '-' ) {
+	public static function add_cash_entry( $type, $narration, $amount, $cash_drawer, $ref_value, $ref_type = '-', $user_note = '' ) {
 
 		$amount = doubleval( $amount );
 		if ( $cash_drawer instanceof Mapbd_Pos_Cash_Drawer && ! empty( $cash_drawer->id ) ) {
@@ -390,7 +390,8 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 					$amount,
 					$type,
 					$ref_type,
-					$ref_value
+					$ref_value,
+					$user_note
 				);
 
 				return true;

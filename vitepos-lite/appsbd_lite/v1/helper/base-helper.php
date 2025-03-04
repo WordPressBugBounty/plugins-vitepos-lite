@@ -139,9 +139,9 @@ if ( ! function_exists( 'appsbd_current_url' ) ) {
 	function appsbd_current_url( $is_with_param = true ) {
 		$server_arr = \Appsbd\V1\libs\AppInput::get_server_array();
 		if ( isset( $server_arr['HTTPS'] ) &&
-			( 'on' == $server_arr['HTTPS'] || 1 == $server_arr['HTTPS'] ) ||
-			isset( $server_arr['HTTP_X_FORWARDED_PROTO'] ) &&
-			 'https' == $server_arr['HTTP_X_FORWARDED_PROTO'] ) {
+			( ( 'on' == $server_arr['HTTPS'] || 1 == $server_arr['HTTPS'] ) ||
+			isset( $server_arr['HTTP_X_FORWARDED_PROTO'] ) ) &&
+			'https' == $server_arr['HTTP_X_FORWARDED_PROTO'] ) {
 			$protocol = 'https://';
 		} else {
 			$protocol = 'http://';
@@ -340,14 +340,14 @@ if ( ! function_exists( 'appsbd_get_wp_time' ) ) {
 	 * @return int|string
 	 */
 	function appsbd_get_wp_time( $timestr = '', $format = '' ) {
-		$timezone = get_option( 'timezone_string' );
+		$timezone    = get_option( 'timezone_string' );
 		$wp_timezone = wp_timezone();
 		if ( empty( $wp_timezone ) ) {
 			$wp_timezone = new DateTimeZone( $timezone );
 		}
 		try {
 			$apptimezone_str = date_default_timezone_get();
-			$app_timezone = new DateTimeZone( $apptimezone_str );
+			$app_timezone    = new DateTimeZone( $apptimezone_str );
 			if ( ! empty( $timestr ) ) {
 				$date = new DateTime( $timestr, $app_timezone );
 			} else {
@@ -482,9 +482,9 @@ if ( ! function_exists( 'appsbd_is_rest' ) ) {
 	 */
 	function appsbd_is_rest() {
 		$route = \Appsbd_Lite\V1\libs\AppInput::get_value( 'rest_route' );
-		if ( defined( 'REST_REQUEST' ) && REST_REQUEST
-			|| ! empty( $route )
-			   && strpos( $route, '/', 0 ) === 0 ) {
+		if ( ( defined( 'REST_REQUEST' ) && REST_REQUEST )
+			|| ( ! empty( $route )
+				&& strpos( $route, '/', 0 ) === 0 ) ) {
 			return true;
 		}
 

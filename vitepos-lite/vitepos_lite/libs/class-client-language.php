@@ -547,6 +547,32 @@ if ( ! class_exists( __NAMESPACE__ . '\Client_Language' ) ) {
 			$language['deny reason']                         = $kernel_object->__( 'deny reason' );
 			$language['Text']                         = $kernel_object->__( 'Text' );
 
+			$language['Report Module'] = $kernel_object->__( 'Report Module' );
+			$language['User App'] = $kernel_object->__( 'User App' );
+			$language['Vite Coupon'] = $kernel_object->__( 'Vite Coupon' );
+			$language['Vite Rewards'] = $kernel_object->__( 'Vite Rewards' );
+			$language['Enable Token No'] = $kernel_object->__( 'Enable Token No' );
+			$language['Default Order Status (Optional)'] = $kernel_object->__( 'Default Order Status (Optional)' );
+			$language['Barcode Logo'] = $kernel_object->__( 'Barcode Logo' );
+			$language['Show Token no'] = $kernel_object->__( 'Show Token no' );
+			$language['Tax calculation methods'] = $kernel_object->__( 'Tax calculation methods' );
+			$language['Show Available Reward Points'] = $kernel_object->__( 'Show Available Reward Points' );
+			$language['Show Order Used Points'] = $kernel_object->__( 'Show Order Used Points' );
+			$language['Show Order Received Points'] = $kernel_object->__( 'Show Order Received Points' );
+			$language['Default order status is available on the pro version.'] = $kernel_object->__( 'Default order status is available on the pro version.' );
+			$language['Enable Token No only support in pro version.'] = $kernel_object->__( 'Enable Token No only support in pro version.' );
+			$language['Enabling tokens on invoices requires the pro version.'] = $kernel_object->__( 'Enabling tokens on invoices requires the pro version.' );
+			$language['Show available reward points on invoice requires pro version.'] = $kernel_object->__( 'Show available reward points on invoice requires pro version.' );
+			$language['Show order used points on invoice requires pro version.'] = $kernel_object->__( 'Show order used points on invoice requires pro version.' );
+			$language['Show order received points on invoice requires pro version.'] = $kernel_object->__( 'Show order received points on invoice requires pro version.' );
+			$language['Recommend barcode logo height %{logoHeight}.'] = $kernel_object->__( 'Recommend barcode logo height %{logoHeight}.' );
+
+			$language['Set barcode logo only support in pro version.']                         = $kernel_object->__( 'Set barcode logo only support in pro version.' );
+			$language['Installed']                         = $kernel_object->__( 'Installed' );
+			$language['Vite Rewards is a comprehensive loyalty points plugin designed to incentivize customer engagement and boost sales on your WooCommerce store. With a wide range of features, ViteRewards allows you to reward customers for various actions and interactions, creating a more engaging shopping experience.']                         = $kernel_object->__( 'Vite Rewards is a comprehensive loyalty points plugin designed to incentivize customer engagement and boost sales on your WooCommerce store. With a wide range of features, ViteRewards allows you to reward customers for various actions and interactions, creating a more engaging shopping experience.' );
+			$language['Whether it’s the User App for mobile ordering or the Kiosk Mode for self-service, Vitepos empowers your business with features like payment processing, rewards, coupons, and more. Perfect for restaurants, retail stores, and online shops – boost efficiency, enhance customer satisfaction, and grow your sales effortlessly!']                         = $kernel_object->__( 'Whether it’s the User App for mobile ordering or the Kiosk Mode for self-service, Vitepos empowers your business with features like payment processing, rewards, coupons, and more. Perfect for restaurants, retail stores, and online shops – boost efficiency, enhance customer satisfaction, and grow your sales effortlessly!' );
+			$language['Choose status']                         = $kernel_object->__( 'Choose status' );
+
 			self::get_client_extra( $language, $kernel_object );
 
 			return $language;
@@ -1511,7 +1537,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Client_Language' ) ) {
 
 			$language['Enable %{brand} Payment support in pro version only.']                                     = $kernel_object->__( 'Enable %{brand} Payment support in pro version only.' );
 			$language['Enable Stripe Terminal Payment support in pro version only.']                                     = $kernel_object->__( 'Enable Stripe Terminal Payment support in pro version only.' );
-			$language['Others']                                     = $kernel_object->__( 'Others' );
+			$language['Tax calculation method']                                     = $kernel_object->__( 'Tax calculation method' );
+			$language['This feature is supported in pro version']                         = $kernel_object->__( 'This feature is supported in pro version' );
+			$language['Reports']                         = $kernel_object->__( 'Reports' );
 		}
 	}
 }

@@ -74,9 +74,10 @@ class Pos_User_Api extends API_Base {
 			return current_user_can( 'user-add' ) || current_user_can( 'user-edit' );
 		} elseif ( 'delete-user' == $route ) {
 			return current_user_can( 'user-delete' );
-		} else{
+		} else {
 			return POS_Settings::is_pos_user();
 		}
+		return parent::set_route_permission( $route );
 	}
 
 	/**

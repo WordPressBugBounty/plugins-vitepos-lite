@@ -3,7 +3,7 @@
  * Plugin Name: Vitepos Lite
  * Plugin URI: http://appsbd.com
  * Description: It's a Point of Sale plugin for Woocommerce, so fast and easy.
- * Version: 3.1.6
+ * Version: 3.1.7
  * Author: appsbd
  * Author URI: http://www.appsbd.com
  * Text Domain: vitepos-lite

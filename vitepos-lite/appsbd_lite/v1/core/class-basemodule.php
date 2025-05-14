@@ -10,6 +10,10 @@
 
 namespace Appsbd_Lite\V1\Core;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Appsbd_Lite\V1\libs\Ajax_Data_Response;
 use Appsbd_Lite\V1\libs\AppInput;
 use Appsbd_Lite\V1\libs\Ajax_Confirm_Response;

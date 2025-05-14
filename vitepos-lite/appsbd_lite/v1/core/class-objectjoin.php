@@ -10,6 +10,10 @@
 
 namespace Appsbd_Lite\V1\Core;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( __NAMESPACE__ . '\ObjectJoin' ) ) {
 
 

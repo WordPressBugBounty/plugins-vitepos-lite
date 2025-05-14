@@ -10,6 +10,10 @@
 
 namespace Appsbd_Lite\V1\libs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class  ACL.
  *

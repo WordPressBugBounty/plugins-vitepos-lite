@@ -10,6 +10,10 @@
 
 namespace VitePos_Lite\Libs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Appsbd_Lite\V1\libs\API_Response;
 use Appsbd_Lite\V1\libs\AppInput;
 use VitePos_Lite\Core\VitePos;
@@ -255,10 +259,12 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		 */
 		public function load_payload() {
 			if ( ! self::$is_loaded_payload ) {
-				$type = get_request_content_type();
-				$req_type = ! empty( $type ) ? strtolower( get_request_content_type() ) : '';
+				$type     = appsbd_get_request_content_type();
+				$req_type = ! empty( $type ) ? strtolower( appsbd_get_request_content_type() ) : '';
 				if ( 'application/x-www-form-urlencoded' == $req_type || 'application/json' == $req_type ) {
-					self::$payload_obj = file_get_contents( 'php://input' );
+					if ( check_ajax_referer( 'vitepos', false, false ) || vitepos_is_rest() ) {
+						self::$payload_obj = file_get_contents( 'php://input' );
+					}
 					if ( ! empty( self::$payload_obj ) ) {
 						self::$payload_obj = json_decode( self::$payload_obj, true );
 					}
@@ -379,7 +385,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		 * @param string   $permission_callback Its string.
 		 */
 		public function register_rest_route( $methods, $route, $callback, $permission_callback = '' ) {
-			 $thisobj =&$this;
+			$thisobj =&$this;
 			if ( empty( $permission_callback ) ) {
 				$permission_callback = function ( \WP_REST_Request $request ) use ( $route, $thisobj ) {
 					$mainroute = explode( '/', $route );

@@ -5,6 +5,10 @@
  * @package  vitepos
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! function_exists( 'vitepos_is_api_request' ) ) {
 	/**
 	 * Checks if the current request is a WP REST API and vitepos api call or not.

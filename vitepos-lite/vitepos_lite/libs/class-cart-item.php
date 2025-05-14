@@ -10,6 +10,10 @@
 
 namespace VitePos_Lite\Libs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( __NAMESPACE__ . '\Cart_Item' ) ) {
 	/**
 	 * Class Cart_Item

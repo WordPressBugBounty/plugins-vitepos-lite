@@ -10,6 +10,10 @@
 
 namespace VitePos_Lite\Api\V1;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use VitePos_Lite\Libs\API_Base;
 use VitePos_Lite\Modules\POS_Settings;
 
@@ -46,6 +50,9 @@ class Pos_Api_Config extends API_Base {
 	 * @return bool
 	 */
 	public function set_route_permission( $route ) {
+		if ( 'settings' == $route ) {
+			return true;
+		}
 		return POS_Settings::is_pos_user();
 	}
 

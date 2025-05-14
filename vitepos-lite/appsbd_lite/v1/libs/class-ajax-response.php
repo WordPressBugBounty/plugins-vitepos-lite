@@ -10,6 +10,10 @@
 
 namespace Appsbd_Lite\V1\libs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( __NAMESPACE__ . '\Ajax_Response' ) ) {
 	/**
 	 * Class appsbd_ajax_confirm_response

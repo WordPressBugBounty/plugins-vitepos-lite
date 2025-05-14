@@ -10,6 +10,10 @@
 
 namespace vitepos_lite\libs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Matrix\Exception;
 use VitePos\Modules\POS_Settings;
 

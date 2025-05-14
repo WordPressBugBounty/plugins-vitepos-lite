@@ -1,11 +1,11 @@
-=== Vitepos - Point of sale (POS) plugin for WooCommerce ===
+=== Vitepos - Point of sale (POS) for WooCommerce ===
 Contributors: appsbd
 Author link: https://appsbd.com/
 Tags: pos,pos plugin,woocommerce pos,point of sale,store
-Requires at least: 5.0
-Tested up to: 6.7
+Requires at least: 5.2
+Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 3.1.7
+Stable tag: 3.1.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,20 @@ It has also cash drawer management.
 **Offline order (Pro): ** You can process order, if your network has been disconnected.
 **Multi Language support: ** It has multi languages supported also you can use loco translator for this plugin.
 
+== JavaScript Source ==
+https://github.com/appsbd/vitepos-js
+
+== External Service Disclosure ==
+
+This plugin connects to the following external services:
+
+Service: addon.appsbd.com
+Purpose: To fetch data about available plugin addons and related functionalities.
+
+Service: Google reCAPTCHA
+Purpose: Used for spam protection and user verification in the POS frontend.
+The reCAPTCHA API is loaded from https://www.google.com/recaptcha/api.js and may use cookies or other
+tracking mechanisms as per Google's Privacy Policy.
 
 == Installation ==
 

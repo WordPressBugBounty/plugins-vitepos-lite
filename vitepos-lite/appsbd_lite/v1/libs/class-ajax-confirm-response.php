@@ -10,6 +10,10 @@
 
 namespace Appsbd_Lite\V1\libs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Appsbd_Lite\V1\Core\Kernel_Lite;
 
 if ( ! class_exists( __NAMESPACE__ . '\Ajax_Confirm_Response' ) ) {

@@ -7,6 +7,10 @@
 
 namespace VitePos_Lite\Modules;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Appsbd_Lite\V1\libs\Ajax_Confirm_Response;
 use Appsbd_Lite\V1\libs\Ajax_Data_Response;
 use Appsbd_Lite\V1\libs\AppInput;

@@ -10,6 +10,10 @@
 
 namespace VitePos_Lite\Libs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use VitePos_Lite\Modules\POS_Settings;
 
 /**

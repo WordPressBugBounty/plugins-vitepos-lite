@@ -10,6 +10,10 @@
 
 namespace VitePos_Lite\Libs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 require_once __DIR__ . '/../../appsbd_lite/v1/libs/class-appinput.php';
 require_once __DIR__ . '/../../appsbd_lite/v1/libs/class-wp-loader.php';
 require_once __DIR__ . '/class-vitepos-addons.php';

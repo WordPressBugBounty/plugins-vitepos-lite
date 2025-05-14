@@ -7,6 +7,10 @@
 
 namespace VitePos_Lite\Models\Database;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use VitePos_Lite\Core\ViteposModelLite;
 
 /**
@@ -254,7 +258,7 @@ class Mapbd_Pos_Warehouse extends ViteposModelLite {
 			$select,
 			$order_by,
 			$order,
-			1,
+			$limit,
 			$limit_start,
 			$like_fld,
 			$like_value,

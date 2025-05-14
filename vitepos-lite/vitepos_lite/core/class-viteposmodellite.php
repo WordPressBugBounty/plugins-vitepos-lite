@@ -7,6 +7,10 @@
 
 namespace VitePos_Lite\Core;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Appsbd_Lite\V1\Core\BaseModel;
 
 /**

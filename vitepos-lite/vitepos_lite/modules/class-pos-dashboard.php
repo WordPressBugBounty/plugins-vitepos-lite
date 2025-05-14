@@ -7,11 +7,16 @@
 
 namespace VitePos_Lite\Modules;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Appsbd_Lite\V1\Core\BaseModule;
 use Appsbd_Lite\V1\libs\Ajax_Data_Response;
 use VitePos_Lite\Core\Vitepos_Module;
 use VitePos_Lite\Models\Mapbd_Dashboard;
 use VitePos_Lite\Models\Mapbd_POS_Dashboard;
+
 
 /**
  * Class Apbd_pos_vendor

@@ -7,6 +7,10 @@
 
 namespace VitePos_Lite\Models\Database;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Cassandra\Date;
 use VitePos_Lite\Core\ViteposModelLite;
 

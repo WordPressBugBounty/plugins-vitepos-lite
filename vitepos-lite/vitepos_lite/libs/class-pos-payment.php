@@ -10,6 +10,10 @@
 
 namespace VitePos_Lite\Libs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Matrix\Exception;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Cash_Drawer;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Cash_Drawer_Types;

@@ -10,6 +10,10 @@
 
 namespace VitePos_Lite\Api\V1;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Appsbd_Lite\V1\libs\API_Data_Response;
 use Appsbd_Lite\V1\libs\API_Response;
 use VitePos_Lite\Libs\API_Base;
@@ -19,6 +23,7 @@ use VitePos_Lite\Models\Database\Mapbd_Pos_Cash_Drawer_Types;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Counter;
 use VitePos_Lite\Models\Database\Mapbd_pos_warehouse;
 use VitePos_Lite\Modules\POS_Settings;
+
 
 /**
  * Class pos_outlet_api

@@ -10,6 +10,10 @@
 
 namespace VitePos_Lite\Api\V1;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use VitePos_Lite\Libs\API_Base;
 use VitePos_Lite\Modules\APBD_EPOS_Settings;
 use VitePos_Lite\Modules\POS_Settings;

@@ -10,6 +10,10 @@
 
 namespace Appsbd_Lite\V1\Core;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Appsbd_Lite\V1\libs\AppInput;
 
 if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
@@ -2653,18 +2657,19 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 		 * @return false|string
 		 */
 		public static function get_total_queries() {
-			 ob_start();
-			?>
+			if ( WP_DEBUG ) {
+				ob_start();
+				?>
 			<div class="row">
-				<div class="panel panel-info">
-					<div class="panel-heading">Queries</div>
-					<div class="panel-body">
+				<div class="card card-info">
+					<div class="card-heading">Queries</div>
+					<div class="card-body">
 									<pre>
 										<?php
 
 										foreach ( self::$quries as $qur ) {
 											$qur = str_replace( "\n", '', $qur );
-											print_r( $qur );
+											appsbd_print( $qur );
 										}
 
 										?>
@@ -2672,8 +2677,10 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 					</div>
 				</div>
 			</div>
-			<?php
-			return ob_get_clean();
+				<?php
+				return ob_get_clean();
+			}
+			return '';
 		}
 
 

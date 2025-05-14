@@ -10,6 +10,9 @@
 
 namespace VitePos_Lite\Libs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 if ( ! class_exists( __NAMESPACE__ . '\Recaptcha' ) ) {
 	/**
 	 * Class Recaptcha

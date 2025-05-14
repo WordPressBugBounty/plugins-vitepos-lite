@@ -10,6 +10,10 @@
 
 namespace VitePos_Lite\Libs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Appsbd_Lite\V1\Core\Kernel_Lite;
 use Appsbd_Lite\V1\libs\Ajax_Confirm_Response;
 

@@ -1,0 +1,15 @@
+pipelines:
+  branches:
+    release:
+      - step:
+          image: atlassian/default-image:2
+          name: Deply to production
+          deployment: production
+          script:
+            - ls -l /opt/atlassian/pipelines/agent/build/
+            - cd /opt/atlassian/pipelines/agent/build/
+            - rm -rf .git
+            - rm -rf bitbucket-pipelines.yml
+            - /usr/bin/zip -FSr appsbd-lite-develop.zip ./
+            - ls -l
+            - /usr/bin/curl -H "Authorization:Bearer ${BB_AUTH_STRING}" -X POST  "https://api.bitbucket.org/2.0/repositories/appsbd/appsbd-lite/downloads" --form files=@"appsbd-lite-develop.zip"

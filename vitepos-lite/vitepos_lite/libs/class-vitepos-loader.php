@@ -14,11 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-require_once __DIR__ . '/../../appsbd_lite/v1/libs/class-appinput.php';
-require_once __DIR__ . '/../../appsbd_lite/v1/libs/class-wp-loader.php';
+
 require_once __DIR__ . '/class-vitepos-addons.php';
 
-use Appsbd_Lite\V1\libs\WP_Loader;
+use Appsbd_Lite\V5\libs\WP_Loader;
 
 if ( ! class_exists( __NAMESPACE__ . '\Vitepos_Loader' ) ) {
 	/**

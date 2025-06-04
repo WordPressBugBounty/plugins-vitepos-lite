@@ -630,9 +630,8 @@ if ( ! class_exists( 'Vtp_Insights_SDK' ) ) {
 		 * @return mixed|string
 		 */
 		public function post_value( $key, $default = '' ) {
-			if ( check_ajax_referer( 'vitepos' ) || vitepos_is_rest() ) {
-				return isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : $default;
-			}
+            //phpcs:ignore
+			return isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : $default;
 		}
 
 		/**
@@ -644,7 +643,7 @@ if ( ! class_exists( 'Vtp_Insights_SDK' ) ) {
 		 * @return mixed|string
 		 */
 		public function get_value( $key, $default = '' ) {
-			return \Appsbd_Lite\V1\libs\AppInput::get_value( $key, $default );
+			return \Appsbd_Lite\V5\libs\AppInput::get_value( $key, $default );
 		}
 		/**
 		 * Ajax callback

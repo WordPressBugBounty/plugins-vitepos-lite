@@ -13,6 +13,7 @@ namespace VitePos_Lite\Libs;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 if ( ! class_exists( __NAMESPACE__ . '\Client_Language' ) ) {
 	/**
 	 * Class VitePOS_API_Base
@@ -576,12 +577,21 @@ if ( ! class_exists( __NAMESPACE__ . '\Client_Language' ) ) {
 			$language['Whether it’s the User App for mobile ordering or the Kiosk Mode for self-service, Vitepos empowers your business with features like payment processing, rewards, coupons, and more. Perfect for restaurants, retail stores, and online shops – boost efficiency, enhance customer satisfaction, and grow your sales effortlessly!'] = $kernel_object->__( 'Whether it’s the User App for mobile ordering or the Kiosk Mode for self-service, Vitepos empowers your business with features like payment processing, rewards, coupons, and more. Perfect for restaurants, retail stores, and online shops – boost efficiency, enhance customer satisfaction, and grow your sales effortlessly!' );
 			$language['Choose status']                                                                                                                                                                                                                                                                                                                     = $kernel_object->__( 'Choose status' );
 
-			$language['Import Wordpress Roles']         = $kernel_object->__( 'Import Wordpress Roles' );
-			$language['Wordpress Roles']                = $kernel_object->__( 'Wordpress Roles' );
-			$language['No roles to add']                = $kernel_object->__( 'No roles to add' );
-			$language['Importing roles from wordpress'] = $kernel_object->__( 'Importing roles from wordpress' );
-			$language['Adding wordpress Roles']         = $kernel_object->__( 'Adding wordpress Roles' );
-			$language['Loading Role Details']           = $kernel_object->__( 'Loading Role Details' );
+			$language['Import Wordpress Roles']                    = $kernel_object->__( 'Import Wordpress Roles' );
+			$language['Wordpress Roles']                           = $kernel_object->__( 'Wordpress Roles' );
+			$language['No roles to add']                           = $kernel_object->__( 'No roles to add' );
+			$language['Importing roles from wordpress']            = $kernel_object->__( 'Importing roles from wordpress' );
+			$language['Adding wordpress Roles']                    = $kernel_object->__( 'Adding wordpress Roles' );
+			$language['Loading Role Details']                      = $kernel_object->__( 'Loading Role Details' );
+			$language['Pro']                                       = $kernel_object->__( 'Pro' );
+			$language['Show Pro Features']                         = $kernel_object->__( 'Show Pro Features' );
+			$language['Pro version is required for this feature.'] = $kernel_object->__( 'Pro version is required for this feature.' );
+
+			$language['Custom Fields allow you to add extra input fields for customers, users, carts, and invoices, making it easy to collect and manage additional data beyond the platform’s default fields.']                                       = $kernel_object->__( 'Custom Fields allow you to add extra input fields for customers, users, carts, and invoices, making it easy to collect and manage additional data beyond the platform’s default fields.' );
+			$language['Form Customization allows you to control default customer input fields by setting which fields are required and which should be hidden, offering greater flexibility in managing your customer registration or profile forms.'] = $kernel_object->__( 'Form Customization allows you to control default customer input fields by setting which fields are required and which should be hidden, offering greater flexibility in managing your customer registration or profile forms.' );
+			$language['Shortcut Message allows users to quickly send predefined messages to the Cashier, Kitchen, or Waiter panels. This feature improves communication in restaurant mode,making coordination fast and efficient.']                   = $kernel_object->__( 'Shortcut Message allows users to quickly send predefined messages to the Cashier, Kitchen, or Waiter panels. This feature improves communication in restaurant mode,making coordination fast and efficient.' );
+			$language['Deny Reason Message lets users select preset reasons for rejecting orders, ensuring clear and quick communication between cashier, kitchen, and waiter panels.']                                                                = $kernel_object->__( 'Deny Reason Message lets users select preset reasons for rejecting orders, ensuring clear and quick communication between cashier, kitchen, and waiter panels.' );
+			$language['Custom Payment Method lets you create personalized payment options with a name, icon, and optional input fields for added flexibility.']                                                                                        = $kernel_object->__( 'Custom Payment Method lets you create personalized payment options with a name, icon, and optional input fields for added flexibility.' );
 
 			self::get_client_extra( $language, $kernel_object );
 

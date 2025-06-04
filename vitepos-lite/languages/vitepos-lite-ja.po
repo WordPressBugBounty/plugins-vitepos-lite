@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VitePOS\n"
 "POT-Creation-Date: 2024-10-24 04:54+0000\n"
-"PO-Revision-Date: 2025-03-04 08:17+0000\n"
-"Last-Translator: Anthony L. Moore\n"
+"PO-Revision-Date: 2025-06-04 06:01+0000\n"
+"Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Loco-Version: 2.6.11; wp-6.6.2"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.3.6"
 
 #, php-format
 msgid " %s are required"
@@ -53,6 +53,14 @@ msgstr "16進数でなければなりません"
 #, php-format
 msgid "%s out of stock"
 msgstr "%s 在庫切れ"
+
+#, php-format
+msgid "%s role(s) added"
+msgstr "%s ロールが追加されました"
+
+#, php-format
+msgid "%s role(s) failed to add"
+msgstr "%s ロールの追加に失敗しました"
 
 #, php-format
 msgid "%s should be a valid email address"
@@ -262,6 +270,9 @@ msgstr "顧客を追加または検索..."
 
 msgid "Adding Role"
 msgstr "ロールの追加"
+
+msgid "Adding wordpress Roles"
+msgstr "WordPress ロールを追加中"
 
 msgid "Addon is supported in pro version"
 msgstr "アドオンはプロ版でサポートされています。"
@@ -994,6 +1005,13 @@ msgstr "カスタムフィールド設定"
 msgid "Custom Fields"
 msgstr "カスタムフィールド"
 
+msgid ""
+"Custom Fields allow you to add extra input fields for customers, users, "
+"carts, and invoices, making it easy to collect and manage additional data "
+"beyond the platform’s default fields."
+msgstr ""
+"カスタムフィールドを使用すると、顧客、ユーザー、カート、請求書に追加の入力フィールドを追加でき、プラットフォームのデフォルトフィールドを超えたデータの収集と管理が容易になります。"
+
 msgid "Custom fields support in pro version only."
 msgstr "カスタムフィールドはプロバージョンでのみサポートされています。"
 
@@ -1002,6 +1020,11 @@ msgstr "カスタムメソッド"
 
 msgid "Custom Methods"
 msgstr "カスタムメソッド"
+
+msgid ""
+"Custom Payment Method lets you create personalized payment options with a "
+"name, icon, and optional input fields for added flexibility."
+msgstr "カスタム支払い方法では、名前、アイコン、オプションの入力フィールドを使用して、柔軟に個別の支払いオプションを作成できます。"
 
 msgid "Custom payment methode support in pro version only."
 msgstr "カスタム決済方法はプロ版でのみサポートされています。"
@@ -1172,6 +1195,13 @@ msgstr "拒否理由"
 
 msgid "Deny reason is required"
 msgstr "拒否理由が必要です"
+
+msgid ""
+"Deny Reason Message lets users select preset reasons for rejecting orders, "
+"ensuring clear and quick communication between cashier, kitchen, and waiter "
+"panels."
+msgstr ""
+"拒否理由メッセージでは、注文を拒否する理由をあらかじめ設定された選択肢から選べるため、キャッシャー、キッチン、ウェイターパネル間で明確かつ迅速なコミュニケーションが可能になります。"
 
 msgid "Description"
 msgstr "説明"
@@ -1508,6 +1538,12 @@ msgstr "複数の店舗を使用するには、プロ版を有効にする必要
 msgid "Form Customization"
 msgstr "フォームのカスタマイズ"
 
+msgid ""
+"Form Customization allows you to control default customer input fields by "
+"setting which fields are required and which should be hidden, offering "
+"greater flexibility in managing your customer registration or profile forms."
+msgstr "フォームカスタマイズを使用すると、顧客入力フィールドの必須・非表示設定を管理でき、顧客登録やプロフィールフォームの柔軟性が向上します。"
+
 msgid "Form customization support in pro version only."
 msgstr "プロ版でのみフォームのカスタマイズ機能をご利用いただけます。"
 
@@ -1709,6 +1745,12 @@ msgstr "更新の無視にはプロ版が必要です。この機能を使用す
 
 msgid "Image"
 msgstr "画像"
+
+msgid "Import Wordpress Roles"
+msgstr "WordPress ロールをインポート"
+
+msgid "Importing roles from wordpress"
+msgstr "WordPress からロールをインポート中"
 
 msgid ""
 "In case of any problem, get in touch with the Vitepos team. We always "
@@ -1991,6 +2033,9 @@ msgstr "購入詳細を読み込み中..."
 
 msgid "Loading Role Access"
 msgstr "ロールアクセスを読み込み中"
+
+msgid "Loading Role Details"
+msgstr "ロールの詳細を読み込み中"
 
 msgid "Loading Roles"
 msgstr "ロールを読み込み中"
@@ -2305,6 +2350,9 @@ msgstr "ロールデータが見つかりません"
 
 msgid "No role found with this request param"
 msgstr "このリクエストパラメータを持つロールが見つかりません"
+
+msgid "No roles to add"
+msgstr "追加するロールがありません"
 
 msgid "No Rules Added"
 msgstr "ルールは追加されていません"
@@ -2879,6 +2927,9 @@ msgstr "非公開"
 
 msgid "Pro"
 msgstr "プロ"
+
+msgid "Pro version is required for this feature."
+msgstr "この機能を使用するには Pro バージョンが必要です。"
 
 msgid "Pro version required"
 msgstr "プロ版が必要です"
@@ -3522,6 +3573,13 @@ msgstr "ショートカットメッセージ"
 msgid "shortcut message"
 msgstr "ショートカットメッセージ"
 
+msgid ""
+"Shortcut Message allows users to quickly send predefined messages to the "
+"Cashier, Kitchen, or Waiter panels. This feature improves communication in "
+"restaurant mode,making coordination fast and efficient."
+msgstr ""
+"ショートカットメッセージを使うと、キャッシャー、キッチン、ウェイターパネルにあらかじめ定義されたメッセージをすばやく送信できます。この機能により、レストランモードでの連携が迅速かつ効率的になります。"
+
 msgid "Shortcut Message Settings"
 msgstr "ショートカットメッセージ設定"
 
@@ -3608,6 +3666,9 @@ msgstr "価格を表示"
 
 msgid "Show price on barcode label"
 msgstr "バーコードラベルに価格を表示"
+
+msgid "Show Pro Features"
+msgstr "Pro 機能を表示"
 
 msgid "Show separate tax"
 msgstr "別途税を表示する"
@@ -4554,6 +4615,9 @@ msgstr "WordPressログイン"
 msgid "WordPress Login URL"
 msgstr "WordPressログインURL"
 
+msgid "Wordpress Roles"
+msgstr "WordPress ロール"
+
 msgid "Write your message"
 msgstr "メッセージを入力"
 
@@ -4593,6 +4657,11 @@ msgid ""
 "is selected from the POS, that customer will remain in the selected state."
 msgstr ""
 "注文処理のデフォルト顧客を選択できます。選択しない場合は、注文はゲストユーザーとして処理されます。POSから顧客を選択した場合、その顧客は選択された状態のままになります。"
+
+msgid ""
+"You cannot modify the information of this user because they have a higher-"
+"level role."
+msgstr "このユーザーは上位のロールを持っているため、情報を変更できません。"
 
 msgid ""
 "You do not have permission of add customer, contact your admin to get this "

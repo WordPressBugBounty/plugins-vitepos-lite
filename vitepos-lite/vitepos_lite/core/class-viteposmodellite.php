@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V1\Core\BaseModel;
+use Appsbd_Lite\V5\Core\BaseModel;
 
 /**
  * Class ViteposModel

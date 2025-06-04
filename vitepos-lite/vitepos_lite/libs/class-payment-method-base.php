@@ -14,8 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V1\Core\Kernel_Lite;
-use Appsbd_Lite\V1\libs\Ajax_Confirm_Response;
+use Appsbd_Lite\V5\Core\Kernel_Lite;
+use Appsbd_Lite\V5\libs\Ajax_Confirm_Response;
 
 /**
  * Class payment_method_base

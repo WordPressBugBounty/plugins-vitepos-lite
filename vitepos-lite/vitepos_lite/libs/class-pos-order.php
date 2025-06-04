@@ -19,7 +19,6 @@ use VitePos_Lite\Models\Database\Mapbd_Pos_Counter;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Warehouse;
 use VitePos_Lite\Modules\POS_Settings;
 
-
 /**
  * Class Pos Order
  *
@@ -373,6 +372,7 @@ class POS_Order {
 				$tobj->tax_class = $item->get_tax_class();
 				$tobj->val       = vitepos_wc_amount( wc_round_discount( $item->get_tax_total( '' ), $decimals_length ) );
 				if ( $i == $length ) {
+
 					if ( ( $tobj->val + $total_tax_cal ) != $tax_total ) {
 						$tobj->val = vitepos_wc_amount( $tax_total - $total_tax_cal );
 					}

@@ -22,7 +22,7 @@ if ( ! function_exists( 'vtp_dci_dynamic_init' ) ) {
 		}
 
 		$menu_slug    = isset( $params['menu']['slug'] ) ? $params['menu']['slug'] : false;
-		$current_page = \Appsbd_Lite\V1\libs\AppInput::get_value( 'page', false );
+		$current_page = \Appsbd_Lite\V5\libs\AppInput::get_value( 'page', false );
 		$text_domain  = isset( $params['text_domain'] ) && ! empty( $params['text_domain'] ) ? $params['text_domain'] : $params['slug'];
 
 		/**

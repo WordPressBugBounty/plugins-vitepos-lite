@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VitePOS\n"
 "POT-Creation-Date: 2024-10-23 09:29+0000\n"
-"PO-Revision-Date: 2025-03-04 08:02+0000\n"
+"PO-Revision-Date: 2025-06-04 06:04+0000\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
 "&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
-"X-Loco-Version: 2.7.1; wp-6.7.2"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.3.6"
 
 #, php-format
 msgid " %s are required"
@@ -54,6 +54,14 @@ msgstr "يجب أن يكون سداسي عشري"
 #, php-format
 msgid "%s out of stock"
 msgstr "%s نفدت من المخزون"
+
+#, php-format
+msgid "%s role(s) added"
+msgstr "تمت إضافة %s من الدور(ات)"
+
+#, php-format
+msgid "%s role(s) failed to add"
+msgstr "فشل في إضافة %s من الدور(ات)"
 
 #, php-format
 msgid "%s should be a valid email address"
@@ -265,6 +273,9 @@ msgstr "إضافة/بحث عن عميل.."
 
 msgid "Adding Role"
 msgstr "إضافة دور"
+
+msgid "Adding wordpress Roles"
+msgstr "جاري إضافة أدوار ووردبريس"
 
 msgid "Addon is supported in pro version"
 msgstr "الإضافة مدعومة في الإصدار الاحترافي"
@@ -1001,6 +1012,15 @@ msgstr "إعدادات الحقول المخصصة"
 msgid "Custom Fields"
 msgstr "الحقول المخصصة"
 
+msgid ""
+"Custom Fields allow you to add extra input fields for customers, users, "
+"carts, and invoices, making it easy to collect and manage additional data "
+"beyond the platform’s default fields."
+msgstr ""
+"تتيح لك الحقول المخصصة إضافة حقول إدخال إضافية للعملاء والمستخدمين والسلات "
+"والفواتير، مما يسهل جمع البيانات الإضافية وإدارتها بخلاف الحقول الافتراضية "
+"في المنصة."
+
 msgid "Custom fields support in pro version only."
 msgstr "دعم الحقول المخصصة في إصدار Pro فقط."
 
@@ -1009,6 +1029,13 @@ msgstr "طريقة مخصصة"
 
 msgid "Custom Methods"
 msgstr "الطرق المخصصة"
+
+msgid ""
+"Custom Payment Method lets you create personalized payment options with a "
+"name, icon, and optional input fields for added flexibility."
+msgstr ""
+"تتيح لك طريقة الدفع المخصصة إنشاء خيارات دفع مخصصة بالاسم والأيقونة وحقول "
+"الإدخال الاختيارية لمرونة إضافية."
 
 msgid "Custom payment methode support in pro version only."
 msgstr "دعم طرق الدفع المخصصة في إصدار برو فقط."
@@ -1181,6 +1208,14 @@ msgstr "سبب الرفض"
 
 msgid "Deny reason is required"
 msgstr "يُطلب سبب الرفض"
+
+msgid ""
+"Deny Reason Message lets users select preset reasons for rejecting orders, "
+"ensuring clear and quick communication between cashier, kitchen, and waiter "
+"panels."
+msgstr ""
+"تتيح رسالة سبب الرفض للمستخدمين اختيار أسباب محددة مسبقًا لرفض الطلبات، مما "
+"يضمن تواصلًا واضحًا وسريعًا بين الكاشير والمطبخ ولوحة النادل."
 
 msgid "Description"
 msgstr "الوصف"
@@ -1533,6 +1568,15 @@ msgstr "لمنافذ متعددة ، تحتاج إلى تفعيل الإصدار
 msgid "Form Customization"
 msgstr "تخصيص النموذج"
 
+msgid ""
+"Form Customization allows you to control default customer input fields by "
+"setting which fields are required and which should be hidden, offering "
+"greater flexibility in managing your customer registration or profile forms."
+msgstr ""
+"تتيح لك تخصيص النموذج التحكم في حقول إدخال العملاء الافتراضية عن طريق تحديد "
+"الحقول المطلوبة وتلك التي يجب إخفاؤها، مما يوفر مرونة أكبر في إدارة نماذج "
+"تسجيل العملاء أو ملفاتهم الشخصية."
+
 msgid "Form customization support in pro version only."
 msgstr "دعم تخصيص النموذج متاح فقط في النسخة الاحترافية."
 
@@ -1746,6 +1790,12 @@ msgstr ""
 
 msgid "Image"
 msgstr "صورة"
+
+msgid "Import Wordpress Roles"
+msgstr "استيراد أدوار ووردبريس"
+
+msgid "Importing roles from wordpress"
+msgstr "جاري استيراد الأدوار من ووردبريس"
 
 msgid ""
 "In case of any problem, get in touch with the Vitepos team. We always "
@@ -2032,6 +2082,9 @@ msgstr "تحميل تفاصيل الشراء ..."
 
 msgid "Loading Role Access"
 msgstr "تحميل وصول الدور"
+
+msgid "Loading Role Details"
+msgstr "جاري تحميل تفاصيل الدور"
 
 msgid "Loading Roles"
 msgstr "تحميل الأدوار"
@@ -2348,6 +2401,9 @@ msgstr "لم يتم العثور على بيانات دور"
 
 msgid "No role found with this request param"
 msgstr "لم يتم العثور على دور باستخدام معامل الطلب هذا"
+
+msgid "No roles to add"
+msgstr "لا توجد أدوار للإضافة"
 
 msgid "No Rules Added"
 msgstr "لم يتم إضافة أي قواعد"
@@ -2936,6 +2992,9 @@ msgstr "خاص"
 
 msgid "Pro"
 msgstr "برو"
+
+msgid "Pro version is required for this feature."
+msgstr "الإصدار الاحترافي مطلوب لهذه الميزة."
 
 msgid "Pro version required"
 msgstr "مطلوب الإصدار الاحترافي"
@@ -3585,6 +3644,15 @@ msgstr "رسالة الاختصار"
 msgid "shortcut message"
 msgstr "رسالة اختصار"
 
+msgid ""
+"Shortcut Message allows users to quickly send predefined messages to the "
+"Cashier, Kitchen, or Waiter panels. This feature improves communication in "
+"restaurant mode,making coordination fast and efficient."
+msgstr ""
+"تتيح رسالة الاختصار للمستخدمين إرسال رسائل محددة مسبقًا بسرعة إلى لوحات "
+"الكاشير أو المطبخ أو النادل. تساعد هذه الميزة في تحسين التواصل في وضع "
+"المطعم، مما يجعل التنسيق سريعًا وفعالًا."
+
 msgid "Shortcut Message Settings"
 msgstr "إعدادات رسائل الاختصار"
 
@@ -3671,6 +3739,9 @@ msgstr "عرض السعر"
 
 msgid "Show price on barcode label"
 msgstr "عرض السعر على ملصق الباركود"
+
+msgid "Show Pro Features"
+msgstr "عرض ميزات الإصدار الاحترافي"
 
 msgid "Show separate tax"
 msgstr "عرض ضريبة منفصلة"
@@ -4665,6 +4736,9 @@ msgstr "تسجيل دخول ووردبريس"
 msgid "WordPress Login URL"
 msgstr "رابط تسجيل دخول ووردبريس"
 
+msgid "Wordpress Roles"
+msgstr "أدوار ووردبريس"
+
 msgid "Write your message"
 msgstr "اكتب رسالتك"
 
@@ -4706,6 +4780,11 @@ msgstr ""
 "يمكنك تحديد العميل الافتراضي لمعالجة الطلب. إذا لم يتم تحديده، فسيتم معالجة "
 "الطلب كضيف. لاحظ أنه إذا تم تحديد العميل من جهاز POS، فسيظل العميل في الحالة "
 "المحددة."
+
+msgid ""
+"You cannot modify the information of this user because they have a higher-"
+"level role."
+msgstr "لا يمكنك تعديل معلومات هذا المستخدم لأنه يمتلك دورًا بمستوى أعلى."
 
 msgid ""
 "You do not have permission of add customer, contact your admin to get this "

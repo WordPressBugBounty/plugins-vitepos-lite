@@ -1,0 +1,38 @@
+{
+    "packages": [
+        {
+            "name": "appsbd-wp/appsbd-lite",
+            "version": "v5.0.3",
+            "version_normalized": "5.0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/appsbd/appsbd-lite.git",
+                "reference": "27549057d8942781f85c2571f56df51ba7366a2c"
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "time": "2025-06-04T07:30:09+00:00",
+            "type": "framework",
+            "installation-source": "source",
+            "autoload": {
+                "files": [
+                    "appsbd_lite/v5/core/class-kernel-lite.php",
+                    "appsbd_lite/v5/helper/base-helper.php"
+                ],
+                "psr-4": {
+                    "Appsbd_Lite\\": "appsbd_lite/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "appsbd.com"
+                }
+            ],
+            "description": "Its the lite framework for wordpress plugin",
+            "install-path": "../appsbd-wp/appsbd-lite"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

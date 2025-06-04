@@ -14,8 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V1\libs\API_Response;
-use Appsbd_Lite\V1\libs\AppInput;
+use Appsbd_Lite\V5\libs\API_Response;
+use Appsbd_Lite\V5\libs\AppInput;
 use VitePos_Lite\Core\VitePos;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Counter;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Warehouse;
@@ -259,8 +259,8 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		 */
 		public function load_payload() {
 			if ( ! self::$is_loaded_payload ) {
-				$type     = appsbd_get_request_content_type();
-				$req_type = ! empty( $type ) ? strtolower( appsbd_get_request_content_type() ) : '';
+				$type = get_request_content_type();
+				$req_type = ! empty( $type ) ? strtolower( get_request_content_type() ) : '';
 				if ( 'application/x-www-form-urlencoded' == $req_type || 'application/json' == $req_type ) {
 					if ( check_ajax_referer( 'vitepos', false, false ) || vitepos_is_rest() ) {
 						self::$payload_obj = file_get_contents( 'php://input' );
@@ -303,7 +303,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		public function add_error( $message, $parameter = null, $_ = null ) {
 			$args    = func_get_args();
 			$message = call_user_func_array( array( $this->kernel_object, '__' ), $args );
-			\Appsbd_Lite\V1\Core\Kernel_Lite::add_error( $message );
+			\Appsbd_Lite\V5\Core\Kernel_Lite::add_error( $message );
 		}
 
 		/**
@@ -336,7 +336,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		public function add_info( $message, $parameter = null, $_ = null ) {
 			$args    = func_get_args();
 			$message = call_user_func_array( array( $this->kernel_object, '__' ), $args );
-			\Appsbd_Lite\V1\Core\Kernel_Lite::add_info( $message );
+			\Appsbd_Lite\V5\Core\Kernel_Lite::add_info( $message );
 		}
 
 		/**
@@ -345,7 +345,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		 * @param any $obj Its string.
 		 */
 		public function add_debug( $obj ) {
-			\Appsbd_Lite\V1\Core\Kernel_Lite::add_debug( $obj );
+			\Appsbd_Lite\V5\Core\Kernel_Lite::add_debug( $obj );
 		}
 
 		/**
@@ -358,7 +358,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		public function add_warning( $message, $parameter = null, $_ = null ) {
 			$args    = func_get_args();
 			$message = call_user_func_array( array( $this->kernel_object, '__' ), $args );
-			\Appsbd_Lite\V1\Core\Kernel_Lite::add_warning( $message );
+			\Appsbd_Lite\V5\Core\Kernel_Lite::add_warning( $message );
 		}
 
 		/**
@@ -385,7 +385,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		 * @param string   $permission_callback Its string.
 		 */
 		public function register_rest_route( $methods, $route, $callback, $permission_callback = '' ) {
-			$thisobj =&$this;
+			 $thisobj =&$this;
 			if ( empty( $permission_callback ) ) {
 				$permission_callback = function ( \WP_REST_Request $request ) use ( $route, $thisobj ) {
 					$mainroute = explode( '/', $route );

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: ;__;_e;_ee;___;add_error;add_info;SetTitle;AddInfo;AddError;esc_html_e;SetSubtitle;___;AddModel;AddModelNonSearchable\n"
 "X-Poedit-Flags-xgettext: --no-location\n"
@@ -27,42 +27,6 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-10: dev_files\n"
 "X-Poedit-SearchPathExcluded-11: adminpanel\n"
 "X-Poedit-SearchPathExcluded-12: *.js\n"
-
-#, php-format
-msgid "%s should be digit"
-msgstr ""
-
-#, php-format
-msgid "%s should be numeric"
-msgstr ""
-
-#, php-format
-msgid " %s should be less than %s"
-msgstr ""
-
-#, php-format
-msgid "%s should be a valid email address"
-msgstr ""
-
-msgid " should be hexadecimal"
-msgstr ""
-
-#, php-format
-msgid " %s are required"
-msgstr ""
-
-#, php-format
-msgid " %s is required"
-msgstr ""
-
-msgid "E004"
-msgstr ""
-
-msgid "No change for update"
-msgstr ""
-
-msgid "Saved Successfully"
-msgstr ""
 
 msgid "Yes, I'd Love To Contribute"
 msgstr ""
@@ -169,10 +133,49 @@ msgstr ""
 msgid "The page is redirecting to home page withing few seconds"
 msgstr ""
 
+#, php-format
+msgid "%s should be digit"
+msgstr ""
+
+#, php-format
+msgid "%s should be numeric"
+msgstr ""
+
+#, php-format
+msgid " %s should be less than %s"
+msgstr ""
+
+#, php-format
+msgid "%s should be a valid email address"
+msgstr ""
+
+msgid " should be hexadecimal"
+msgstr ""
+
+#, php-format
+msgid " %s are required"
+msgstr ""
+
+#, php-format
+msgid " %s is required"
+msgstr ""
+
+msgid "E004"
+msgstr ""
+
+msgid "No change for update"
+msgstr ""
+
+msgid "Saved Successfully"
+msgstr ""
+
 msgid "Successfully deleted"
 msgstr ""
 
 msgid "Delete failed"
+msgstr ""
+
+msgid "You cannot modify the information of this user because they have a higher-level role."
 msgstr ""
 
 msgid "Successfully updated"
@@ -1859,6 +1862,45 @@ msgid "Whether it’s the User App for mobile ordering or the Kiosk Mode for sel
 msgstr ""
 
 msgid "Choose status"
+msgstr ""
+
+msgid "Import Wordpress Roles"
+msgstr ""
+
+msgid "Wordpress Roles"
+msgstr ""
+
+msgid "No roles to add"
+msgstr ""
+
+msgid "Importing roles from wordpress"
+msgstr ""
+
+msgid "Adding wordpress Roles"
+msgstr ""
+
+msgid "Loading Role Details"
+msgstr ""
+
+msgid "Show Pro Features"
+msgstr ""
+
+msgid "Pro version is required for this feature."
+msgstr ""
+
+msgid "Custom Fields allow you to add extra input fields for customers, users, carts, and invoices, making it easy to collect and manage additional data beyond the platform’s default fields."
+msgstr ""
+
+msgid "Form Customization allows you to control default customer input fields by setting which fields are required and which should be hidden, offering greater flexibility in managing your customer registration or profile forms."
+msgstr ""
+
+msgid "Shortcut Message allows users to quickly send predefined messages to the Cashier, Kitchen, or Waiter panels. This feature improves communication in restaurant mode,making coordination fast and efficient."
+msgstr ""
+
+msgid "Deny Reason Message lets users select preset reasons for rejecting orders, ensuring clear and quick communication between cashier, kitchen, and waiter panels."
+msgstr ""
+
+msgid "Custom Payment Method lets you create personalized payment options with a name, icon, and optional input fields for added flexibility."
 msgstr ""
 
 msgid "Download PDF"
@@ -4389,6 +4431,14 @@ msgid "No role data found"
 msgstr ""
 
 msgid "Successfully added"
+msgstr ""
+
+#, php-format
+msgid "%s role(s) failed to add"
+msgstr ""
+
+#, php-format
+msgid "%s role(s) added"
 msgstr ""
 
 msgid "Administrator can not be reset"

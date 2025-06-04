@@ -11,12 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V1\Core\BaseModule;
-use Appsbd_Lite\V1\Libs\ACL_Resource;
-use Appsbd_Lite\V1\libs\Ajax_Confirm_Response;
-use Appsbd_Lite\V1\libs\Ajax_Data_Response;
-use Appsbd_Lite\V1\libs\Ajax_Response;
-use Appsbd_Lite\V1\libs\AppInput;
+use Appsbd_Lite\V5\Core\BaseModule;
+use Appsbd_Lite\V5\Libs\ACL_Resource;
+use Appsbd_Lite\V5\libs\Ajax_Confirm_Response;
+use Appsbd_Lite\V5\libs\Ajax_Data_Response;
+use Appsbd_Lite\V5\libs\Ajax_Response;
+use Appsbd_Lite\V5\libs\AppInput;
 use Automattic\WooCommerce\Admin\RemoteInboxNotifications\Transformers\Count;
 use VitePos_Lite\Core\Vitepos_Module;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Role;
@@ -53,7 +53,7 @@ class POS_Role extends Vitepos_Module {
 		if ( function_exists( 'get_current_screen' ) ) {
 			$current_screen = get_current_screen();
 		}
-		if ( 'user-new' === $current_screen->id || 'user-edit' === $current_screen->id ) {
+		if ( ! empty( $current_screen->id ) && ( 'user-new' === $current_screen->id || 'user-edit' === $current_screen->id ) ) {
 			self::reset_roles();
 			foreach ( $roles as $role_slug => &$role ) {
 				if ( str_starts_with( $role_slug, 'vtpos-' ) ) {

@@ -21,6 +21,7 @@ use VitePos_Lite\Models\Database\Mapbd_postmeta;
 use VitePos_Lite\Libs\POS_Product_Query;
 use VitePos_Lite\Modules\POS_Settings;
 
+
 /**
  * Class POS Product
  *
@@ -724,10 +725,11 @@ class POS_Product {
 		$price .= '<span class="screen-reader-text">';
 		// translators: %s is a product's current (sale) price.
 		$price .= '</span>';
+
 		/**
-		 * Its for check is there any change before process
+		 * Its for api permission.
 		 *
-		 * @since 1.0.1
+		 * @since 1.0
 		 */
 		return apply_filters( 'woocommerce_format_sale_price', $price, $regular_price, $sale_price );
 	}

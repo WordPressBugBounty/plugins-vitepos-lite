@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 use VitePos_Lite\Core\ViteposModelLite;
 
 /**

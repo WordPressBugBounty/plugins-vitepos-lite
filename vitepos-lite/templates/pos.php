@@ -28,19 +28,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	do_action( 'vitepos-client-header' );
 	?>
 </head>
-	<body><noscript><strong> <?php echo esc_html( $this->kernel_object->__( "We're sorry but pos doesn't work properly without JavaScript enabled. Please enable it to continue." ) ); ?></strong></noscript>
-		<div id="app">
-			<div class="pre-loader">
-				<?php echo esc_html( $this->kernel_object->__( 'Please wait ..' ) ); ?>
-			</div>
-		</div>
-	<?php
-	/**
-	 * Its for pos client header
-	 *
-	 * @since 1.0
-	 */
-	do_action( 'vitepos-client-footer' );
-	?>
-	</body>
-	</html>
+<body><noscript><strong> <?php echo esc_html( $this->kernel_object->__( "We're sorry but pos doesn't work properly without JavaScript enabled. Please enable it to continue." ) ); ?></strong></noscript>
+<div id="app">
+	<div class="pre-loader">
+		<?php echo esc_html( $this->kernel_object->__( 'Please wait ..' ) ); ?>
+	</div>
+</div>
+<?php
+/**
+ * Its for pos client header
+ *
+ * @since 1.0
+ */
+do_action( 'vitepos-client-footer' );
+?>
+</body>
+</html>

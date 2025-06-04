@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VitePOS\n"
 "POT-Creation-Date: 2024-10-24 04:27+0000\n"
-"PO-Revision-Date: 2025-03-04 08:10+0000\n"
+"PO-Revision-Date: 2025-06-04 06:02+0000\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Loco-Version: 2.7.1; wp-6.7.2"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.3.6"
 
 #, php-format
 msgid " %s are required"
@@ -53,6 +53,14 @@ msgstr "sollte hexadezimal sein"
 #, php-format
 msgid "%s out of stock"
 msgstr "%s nicht auf Lager"
+
+#, php-format
+msgid "%s role(s) added"
+msgstr "%s Rolle(n) hinzugefügt"
+
+#, php-format
+msgid "%s role(s) failed to add"
+msgstr "%s Rolle(n) konnten nicht hinzugefügt werden"
 
 #, php-format
 msgid "%s should be a valid email address"
@@ -264,6 +272,9 @@ msgstr "Kunde hinzufügen/suchen.."
 
 msgid "Adding Role"
 msgstr "Rolle hinzufügen"
+
+msgid "Adding wordpress Roles"
+msgstr "WordPress-Rollen hinzufügen"
 
 msgid "Addon is supported in pro version"
 msgstr "Addons werden in der Pro-Version unterstützt."
@@ -1025,6 +1036,16 @@ msgstr "Einstellungen für benutzerdefinierte Felder"
 msgid "Custom Fields"
 msgstr "Benutzerdefinierte Felder"
 
+msgid ""
+"Custom Fields allow you to add extra input fields for customers, users, "
+"carts, and invoices, making it easy to collect and manage additional data "
+"beyond the platform’s default fields."
+msgstr ""
+"Benutzerdefinierte Felder ermöglichen es Ihnen, zusätzliche Eingabefelder "
+"für Kunden, Benutzer, Warenkörbe und Rechnungen hinzuzufügen, um zusätzliche "
+"Daten über die Standardfelder der Plattform hinaus einfach zu erfassen und "
+"zu verwalten."
+
 msgid "Custom fields support in pro version only."
 msgstr "Benutzerdefinierte Felder werden nur in der Pro-Version unterstützt."
 
@@ -1033,6 +1054,14 @@ msgstr "Benutzerdefinierte Methode"
 
 msgid "Custom Methods"
 msgstr "Benutzerdefinierte Methoden"
+
+msgid ""
+"Custom Payment Method lets you create personalized payment options with a "
+"name, icon, and optional input fields for added flexibility."
+msgstr ""
+"Mit der benutzerdefinierten Zahlungsmethode können Sie personalisierte "
+"Zahlungsoptionen mit einem Namen, Symbol und optionalen Eingabefeldern "
+"erstellen, um mehr Flexibilität zu bieten."
 
 msgid "Custom payment methode support in pro version only."
 msgstr ""
@@ -1206,6 +1235,16 @@ msgstr "Ablehnungsbegründung"
 
 msgid "Deny reason is required"
 msgstr "Ein Ablehnungsgrund ist erforderlich"
+
+msgid ""
+"Deny Reason Message lets users select preset reasons for rejecting orders, "
+"ensuring clear and quick communication between cashier, kitchen, and waiter "
+"panels."
+msgstr ""
+"Die Nachricht zur Ablehnungsbegründung ermöglicht es Benutzern, "
+"voreingestellte Gründe für die Ablehnung von Bestellungen auszuwählen und so "
+"eine klare und schnelle Kommunikation zwischen Kassen-, Küchen- und "
+"Kellnerpanels sicherzustellen."
 
 msgid "Description"
 msgstr "Beschreibung"
@@ -1581,6 +1620,16 @@ msgstr "Für mehrere Verkaufsstellen müssen Sie die Pro-Version aktivieren."
 msgid "Form Customization"
 msgstr "Formular-Anpassung"
 
+msgid ""
+"Form Customization allows you to control default customer input fields by "
+"setting which fields are required and which should be hidden, offering "
+"greater flexibility in managing your customer registration or profile forms."
+msgstr ""
+"Die Formularanpassung ermöglicht es Ihnen, Standard-Eingabefelder für Kunden "
+"zu steuern, indem Sie festlegen, welche Felder erforderlich und welche "
+"ausgeblendet sein sollen, um eine größere Flexibilität bei der Verwaltung "
+"Ihrer Kundenregistrierungs- oder Profilformulare zu bieten."
+
 msgid "Form customization support in pro version only."
 msgstr "Formularanpassung wird nur in der Pro-Version unterstützt."
 
@@ -1797,6 +1846,12 @@ msgstr ""
 
 msgid "Image"
 msgstr "Bild"
+
+msgid "Import Wordpress Roles"
+msgstr "WordPress-Rollen importieren"
+
+msgid "Importing roles from wordpress"
+msgstr "Rollen aus WordPress importieren"
 
 msgid ""
 "In case of any problem, get in touch with the Vitepos team. We always "
@@ -2090,6 +2145,9 @@ msgstr "Einkaufsdetails werden geladen..."
 
 msgid "Loading Role Access"
 msgstr "Rollenzugriff wird geladen"
+
+msgid "Loading Role Details"
+msgstr "Rollendetails werden geladen"
 
 msgid "Loading Roles"
 msgstr "Rollen werden geladen"
@@ -2408,6 +2466,9 @@ msgstr "Keine Rollendaten gefunden"
 
 msgid "No role found with this request param"
 msgstr "Keine Rolle mit diesem Anfrageparameter gefunden"
+
+msgid "No roles to add"
+msgstr "Keine Rollen zum Hinzufügen"
 
 msgid "No Rules Added"
 msgstr "Keine Regeln hinzugefügt"
@@ -3000,6 +3061,9 @@ msgstr "Privat"
 
 msgid "Pro"
 msgstr "Pro"
+
+msgid "Pro version is required for this feature."
+msgstr "Für diese Funktion ist die Pro-Version erforderlich."
 
 msgid "Pro version required"
 msgstr "Pro-Version erforderlich"
@@ -3655,6 +3719,16 @@ msgstr "Kurznachricht"
 msgid "shortcut message"
 msgstr "Kurznachricht"
 
+msgid ""
+"Shortcut Message allows users to quickly send predefined messages to the "
+"Cashier, Kitchen, or Waiter panels. This feature improves communication in "
+"restaurant mode,making coordination fast and efficient."
+msgstr ""
+"Mit der Shortcut-Nachricht können Benutzer vordefinierte Nachrichten schnell "
+"an die Kassen-, Küchen- oder Kellnerpanels senden. Diese Funktion verbessert "
+"die Kommunikation im Restaurantmodus und ermöglicht eine schnelle und "
+"effiziente Koordination."
+
 msgid "Shortcut Message Settings"
 msgstr "Einstellungen für Kurznachrichten"
 
@@ -3747,6 +3821,9 @@ msgstr "Preis anzeigen"
 
 msgid "Show price on barcode label"
 msgstr "Preis auf Barcode-Etikett anzeigen"
+
+msgid "Show Pro Features"
+msgstr "Pro-Funktionen anzeigen"
 
 msgid "Show separate tax"
 msgstr "Separate Mehrwertsteuer anzeigen"
@@ -4765,6 +4842,9 @@ msgstr "WordPress-Anmeldung"
 msgid "WordPress Login URL"
 msgstr "WordPress-Anmelde-URL"
 
+msgid "Wordpress Roles"
+msgstr "WordPress-Rollen"
+
 msgid "Write your message"
 msgstr "Schreiben Sie Ihre Nachricht"
 
@@ -4807,6 +4887,13 @@ msgstr ""
 "kein Kunde ausgewählt wird, wird die Bestellung als Gastbenutzer bearbeitet. "
 "Beachten Sie, dass der ausgewählte Kunde im POS-System erhalten bleibt, wenn "
 "er dort ausgewählt wurde."
+
+msgid ""
+"You cannot modify the information of this user because they have a higher-"
+"level role."
+msgstr ""
+"Sie können die Informationen dieses Benutzers nicht ändern, da er eine "
+"höhergestellte Rolle hat."
 
 msgid ""
 "You do not have permission of add customer, contact your admin to get this "

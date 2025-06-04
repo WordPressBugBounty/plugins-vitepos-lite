@@ -13,6 +13,7 @@ namespace VitePos_Lite\Libs;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 /**
  * Class Payment_Swipe_Method
  *

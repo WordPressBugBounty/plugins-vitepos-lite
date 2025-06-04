@@ -1,0 +1,28 @@
+{
+  "name": "appsbd/vitepos-lite",
+  "autoload": {
+    "files": [
+      "vitepos_lite/helper/global-helper.php",
+      "vitepos_lite/libs/class-vitepos-loader.php"
+    ],
+    "psr-4": {
+      "VitePos_Lite\\": "vitepos_lite/"
+    }
+  },
+  "repositories": [
+    {
+      "name": "appsbd_lite",
+      "url": "https://bitbucket.org/appsbd/appsbd-lite.git",
+      "type": "git"
+    }
+  ],
+  "authors": [
+    {
+      "name": "appsbd.com",
+      "email": "admin@appsbd.com"
+    }
+  ],
+  "require": {
+    "appsbd-wp/appsbd-lite": "~5.0"
+  }
+}

@@ -13,6 +13,8 @@ namespace VitePos_Lite\Libs;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+
 /**
  * Class Vendor
  *

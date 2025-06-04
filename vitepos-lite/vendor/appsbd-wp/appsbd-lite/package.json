@@ -1,0 +1,9 @@
+{
+  "name": "appsbd-lite",
+  "version": "2.0.0",
+  "description": "Appsbd Lite",
+  "scripts": {
+    "check": "phpcs.bat --standard=Woocommerce-core --basepath=. --report=summary --ignore=*/vendor/*,*/dev_files/*,reward-point.php,test.php,appsbd-make.php --extensions=php,aph -n .",
+    "fix": "phpcbf.bat --basepath=. --standard=Woocommerce-core --ignore=*/vendor/*,*/dev_files/*,reward-point.php,test.php,appsbd-make.php --extensions=php,aph -n ."
+  }
+}

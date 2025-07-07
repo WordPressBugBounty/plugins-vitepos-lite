@@ -70,6 +70,18 @@ if ( ! class_exists( __NAMESPACE__ . '\Cart_Item' ) ) {
 		 */
 		public $tax = 0.0;
 		/**
+		 * Its property tax
+		 *
+		 * @var string
+		 */
+		public $tax_class = '';
+		/**
+		 * Its property tax
+		 *
+		 * @var array
+		 */
+		public $tax_rates = array();
+		/**
 		 * Its property fee
 		 *
 		 * @var float

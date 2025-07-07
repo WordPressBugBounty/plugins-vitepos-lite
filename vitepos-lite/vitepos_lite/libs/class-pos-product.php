@@ -226,6 +226,18 @@ class POS_Product {
 	 * @var string
 	 */
 	public $tax_class;
+	/**
+	 * Its property tax_class
+	 *
+	 * @var integer
+	 */
+	public $tax_rate;
+	/**
+	 * Its property tax_class
+	 *
+	 * @var array
+	 */
+	public $tax_rates;
 
 
 
@@ -869,6 +881,17 @@ class POS_Product {
 				( floatval( wc_get_price_including_tax( $product ) ) - floatval( $pos_product->price ) ),
 				wc_get_price_decimals()
 			);
+			$pos_product->tax_rates = array();
+			$tax_rates = \WC_Tax::get_rates( $pos_product->tax_class );
+			foreach ( $tax_rates as $rate ) {
+				$pos_product->tax_rates[] = array(
+					'label' => $rate['label'],
+					'rate' => $rate['rate'],
+				);
+			}
+			$taxes = \WC_Tax::calc_tax( $pos_product->price, $tax_rates, false );
+			$tax_amount = array_sum( $taxes );
+			$pos_product->tax_rate = $tax_amount;
 		}
 		if ( ! $is_no_variable ) {
 			if ( $product->is_type( 'variable' ) && $product->has_child() ) {
@@ -1254,6 +1277,14 @@ class POS_Product {
 			$variation_obj->length              = $variation->get_length();
 			$variation_obj->width               = $variation->get_width();
 			$variation_obj->tax_rate            = NumberUtil::round( ( doubleval( wc_get_price_including_tax( $variation ) ) - doubleval( $variation_obj->price ) ), wc_get_price_decimals() );
+			$variation_obj->tax_rates = array();
+			$tax_rates = \WC_Tax::get_rates( $variation_obj->tax_class );
+			foreach ( $tax_rates as $rate ) {
+				$variation_obj->tax_rates[] = array(
+					'label' => $rate['label'],
+					'rate' => $rate['rate'],
+				);
+			}
 			$variation_obj->on_sale             = $variation->is_on_sale() ? 'Y' : 'N';
 			$variation_obj->image               = self::get_wc_product_image( $variation, 'woocommerce_thumbnail' );
 			$variation_obj->attributes          = self::get_attributes( $variation );

@@ -691,8 +691,9 @@ class POS_Settings extends Vitepos_Module {
 	 */
 	public function vt_item_meta_filter( $formatted_meta ) {
 		$temp_metas = array();
+		$fillters = array( '_vt', '_vc' );
 		foreach ( $formatted_meta as $key => $meta ) {
-			if ( isset( $meta->key ) && ! in_array( $meta->key, array( '_vtp_regular_price' ) ) ) {
+			if ( isset( $meta->key ) && ! in_array( substr( $meta->key, 0, 3 ), $fillters ) ) {
 				$temp_metas[ $key ] = $meta;
 			}
 		}
@@ -853,6 +854,12 @@ class POS_Settings extends Vitepos_Module {
 		}
 		if ( isset( $basic_settings['rc_v3_secret_key'] ) ) {
 			unset( $basic_settings['rc_v3_secret_key'] );
+		}
+		if ( isset( $basic_settings['round_price'] ) ) {
+			unset( $basic_settings['round_price'] );
+		}
+		if ( isset( $basic_settings['round_type'] ) ) {
+			unset( $basic_settings['round_type'] );
 		}
 		if ( ! isset( $basic_settings['pos_mode'] ) ) {
 			$basic_settings['pos_mode'] = 'G';
@@ -1093,6 +1100,10 @@ class POS_Settings extends Vitepos_Module {
 		if ( ! isset( $this->options['pos_mode'] ) ) {
 			$this->options['pos_mode'] = 'G';
 		}
+		if ( isset( $this->options['round_type'] ) ) {
+			unset( $this->options['round_type'] );
+		}
+		$this->options['round_price']                 = 'N';
 		$this->options['tax_method']                 = 'B';
 		$this->options['offline_order_status']       = 'N';
 		$options['basic_settings']                   = $this->options;
@@ -1503,7 +1514,6 @@ class POS_Settings extends Vitepos_Module {
 		}
 		return price_format.price_format.replace('{{amt}}', $amount);
 		},
-		roundingFactor: "D",//D=Discount, F=Fee, N=none
 		assets_path:'<?php $this->get_plugin_esc_url( 'templates/pos-assets' ); ?>/',
 		urls: {
 		sys_login:"",
@@ -1516,12 +1526,8 @@ class POS_Settings extends Vitepos_Module {
 		list_variation: vitePosBase + "product/list-variation",
 		order_list: vitePosBase + "order/order-list",
 		order_details: vitePosBase + "order/details",
-		initials_data: vitePosBase + "product/initial-data",
 		make_payment: vitePosBase + "order/make-payment",
-		sync_offline_order: vitePosBase + "order/sync-offline-order",
 		product_details: vitePosBase + "product/details",
-		create_product: vitePosBase + "product/create",
-		update_product: vitePosBase + "product/update",
 		category_list: vitePosBase + "product/categories",
 		all_category_list: vitePosBase + "product/all-categories",
 		attributes_list: vitePosBase + "product/attributes",
@@ -1535,7 +1541,6 @@ class POS_Settings extends Vitepos_Module {
 		delete_customer: vitePosBase + "customer/delete-customer",
 		delete_user: vitePosBase + "user/delete-user",
 		close_cashDrawer: vitePosBase + "user/close-cash-drawer",
-		delete_product: vitePosBase + "product/delete-product",
 		outlet_list: vitePosBase + "outlet/list",
 		all_outlet_list: vitePosBase + "outlet/all-outlet-list",
 		cash_drawer_info: vitePosBase + "outlet/cash-drawer-info",
@@ -1543,7 +1548,6 @@ class POS_Settings extends Vitepos_Module {
 		withdraw_cash: vitePosBase + "outlet/withdraw-cash",
 		close_drawer: vitePosBase + "outlet/close-drawer",
 		drawer_log_details: vitePosBase + "outlet/details",
-		drawer_summary: vitePosBase + "outlet/summary",
 		purchase_list: vitePosBase + "purchase/list",
 		create_purchase: vitePosBase + "purchase/create",
 		purchase_details: vitePosBase + "purchase/details",
@@ -1562,21 +1566,7 @@ class POS_Settings extends Vitepos_Module {
 		customer_details: vitePosBase + "customer/details",
 		user_details: vitePosBase + "user/details",
 		outlet_panel: vitePosBase + "user/outlet-panel",
-		//restaurant
-		sync_order_list: vitePosBase + "restaurant/sync-order-list",
-		canned_message: vitePosBase + "restaurant/canned-message",
-		send_to_kitchen: vitePosBase + "restaurant/send-to-kitchen",
-		resto_details: vitePosBase + "restaurant/details",
-		make_served: vitePosBase + "restaurant/make-served",
-		cancel_order: vitePosBase + "restaurant/cancel-order",
-		cancel_order_request: vitePosBase + "restaurant/cancel-order-request",
-		cancel_request_ans: vitePosBase + "restaurant/cancel-request-ans",
 
-		//Cashier
-		served_list: vitePosBase + "restaurant/served-list",
-		cashier_details: vitePosBase + "restaurant/cashier-details",
-		restaurant_payment: vitePosBase + "restaurant/restaurant-payment",
-		send_email: vitePosBase + "order/email",
 
 		all_taxes: vitePosBase + "product/all-taxes",
 		},

@@ -593,6 +593,9 @@ if ( ! class_exists( __NAMESPACE__ . '\Client_Language' ) ) {
 			$language['Deny Reason Message lets users select preset reasons for rejecting orders, ensuring clear and quick communication between cashier, kitchen, and waiter panels.']                                                                = $kernel_object->__( 'Deny Reason Message lets users select preset reasons for rejecting orders, ensuring clear and quick communication between cashier, kitchen, and waiter panels.' );
 			$language['Custom Payment Method lets you create personalized payment options with a name, icon, and optional input fields for added flexibility.']                                                                                        = $kernel_object->__( 'Custom Payment Method lets you create personalized payment options with a name, icon, and optional input fields for added flexibility.' );
 
+			$language['Enable Order Total Rounding']                                                                                                    = $kernel_object->__( 'Enable Order Total Rounding' );
+			$language['Enabling this feature rounds the fractional part of the total amount to the nearest predefined value for easier cash handling.'] = $kernel_object->__( 'Enabling this feature rounds the fractional part of the total amount to the nearest predefined value for easier cash handling.' );
+
 			self::get_client_extra( $language, $kernel_object );
 
 			return $language;

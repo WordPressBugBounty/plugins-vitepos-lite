@@ -691,7 +691,7 @@ class POS_Settings extends Vitepos_Module {
 	 */
 	public function vt_item_meta_filter( $formatted_meta ) {
 		$temp_metas = array();
-		$fillters = array( '_vt', '_vc' );
+		$fillters   = array( '_vt', '_vc' );
 		foreach ( $formatted_meta as $key => $meta ) {
 			if ( isset( $meta->key ) && ! in_array( substr( $meta->key, 0, 3 ), $fillters ) ) {
 				$temp_metas[ $key ] = $meta;
@@ -1057,8 +1057,8 @@ class POS_Settings extends Vitepos_Module {
 	public static function check_captcha( $payload ) {
 		$is_enable_rc = self::get_module_option( 'is_rc_v3', false );
 		if ( ! empty( $is_enable_rc ) ) {
-			 $token         = ! empty( $payload['g_token'] ) ? $payload['g_token'] : '';
-			 $rc_secret_key = self::get_module_option( 'rc_v3_secret_key', false );
+			$token         = ! empty( $payload['g_token'] ) ? $payload['g_token'] : '';
+			$rc_secret_key = self::get_module_option( 'rc_v3_secret_key', false );
 			if ( ! empty( $token ) && Recaptcha::is_valid( $token, $rc_secret_key ) ) {
 				return true;
 			} else {
@@ -1103,7 +1103,7 @@ class POS_Settings extends Vitepos_Module {
 		if ( isset( $this->options['round_type'] ) ) {
 			unset( $this->options['round_type'] );
 		}
-		$this->options['round_price']                 = 'N';
+		$this->options['round_price']                = 'N';
 		$this->options['tax_method']                 = 'B';
 		$this->options['offline_order_status']       = 'N';
 		$options['basic_settings']                   = $this->options;
@@ -1906,7 +1906,7 @@ class POS_Settings extends Vitepos_Module {
 				<tr>
 					<td colspan="3" class="vtp-order-tr-line"></td>
 				</tr>
-			 <?php } ?>
+			<?php } ?>
 			<tr>
 				<td class="label label-highlight">
 					<?php $this->esc_attr_e( 'Outlet' ); ?>:

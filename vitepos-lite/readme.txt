@@ -103,6 +103,8 @@ Will there be any performance issues for WordPress?
 
 Not at all! We were cautious about it from the start. We developed the plugin with VueJS.
 
+= How can I report security bugs? =
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.]( https://patchstack.com/database/vdp/9e5fbdf8-f5be-413b-aec4-0ff707bd59db )
 
 == Screenshots ==
 
@@ -122,6 +124,7 @@ Not at all! We were cautious about it from the start. We developed the plugin wi
 14. [Admin Panel] Role Management
 15. [Admin Panel] Outlet Management
 16. [Admin Panel] Settings
+
 
 == Change log ==
 [https://vitepos.com/change-log](https://vitepos.com/change-log)

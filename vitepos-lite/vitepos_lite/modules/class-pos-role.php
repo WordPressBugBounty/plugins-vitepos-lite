@@ -427,6 +427,16 @@ class POS_Role extends Vitepos_Module {
 
 		$resources[] = ACL_Resource::get_resource( 'report-menu', 'Report Panel', '16. Report Panel', '' );
 
+		$resources[] = ACL_Resource::get_resource( 'category-menu', 'Product Category Panel', '17. Product Category', '' );
+		$resources[] = ACL_Resource::get_resource( 'category-add', 'Product Category Add', '17. Product Category', '' );
+		$resources[] = ACL_Resource::get_resource( 'category-edit', 'Product Category Edit', '17. Product Category', '' );
+		$resources[] = ACL_Resource::get_resource( 'category-delete', 'Product Category Delete', '17. Product Category', '' );
+
+		$resources[] = ACL_Resource::get_resource( 'attribute-menu', 'Product Attribute Panel', '18. Product Attribute', '' );
+		$resources[] = ACL_Resource::get_resource( 'attribute-add', 'Product Attribute Add', '18. Product Attribute', '' );
+		$resources[] = ACL_Resource::get_resource( 'attribute-edit', 'Product Attribute Edit', '18. Product Attribute', '' );
+		$resources[] = ACL_Resource::get_resource( 'attribute-delete', 'Product Attribute Delete', '18. Product Attribute', '' );
+
 		return $resources;
 	}
 

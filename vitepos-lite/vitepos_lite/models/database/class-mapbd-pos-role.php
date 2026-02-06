@@ -440,7 +440,7 @@ class Mapbd_Pos_Role extends ViteposModelLite {
 			 *
 			 * @since 1.0
 			 */
-			self::$_rolelist = apply_filters( 'elite-wps/acl-roles', self::$_rolelist );
+			self::$_rolelist = vitepos_apply_filters( 'elite-wps/acl-roles', self::$_rolelist );
 		}
 		return self::$_rolelist;
 	}

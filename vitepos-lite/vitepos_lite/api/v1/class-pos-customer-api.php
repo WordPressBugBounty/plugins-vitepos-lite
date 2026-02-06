@@ -64,7 +64,7 @@ class Pos_Customer_Api extends API_Base {
 			case 'create':
 				return current_user_can( 'customer-add' ) || current_user_can( 'customer-edit' );
 			default:
-				POS_Settings::is_pos_user();
+				return POS_Settings::is_pos_user();
 		}
 
 		return parent::set_route_permission( $route );

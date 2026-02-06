@@ -22,6 +22,7 @@ use VitePos_Lite\Libs\Payment_Stripe_Method;
 use vitepos_lite\libs\Payment_Stripe_Terminal_Method;
 use VitePos_Lite\Libs\Payment_Swipe_Method;
 use VitePos_Lite\Libs\Payment_Wallee_Terminal_Method;
+use VitePos_Lite\Libs\Payment_Woo_Methods;
 
 
 /**
@@ -306,6 +307,9 @@ class POS_Payment extends Vitepos_Module {
 		$methods[ $obj->id ] = $obj;
 
 		$obj                 = new Payment_Wallee_Terminal_Method();
+		$methods[ $obj->id ] = $obj;
+
+		$obj                 = new Payment_Woo_Methods();
 		$methods[ $obj->id ] = $obj;
 
 		return $methods;

@@ -631,6 +631,15 @@ if ( ! class_exists( __NAMESPACE__ . '\Client_Language' ) ) {
 			$language['Enabling the toggle button below can incorporate the kitchen procedure, allowing the order to be completed by the chef rather than by the cashier. Additionally, the order status can be displayed on a large screen for easy tracking.']                                                             = $kernel_object->__( 'Enabling the toggle button below can incorporate the kitchen procedure, allowing the order to be completed by the chef rather than by the cashier. Additionally, the order status can be displayed on a large screen for easy tracking.' );
 			$language['Pay first procedure, customers are required to pay for their meal upfront at a designated location, typically at the cashiers counter, before they are seated or served. After paying, the customer is given a receipt or a token, which they can then present to the server to receive their food.'] = $kernel_object->__( 'Pay first procedure, customers are required to pay for their meal upfront at a designated location, typically at the cashiers counter, before they are seated or served. After paying, the customer is given a receipt or a token, which they can then present to the server to receive their food.' );
 
+			$language['GTIN, UPC, EAN, or ISBN'] = $kernel_object->__( 'GTIN, UPC, EAN, or ISBN' );
+			$language['Sync Settings'] = $kernel_object->__( 'Sync Settings' );
+			$language['Resolve Conflict'] = $kernel_object->__( 'Resolve Conflict' );
+			$language['Basic'] = $kernel_object->__( 'Basic' );
+			$language['Show Item Price'] = $kernel_object->__( 'Show Item Price' );
+			$language['Show Full Row Item Name'] = $kernel_object->__( 'Show Full Row Item Name' );
+			$language['Skip unnecessary plugins in Vitepos requests to improve speed and reduce conflicts.'] = $kernel_object->__( 'Skip unnecessary plugins in Vitepos requests to improve speed and reduce conflicts.' );
+			$language['In the traditional procedure, a waiter takes the customers order and sends it to the kitchen. Once the kitchen has prepared the order, the waiter is notified to serve it. After the order has been served, the cashier can process the payment.'] = $kernel_object->__( 'In the traditional procedure, a waiter takes the customers order and sends it to the kitchen. Once the kitchen has prepared the order, the waiter is notified to serve it. After the order has been served, the cashier can process the payment.' );
+
 			self::get_client_extra( $language, $kernel_object );
 
 			return $language;

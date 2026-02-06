@@ -83,7 +83,7 @@ class Pos_Restaurant_Api extends API_Base {
 			case 'order_details':
 				return current_user_can( 'order-details' );
 			default:
-				POS_Settings::is_pos_user();
+				return POS_Settings::is_pos_user();
 		}
 
 		return parent::set_route_permission( $route );

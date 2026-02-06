@@ -225,7 +225,7 @@ class Mapbd_Pos_Role_Access extends ViteposModelLite {
 		 *
 		 * @since 1.0
 		 */
-		$resources = apply_filters( 'apbd-vtpos/acl-resource', $resources );
+		$resources = vitepos_apply_filters( 'apbd-vtpos/acl-resource', $resources );
 
 		return $resources;
 	}
@@ -250,7 +250,7 @@ class Mapbd_Pos_Role_Access extends ViteposModelLite {
 		 *
 		 * @since 1.0
 		 */
-		return apply_filters( 'vite-pos/filter/role-access-list', $roles );
+		return vitepos_apply_filters( 'vite-pos/filter/role-access-list', $roles );
 	}
 
 	/**

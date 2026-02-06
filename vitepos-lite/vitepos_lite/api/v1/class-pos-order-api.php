@@ -68,7 +68,7 @@ class Pos_Order_Api extends API_Base {
 			case 'order_details':
 				return current_user_can( 'order-details' );
 			default:
-				POS_Settings::is_pos_user();
+				return POS_Settings::is_pos_user();
 		}
 
 		return parent::set_route_permission( $route );
@@ -204,7 +204,7 @@ class Pos_Order_Api extends API_Base {
 			 *
 			 * @since 3.0.4
 			 */
-			$is_inclusive_enabled = apply_filters( 'woocommerce_prices_include_tax', get_option( 'woocommerce_prices_include_tax' ) === 'yes' );
+			$is_inclusive_enabled = vitepos_apply_filters( 'woocommerce_prices_include_tax', get_option( 'woocommerce_prices_include_tax' ) === 'yes' );
 			if ( $is_inclusive_enabled ) {
 				$total_amount = $order->get_total();
 
@@ -396,7 +396,7 @@ class Pos_Order_Api extends API_Base {
 				$obj->is_stock      = false;
 				$obj->current_stock = array();
 
-				if ( POS_Settings::is_enable_customer_email() ) {
+				if ( ! empty( $customer_id ) && POS_Settings::is_enable_customer_email() ) {
 					$obj->next = 'SE';
 				}
 				$this->response->set_response( true, 'Order successfully completed', $obj );
@@ -422,7 +422,7 @@ class Pos_Order_Api extends API_Base {
 		 *
 		 * @since 3.0.4
 		 */
-		$is_inclusive_enabled = apply_filters( 'woocommerce_prices_include_tax', get_option( 'woocommerce_prices_include_tax' ) === 'yes' );
+		$is_inclusive_enabled = vitepos_apply_filters( 'woocommerce_prices_include_tax', get_option( 'woocommerce_prices_include_tax' ) === 'yes' );
 		if ( $is_inclusive_enabled ) {
 			$order->add_meta_data( '_vtp_is_inclusive', 'Y' );
 			$order->add_meta_data( '_vtp_c_tax_total', $payload_total_tax );

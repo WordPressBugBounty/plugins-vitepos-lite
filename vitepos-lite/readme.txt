@@ -1,131 +1,149 @@
-=== Vitepos - Point of sale (POS) for WooCommerce ===
+=== Vitepos – Point of Sale (POS) for WooCommerce ===
 Contributors: appsbd
-Author link: https://appsbd.com/
-Tags: pos,pos plugin,woocommerce pos,point of sale,store
+Donate link: https://appsbd.com/
+Author URI: https://appsbd.com/
+Tags: pos, pos plugin, woocommerce pos, point of sale, store
 Requires at least: 5.2
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 3.2.3
+Stable tag: 3.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-
-Vitepos is a point of sale plugin for wordpress, It's build in very advanced technology, so its very fast POS solution for your e-commerce shop.
-
+Fast, modern WooCommerce POS plugin for managing sales, outlets, and cashiers directly in WordPress.
 
 == Description ==
 
-Vitepos is a very fast and reliable point of sale (POS) plugin, Its fully responsive (mobile, tablet, laptop,desktop,large screen). It has been developed very latest technology also followed woocommerce development code standard.
-It as full customizable role management, you can create roles(cashier, manager) and set customizable permission to those roles.
-It has outlet and counter management, You can enable offline,hold cart. Product can be created by pos client (user friendly UI).
-Tax calculation based on outlet location. Also vendor and purchase module included.
-You can customize your invoice design. You can use default wordpress login or Vitepos built in login form. Also you can bind the pos into any page of your wordpress. So it can not be publicly open for all visitors.
-You can use any barcode device on it and if you use in mobile device then you don't need any barcode reader device, it used mobile camera to scan barcode.
-It has also cash drawer management.
+**Vitepos** is a lightning-fast and fully responsive Point of Sale (POS) plugin built for WooCommerce.
+Developed with the latest web technologies and following WooCommerce coding standards, it brings a seamless POS experience to your online or physical store.
 
-**Intro Video**
+You can manage outlets, counters, customers, invoices, roles, and much more — all from one place.
+Vitepos supports barcode scanning, offline order processing, split payments, and complete role-based access control.
+
+### Key Highlights
+
+– 👨‍💼 **Role Management:** Create roles (Cashier, Manager, etc.) and assign custom permissions.
+– 🏪 **Outlets & Counters:** Manage multiple outlets and assign cashiers per counter.
+– 🧾 **Custom Invoices:** Customize invoice layout and design as you wish.
+– 💳 **Flexible Login:** Use WordPress login or Vitepos built-in login.
+– 📦 **Add Products from POS:** Quickly create and manage products directly from the POS.
+– 🏷️ **Barcode Support:** Use scanners or mobile camera for barcode scanning.
+– 💰 **Cash Drawer & Hold Cart:** Manage cash drawers and temporarily hold customer carts.
+– 🌐 **Offline Mode:** Continue selling even without internet — data syncs automatically.
+– 💬 **Multi-language Support:** Works with Loco Translate and supports multiple languages.
+
+**Intro Video:**
 [youtube https://www.youtube.com/watch?v=ZgSVNgA7ybY&list=PLYrwO-EqSMNuCHzUqp4Znan9mqa8sg-8V&index=1]
 
-**Quick Install**
+**Quick Install:**
 [youtube https://www.youtube.com/watch?v=5rgzHad-Vnc&list=PLYrwO-EqSMNuCHzUqp4Znan9mqa8sg-8V&index=2]
 
-**Full Playlist**
+**Full Playlist:**
 [https://www.youtube.com/playlist?list=PLYrwO-EqSMNuCHzUqp4Znan9mqa8sg-8V](https://www.youtube.com/playlist?list=PLYrwO-EqSMNuCHzUqp4Znan9mqa8sg-8V)
 
+== Features ==
 
-== Vitepos Features ==
+**Customer Management:** Add or search customers from the POS panel.
 
-**Customer Management: ** Manage all customers properties. You can add/search customers from the cart panel or checkout panel. All checkout options are supported.
-**Based on REST API:** Vitepos is a single-page application that performs every process in a super quick fashion. The unique search option lets you find desired products and customers as fast as possible.
-**Quick Add Products: ** New product that’s not in your system yet? Quick Add it to the POS with variations and manage its properties easily.
-**Barcode Scan & Search:** Scan barcode using your mobile camera or if you want to use barcode scanner then it also allowed Vitepos. Search your product using the scanner and manual search all are allowed in the Vitepos.
-**Dynamically Inventory Update:** The POS checks inventory at multiple key stages to make sure the item is in-stock and won't be oversold by customers shopping simultaneously.
-**No Expensive Hardware:** No expensive hardware is needed to operate Vitepos. Save money - use your current devices! The POS can be loaded onto any computer browser or mobile device.
-**Print Receipts & Invoices:** Vitepos provides you with automatic & manual printing in a branded receipt format. Setup multiple print stations for even more advanced options. The money receipt and invoices will really attract your customers. It is well descriptive and understandable.
-**Order Notes & Accept Discounts and fees:** Your cashier can make easy discounts or fees from the cart and can put out order notes about the order. It is nice and easy to print with the receipt in the checkout.
-**Outlet & Counter Management:** Unlimited outlets & counter management with Vitepos - you could have different cashiers/agents assigned to each, or manage them all together.
-**Customer in the queue:** Vitepos has a customer queuing system where if any customer is taking time to make payments then you can send his/her cart details on hold options without losing data.
-**Secured ACL - Access Control Level:** It has a unique ability to share user access levels or the power of your agents. Which is much better secured.
-**Monthly Account Data:** Your account is in safe hands because Vitepos will take care of your store easily. At the end of the month, you can monitor product counts nicely and you will be able to see the amount of all the calculations through which you can understand your monthly expenses.
-**User Management: ** Add & edit users with the specific role, exp. Cashier, Manager, Store-Keeper, etc.
-**Offline Data Store:** Optimized and faster, capable of storing data locally and running without an internet connection. When the Internet returns, it can store data in the cloud again without any hassle or backup.
-**Easy UI & UX:** Vitepos uses the most elegant and material design in its user interface. All the data is syncing in the blink of an eye. Any customer will fall in love with it’s attractive, user-friendly and nice design.
-**Vendor Manage: ** Vitepos have the vandor manage feature. When you add stock you can select the vendor also.
-**Cash Drawer Management: ** You can see the current cash drawer balance information. If you want you can also close the cash drawer.
-**Barcode Generation: ** You can generate barcodes and print barcodes from our barcode module.
-**Shortcuts: ** For making your work more easter and faster for that Vitepos add some shortcuts. Using those shortcuts you can work so fast.
-**Tax calculation based on outlet location: ** In Vitepos you can add tax based on your outlet location. For these features you don’t have to add tax every time when you order.
-**Split Payment (Pro): ** At a time you can pay by cash, cart and other methoeds as customers want.
-**Color Skin (Pro):** There are multiple colors in Vitepos. You can choose color as you want.
-**Offline order (Pro): ** You can process order, if your network has been disconnected.
-**Multi Language support: ** It has multi languages supported also you can use loco translator for this plugin.
+**Quick Add Products:** Instantly create new products with variations.
+
+**REST API Based:** Built as a single-page application for lightning speed.
+
+**Barcode Scanning:** Scan products using a barcode device or your mobile camera.
+
+**Dynamic Inventory Sync:** Ensures no overselling by updating inventory in real-time.
+
+**Print Receipts & Invoices:** Auto or manual print with custom branding.
+
+**Discounts, Fees & Notes:** Apply discounts and add notes at checkout.
+
+**Offline Mode:** Continue operating POS even when the internet disconnects.
+
+**Split Payment (Pro):** Accept multiple payment methods in one order.
+
+**Outlet & Counter Management:** Unlimited outlets and counters.
+
+**Cash Drawer:** Manage drawer open/close and balances.
+
+**Vendor & Purchase Module:** Manage vendors and record purchases.
+
+**Tax Calculation:** Tax applied based on outlet location.
+
+**Barcode Generator:** Generate and print barcodes.
+
+**User Access Control:** Secure ACL-based permission management.
+
+**Shortcuts:** Keyboard shortcuts for faster workflow.
+
+**Multi-Color Themes (Pro):** Choose a color skin that fits your brand.
+
+**Offline Order (Pro):** Process offline orders easily.
+
+**Responsive UI:** Works perfectly on mobile, tablet, and desktop.
 
 == JavaScript Source ==
-https://github.com/appsbd/vitepos-js
+
+Vitepos frontend (Vue.js based) source code is available here:
+[https://github.com/appsbd/vitepos-js](https://github.com/appsbd/vitepos-js)
 
 == External Service Disclosure ==
 
-This plugin connects to the following external services:
+**This plugin connects to the following external services:**
 
-Service: addon.appsbd.com
-Purpose: To fetch data about available plugin addons and related functionalities.
+**Service:** addon.appsbd.com
+**Purpose:** Fetches data about available plugin addons and related functionalities.
 
-Service: Google reCAPTCHA
-Purpose: Used for spam protection and user verification in the POS frontend.
-The reCAPTCHA API is loaded from https://www.google.com/recaptcha/api.js and may use cookies or other
-tracking mechanisms as per Google's Privacy Policy.
+**Service:** Google reCAPTCHA
+**Purpose:** Used for spam protection and user verification in the POS frontend.
+The reCAPTCHA API is loaded from https://www.google.com/recaptcha/api.js and may use cookies or tracking as per Google’s Privacy Policy.
 
 == Installation ==
 
-1. Install that plugin into your WordPress application
-
-2. Then active the plugin
-
-3. You will get a menu of VitPos
-
-== Upgrade Notice ==
-
-### 1.0 ###
-
-* No notice right now
+1. Upload and install the **Vitepos** plugin through your WordPress admin dashboard.
+2. Activate the plugin.
+3. A new **Vitepos** menu will appear in your dashboard.
+4. Create an outlet and counter, then start selling right away.
 
 == Frequently Asked Questions ==
 
-= How hard its installation and configuration?=
+= How hard is it to install and configure? =
+Super easy! Just install the plugin, add your outlet and counter, and you’re ready to go.
 
-Very easy steps, just install the plugin, then add outlet and counter and use pos. The admin settings page is so user friendly.
+= Can I see order details in WooCommerce? =
+Yes, all POS orders are stored in WooCommerce with full details.
 
-= Can I get order details with full information in WooCommerce? =
+= Does it slow down my WordPress site? =
+Not at all. It’s built using Vue.js, a modern SPA framework, ensuring top performance.
 
-Yes. you will get full order details in WooCommerce also in pos panel.
-
-Will there be any performance issues for WordPress?
-
-Not at all! We were cautious about it from the start. We developed the plugin with VueJS.
-
-= How can I report security bugs? =
-You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.]( https://patchstack.com/database/vdp/9e5fbdf8-f5be-413b-aec4-0ff707bd59db )
+= How can I report security issues? =
+You can report vulnerabilities through the Patchstack Vulnerability Disclosure Program:
+[https://patchstack.com/database/vdp/9e5fbdf8-f5be-413b-aec4-0ff707bd59db](https://patchstack.com/database/vdp/9e5fbdf8-f5be-413b-aec4-0ff707bd59db)
 
 == Screenshots ==
 
-01. Fully Responsive
-02. Point of sale panel
-03. Checkout page with split payment
-04. After Process order
-05. Cash Drawer Panel
-06. User Profile
-07. Order List
-08. Add Product Panel
-09. Barcode Generator
+1. Fully Responsive Interface
+2. POS Panel
+3. Checkout Page with Split Payment
+4. Processed Order View
+5. Cash Drawer Panel
+6. User Profile
+7. Order List
+8. Add Product Panel
+9. Barcode Generator
 10. Add Customer
-11. Manage Purchase
-12. Manage Vendor
-13. [Admin Panel] Dashboard
-14. [Admin Panel] Role Management
-15. [Admin Panel] Outlet Management
-16. [Admin Panel] Settings
+11. Manage Purchases
+12. Manage Vendors
+13. Dashboard (Admin)
+14. Role Management (Admin)
+15. Outlet Management (Admin)
+16. Settings Panel
 
+== Upgrade Notice ==
 
-== Change log ==
+= 1.0 =
+No upgrade notices available yet.
+
+== Changelog ==
+
+View the full changelog here:
 [https://vitepos.com/change-log](https://vitepos.com/change-log)
-

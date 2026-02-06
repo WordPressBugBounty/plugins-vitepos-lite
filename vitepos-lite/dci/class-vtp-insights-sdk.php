@@ -342,8 +342,8 @@ if ( ! class_exists( 'Vtp_Insights_SDK' ) ) {
 					add_action(
 						'in_admin_header',
 						function () use ( $dci_data ) {
-							if ( function_exists( 'vtp_dci_deactivate_feedback' ) ) {
-								vtp_dci_deactivate_feedback( $dci_data );
+							if ( function_exists( 'vitepos_dci_deactivate_feedback' ) ) {
+								vitepos_dci_deactivate_feedback( $dci_data );
 							}
 						},
 						99999

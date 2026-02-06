@@ -68,7 +68,7 @@ class Pos_Purchase_Api extends API_Base {
 			case 'updated-price-list':
 				return current_user_can( 'updated-price-list' );
 			default:
-				POS_Settings::is_pos_user();
+				return POS_Settings::is_pos_user();
 		}
 
 		return parent::set_route_permission( $route );
@@ -163,7 +163,7 @@ class Pos_Purchase_Api extends API_Base {
 			if ( empty( $purchase->purchase_cost ) ) {
 				$purchase->purchase_cost = 0.0;
 			}
-			update_post_meta( $product->get_id(), '_vt_purchase_cost', $purchase->purchase_cost );
+			update_post_meta( $product->get_id(), '_cogs_total_value', $purchase->purchase_cost );
 			if ( empty( $purchase->prev_purchase_cost ) ) {
 				$purchase->prev_purchase_cost = 0.0;
 			}

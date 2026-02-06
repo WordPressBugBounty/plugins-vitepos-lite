@@ -134,6 +134,12 @@ class Invoice_Settings {
 	 */
 	public $counter_operator_label;
 	/**
+	 * Its property show_counter_info
+	 *
+	 * @var bool $show_current_status
+	 */
+	public $show_current_status = false;
+	/**
 	 * Its property show_counter_no
 	 *
 	 * @var bool $show_counter_no

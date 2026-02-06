@@ -221,7 +221,7 @@ class WC_Data {
 		 *
 		 * @since 1.0
 		 */
-		return array( 'product' => apply_filters( 'woocommerce_api_product_response', $product_data, $product, $fields, $this ) );
+		return array( 'product' => vitepos_apply_filters( 'woocommerce_api_product_response', $product_data, $product, $fields, $this ) );
 	}
 	/**
 	 * Get grouped products data
@@ -406,7 +406,7 @@ class WC_Data {
 		 *
 		 * @since 1.0
 		 */
-		$args = apply_filters( 'woocommerce_api_query_args', $args, $request_args );
+		$args = vitepos_apply_filters( 'woocommerce_api_query_args', $args, $request_args );
 
 		return array_merge( $base_args, $args );
 	}
@@ -475,7 +475,7 @@ class WC_Data {
 			 *
 			 * @since 1.0
 			 */
-			'short_description'  => apply_filters( 'woocommerce_short_description', $product->get_short_description() ),
+			'short_description'  => vitepos_apply_filters( 'woocommerce_short_description', $product->get_short_description() ),
 			'reviews_allowed'    => $product->get_reviews_allowed(),
 			'average_rating'     => wc_format_decimal( $product->get_average_rating(), 2 ),
 			'rating_count'       => $product->get_rating_count(),

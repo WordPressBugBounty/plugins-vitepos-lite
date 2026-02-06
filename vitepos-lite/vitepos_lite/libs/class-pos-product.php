@@ -670,6 +670,12 @@ class POS_Product {
 			return $product->get_meta( '_vt_barcode' );
 		} elseif ( 'SKU' == $barcode_type ) {
 			return $product->get_sku();
+		} elseif ( 'GUI' == $barcode_type ) {
+			if ( method_exists( $product, 'get_global_unique_id' ) ) {
+				return $product->get_global_unique_id();
+			} else {
+				return $product->get_sku() ? $product->get_sku() : $product->get_id();
+			}
 		} else {
 			return $product->get_id();
 		}
@@ -687,7 +693,7 @@ class POS_Product {
 			 *
 			 * @since 3.0.4
 			 */
-			static::$_is_inclusive = apply_filters( 'woocommerce_prices_include_tax', get_option( 'woocommerce_prices_include_tax' ) === 'yes' );
+			static::$_is_inclusive = vitepos_apply_filters( 'woocommerce_prices_include_tax', get_option( 'woocommerce_prices_include_tax' ) === 'yes' );
 		}
 		return static::$_is_inclusive;
 	}
@@ -743,7 +749,7 @@ class POS_Product {
 		 *
 		 * @since 1.0
 		 */
-		return apply_filters( 'woocommerce_format_sale_price', $price, $regular_price, $sale_price );
+		return vitepos_apply_filters( 'woocommerce_format_sale_price', $price, $regular_price, $sale_price );
 	}
 
 	/**
@@ -905,6 +911,11 @@ class POS_Product {
 
 		$pos_product->attributes = self::get_attributes( $product );
 		$pos_product->barcode    = (string) self::get_barcode_of_product( $product, $parent_product );
+		if ( method_exists( $product, 'get_global_unique_id' ) ) {
+			$pos_product->global_unique_id = $product->get_global_unique_id();
+		} else {
+			$pos_product->global_unique_id = $product->get_sku() ? $product->get_sku() : $product->get_id();
+		}
 
 		if ( $parent_product instanceof \WC_Product ) {
 			$pos_product->parent_product = self::get_product_data( $parent_product );
@@ -918,8 +929,10 @@ class POS_Product {
 		$pos_product->slug           = $product->get_slug();
 		$pos_product->sku            = $product->get_sku();
 		$pos_product->purchasable    = 'Y';
-		$pos_product->purchase_cost  = $product->meta_exists( '_vt_purchase_cost' ) ? $product->get_meta( '_vt_purchase_cost' ) : 0;
-
+		$pos_product->purchase_cost      = get_post_meta( $product->get_id(), '_cogs_total_value', true ) ?? 0;
+		if ( empty( $pos_product->purchase_cost ) ) {
+			$pos_product->purchase_cost = 0.00;
+		}
 		if ( $product->meta_exists( '_vt_is_favorite' ) ) {
 			$pos_product->is_favorite = $product->get_meta( '_vt_is_favorite' );
 		} else {
@@ -983,7 +996,10 @@ class POS_Product {
 		$pos_product->slug               = $product->get_slug();
 		$pos_product->sku                = $product->get_sku();
 		$pos_product->purchasable        = 'Y';
-		$pos_product->purchase_cost      = $product->meta_exists( '_vt_purchase_cost' ) ? $product->get_meta( '_vt_purchase_cost' ) : '0.00';
+		$pos_product->purchase_cost      = get_post_meta( $product->get_id(), '_cogs_total_value', true ) ?? 0;
+		if ( empty( $pos_product->purchase_cost ) ) {
+			$pos_product->purchase_cost = 0.00;
+		}
 		$pos_product->prev_purchase_cost = $product->meta_exists( '_vt_prev_purchase_price' ) ? $product->get_meta( '_vt_prev_purchase_price' ) : '0.00';
 
 		return $pos_product;
@@ -1220,7 +1236,7 @@ class POS_Product {
 		 *
 		 * @since 1.0
 		 */
-		$args = apply_filters( 'woocommerce_api_query_args', $args, $request_args );
+		$args = vitepos_apply_filters( 'woocommerce_api_query_args', $args, $request_args );
 
 		return array_merge( $base_args, $args );
 	}
@@ -1289,7 +1305,10 @@ class POS_Product {
 			$variation_obj->image               = self::get_wc_product_image( $variation, 'woocommerce_thumbnail' );
 			$variation_obj->attributes          = self::get_attributes( $variation );
 			$variation_obj->barcode             = (string) self::get_barcode_of_product( $variation );
-			$variation_obj->purchase_cost       = $variation->meta_exists( '_vt_purchase_cost' ) ? $variation->get_meta( '_vt_purchase_cost' ) : '0.0';
+			$variation_obj->purchase_cost      = get_post_meta( $variation->get_id(), '_cogs_total_value', true ) ?? 0;
+			if ( empty( $variation_obj->purchase_cost ) ) {
+				$variation_obj->purchase_cost = 0.00;
+			}
 			$variation_obj->is_parent_dimension = $variation->get_meta( 'is_parent_dimension' );
 			if ( $variation_obj->is_parent_dimension ) {
 				$variation_obj->is_parent_dimension = true;

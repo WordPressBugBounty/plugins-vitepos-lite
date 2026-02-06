@@ -84,6 +84,12 @@ class POS_Customer extends BaseModel {
 	 */
 	public $postcode;
 	/**
+	 * Its property postcode
+	 *
+	 * @var string Its string.
+	 */
+	public $zip_code;
+	/**
 	 * Its property country
 	 *
 	 * @var string Its string.
@@ -252,6 +258,7 @@ class POS_Customer extends BaseModel {
 		if ( '' == $users_obj->outlet_id ) {
 			$users_obj->outlet_id = array();
 		}
+		$users_obj->user_image  = ! empty( $user ) ? wp_get_attachment_image_url( get_user_meta( $user->ID, '_vtpos_user_img', true ) ) : '';
 		$users_obj->custom_field = new \stdClass();
 		return $users_obj;
 	}
@@ -297,6 +304,7 @@ class POS_Customer extends BaseModel {
 		$customer->set_billing_postcode( $this->postcode );
 		$customer->set_billing_state( $this->state );
 		$customer->set_billing_country( $this->country );
+
 		$user_id = $customer->save();
 		if ( empty( $this->id ) && ! empty( $user_id ) ) {
 			$this->id = $user_id;
@@ -440,6 +448,14 @@ class POS_Customer extends BaseModel {
 		add_user_meta( $user_id, 'billing_postcode', $this->postcode );
 		add_user_meta( $user_id, 'designation', $this->designation );
 		add_user_meta( $user_id, 'force_pw_change', 'Y' );
+		if ( $user_id ) {
+			/**
+			 * Its for product feature update
+			 *
+			 * @since 3.2.3
+			 */
+			do_action( 'apbd-vtpos/action/save-user-image', $user_id );
+		}
 
 		if ( empty( $this->id ) && ! empty( $user_id ) ) {
 			$this->id = $user_id;
@@ -532,6 +548,14 @@ class POS_Customer extends BaseModel {
 
 		if ( empty( $this->id ) && ! empty( $user_id ) ) {
 			$this->id = $user_id;
+		}
+		if ( $user_id ) {
+			/**
+			 * Its for product feature update
+			 *
+			 * @since 3.2.3
+			 */
+			do_action( 'apbd-vtpos/action/save-user-image', $user_id );
 		}
 
 		return ! empty( $user_id );

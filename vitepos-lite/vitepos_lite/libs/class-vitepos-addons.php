@@ -139,7 +139,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Vitepos_Addons' ) ) {
 				$data_skip = true;
 			}
 
-			vtp_dci_dynamic_init(
+			vitepos_dci_dynamic_init(
 				array(
 					'sdk_version'          => '1.2.1',
 					'product_id'           => 1,
@@ -288,7 +288,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Vitepos_Addons' ) ) {
 			 *
 			 * @since 3.0
 			 */
-			$b = apply_filters( 'appsbd/filter/clean-bearer', $b, 'apbdaddonenc_' . $this->pid );
+			$b = vitepos_apply_filters( 'appsbd/filter/clean-bearer', $b, 'apbdaddonenc_' . $this->pid );
 		}
 
 		/**

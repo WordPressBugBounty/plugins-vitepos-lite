@@ -404,6 +404,7 @@ class Pos_User_Api extends API_Base {
 		$users_obj->postcode    = get_user_meta( $user->ID, 'billing_postcode', true );
 		$users_obj->designation = get_user_meta( $user->ID, 'designation', true );
 		$users_obj->outlet_id   = get_user_meta( $user->ID, 'outlet_id', true );
+		$users_obj->user_image  = ! empty( $user ) ? wp_get_attachment_image_url( get_user_meta( $user->ID, '_vtpos_user_img', true ) ) : '';
 		$users_obj->role        = array_shift( $user->roles );
 		if ( '' == $users_obj->outlet_id ) {
 			$users_obj->outlet_id = array();
@@ -526,7 +527,7 @@ class Pos_User_Api extends API_Base {
 		$existing_drawer              = Mapbd_Pos_Cash_Drawer::get_by_counter( $outlet_place->outlet, $outlet_place->counter, $this->get_current_user_id() );
 		$outlet_place->cd_balance     = ! empty( $existing_drawer->closing_balance ) ? $existing_drawer->closing_balance : 0;
 		$outlet_place->cash_drawer_id = ! empty( $existing_drawer->id ) ? $existing_drawer->id : 0;
-		$outlet_place->is_submitted   = $this->payload['is_submitted'];
+		$outlet_place->is_submitted   = 0 != $this->payload['is_submitted'];
 		if ( ! empty( $this->payload['is_new'] ) ) {
 
 			$outlet_place->cd_balance = $this->payload['cd_balance'];

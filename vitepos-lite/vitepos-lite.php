@@ -3,7 +3,7 @@
  * Plugin Name: Vitepos – Point of Sale (POS) for WooCommerce
  * Plugin URI: http://appsbd.com
  * Description: It's a Point of Sale plugin for Woocommerce, so fast and easy.
- * Version: 3.3.2
+ * Version: 3.3.3
  * Author: appsbd
  * Author URI: http://www.appsbd.com
  * Text Domain: vitepos-lite
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
-require_once 'vendor/autoload.php';
+require_once __DIR__ .'/vendor/autoload.php';
 
 use VitePos_Lite\Core\VitePosLite;
 

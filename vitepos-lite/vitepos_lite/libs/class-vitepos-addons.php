@@ -120,13 +120,13 @@ if ( ! class_exists( __NAMESPACE__ . '\Vitepos_Addons' ) ) {
 				'pos_link'    => '',
 				'pos_version' => $this->loader->plugin_version,
 			);
-			if ( class_exists( '\VitePos_Lite\Modules\POS_Settings' ) ) {
+			if ( class_exists( '\VitePos_Lite\Modules\POS_Settings' ) && \VitePos_Lite\Modules\POS_Settings::get_module_instance() ) {
 				$custom_data = array(
 					'pos_mode'    => \VitePos_Lite\Modules\POS_Settings::get_pos_mode(),
 					'pos_link'    => \VitePos_Lite\Modules\POS_Settings::get_module_instance()->get_pos_link(),
 					'pos_version' => $this->loader->plugin_version,
 				);
-			} elseif ( class_exists( '\VitePos\Modules\POS_Settings' ) ) {
+			} elseif ( class_exists( '\VitePos\Modules\POS_Settings' ) && \VitePos\Modules\POS_Settings::get_module_instance() ) {
 
 				$custom_data = array(
 					'pos_mode'    => \VitePos\Modules\POS_Settings::get_pos_mode(),

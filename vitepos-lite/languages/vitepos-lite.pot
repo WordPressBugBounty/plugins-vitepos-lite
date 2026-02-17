@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: ;__;_e;_ee;___;add_error;add_info;SetTitle;AddInfo;AddError;esc_html_e;SetSubtitle;___;AddModel;AddModelNonSearchable\n"
 "X-Poedit-Flags-xgettext: --no-location\n"
@@ -163,6 +163,12 @@ msgstr ""
 msgid "E004"
 msgstr ""
 
+msgid "Nonce error"
+msgstr ""
+
+msgid "User privilege error"
+msgstr ""
+
 msgid "No change for update"
 msgstr ""
 
@@ -230,6 +236,60 @@ msgid "Invalid request"
 msgstr ""
 
 msgid "invalid requiest"
+msgstr ""
+
+msgid "Category name is required"
+msgstr ""
+
+msgid "A category with the same name already exists with the selected parent."
+msgstr ""
+
+msgid "Category created successfully"
+msgstr ""
+
+msgid "Failed to add"
+msgstr ""
+
+msgid "Invalid id"
+msgstr ""
+
+msgid "Category updated successfully"
+msgstr ""
+
+msgid "Failed to update"
+msgstr ""
+
+msgid "Category deleted successfully"
+msgstr ""
+
+msgid "Failed to delete"
+msgstr ""
+
+msgid "Attribute created successfully "
+msgstr ""
+
+msgid "Name of the attribute is already exist"
+msgstr ""
+
+msgid "Attribute name is missing"
+msgstr ""
+
+msgid "No attribute found with this id"
+msgstr ""
+
+msgid "Attribute updated successfully"
+msgstr ""
+
+msgid "Invalid attribute to update"
+msgstr ""
+
+msgid "Invalid attribute id"
+msgstr ""
+
+msgid "Attribute deleted successfully"
+msgstr ""
+
+msgid "Attribute not found or could not be deleted"
 msgstr ""
 
 msgid "Stock not updated"
@@ -304,16 +364,13 @@ msgstr ""
 msgid "No vendor found with this param"
 msgstr ""
 
-msgid "Nonce error"
-msgstr ""
-
-msgid "User privilege error"
-msgstr ""
-
 msgid "Missing dependency"
 msgstr ""
 
 msgid "It requires woocommerce, please install woocommerce first"
+msgstr ""
+
+msgid "Uploaded File type not allowed"
 msgstr ""
 
 msgid "Counter Name"
@@ -1903,6 +1960,102 @@ msgstr ""
 msgid "Custom Payment Method lets you create personalized payment options with a name, icon, and optional input fields for added flexibility."
 msgstr ""
 
+msgid "Enable Order Total Rounding"
+msgstr ""
+
+msgid "Enabling this feature rounds the fractional part of the total amount to the nearest predefined value for easier cash handling."
+msgstr ""
+
+msgid "Online and Offline sale"
+msgstr ""
+
+msgid "Hold cart"
+msgstr ""
+
+msgid "Customer display"
+msgstr ""
+
+msgid "Order Refund(Full/Partial)"
+msgstr ""
+
+msgid "Stock management"
+msgstr ""
+
+msgid "Stock transfer(outlet wise)"
+msgstr ""
+
+msgid "Barcode customization"
+msgstr ""
+
+msgid "Price Update"
+msgstr ""
+
+msgid "Traditional / Pay first mode"
+msgstr ""
+
+msgid "Waiter panel"
+msgstr ""
+
+msgid "Kitchen panel"
+msgstr ""
+
+msgid "Cashier panel"
+msgstr ""
+
+msgid "Addon Panel"
+msgstr ""
+
+msgid "Table Panel"
+msgstr ""
+
+msgid "Stripe payment"
+msgstr ""
+
+msgid "Split payment"
+msgstr ""
+
+msgid "Customize payment"
+msgstr ""
+
+msgid "Grocery mode"
+msgstr ""
+
+msgid "Restaurant mode"
+msgstr ""
+
+msgid "Payment and Tax"
+msgstr ""
+
+msgid "Pro Version Details"
+msgstr ""
+
+msgid "GTIN, UPC, EAN, or ISBN"
+msgstr ""
+
+msgid "Sync Settings"
+msgstr ""
+
+msgid "Resolve Conflict"
+msgstr ""
+
+msgid "Basic"
+msgstr ""
+
+msgid "Show Item Price"
+msgstr ""
+
+msgid "Show Full Row Item Name"
+msgstr ""
+
+msgid "Skip unnecessary plugins in Vitepos requests to improve speed and reduce conflicts."
+msgstr ""
+
+msgid "Enable Drawer Previous Amount"
+msgstr ""
+
+msgid "Enable this to allow entering the previous drawer amount during both drawer opening and closing."
+msgstr ""
+
 msgid "Download PDF"
 msgstr ""
 
@@ -2623,9 +2776,6 @@ msgstr ""
 msgid "Want You like to do with current cart ?"
 msgstr ""
 
-msgid "Hold cart"
-msgstr ""
-
 msgid "Clear Cart"
 msgstr ""
 
@@ -3029,9 +3179,6 @@ msgid "Add items to add fee"
 msgstr ""
 
 msgid "Role wise discount manage"
-msgstr ""
-
-msgid "Table Panel"
 msgstr ""
 
 msgid "Loading Table Details..."
@@ -4096,12 +4243,6 @@ msgstr ""
 msgid "Access control"
 msgstr ""
 
-msgid "Online and Offline sale"
-msgstr ""
-
-msgid "Customer display"
-msgstr ""
-
 msgid "Color customization"
 msgstr ""
 
@@ -4109,54 +4250,6 @@ msgid "Product manage"
 msgstr ""
 
 msgid "Barcode on invoice"
-msgstr ""
-
-msgid "Order Refund(Full/Partial)"
-msgstr ""
-
-msgid "Grocery mode"
-msgstr ""
-
-msgid "Stock management"
-msgstr ""
-
-msgid "Stock transfer(outlet wise)"
-msgstr ""
-
-msgid "Barcode customization"
-msgstr ""
-
-msgid "Price Update"
-msgstr ""
-
-msgid "Traditional / Pay first mode"
-msgstr ""
-
-msgid "Waiter panel"
-msgstr ""
-
-msgid "Kitchen panel"
-msgstr ""
-
-msgid "Cashier panel"
-msgstr ""
-
-msgid "Addon Panel"
-msgstr ""
-
-msgid "Stripe payment"
-msgstr ""
-
-msgid "Split payment"
-msgstr ""
-
-msgid "Customize payment"
-msgstr ""
-
-msgid "Restaurant mode"
-msgstr ""
-
-msgid "Payment and Tax"
 msgstr ""
 
 msgid "Add product requires pro version, you need to upgrade to pro version for use this feature."
@@ -4406,6 +4499,15 @@ msgstr ""
 msgid "Plugin not found"
 msgstr ""
 
+msgid "Success "
+msgstr ""
+
+msgid "Process failed"
+msgstr ""
+
+msgid "Inactivate plugin"
+msgstr ""
+
 msgid "Custom Field List"
 msgstr ""
 
@@ -4463,9 +4565,6 @@ msgid "Delete failed try again"
 msgstr ""
 
 msgid "Update failed try again"
-msgstr ""
-
-msgid "Failed to update"
 msgstr ""
 
 msgid "Successfully refreshed"

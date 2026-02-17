@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VitePOS\n"
 "POT-Creation-Date: 2024-10-24 04:54+0000\n"
-"PO-Revision-Date: 2025-06-04 06:01+0000\n"
+"PO-Revision-Date: 2026-01-06 10:34+0000\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.3.6"
+"X-Loco-Version: 2.8.0; wp-6.9; php-8.3.6"
 
 #, php-format
 msgid " %s are required"
@@ -97,6 +97,9 @@ msgstr "(商品数: %{totalItem}、数量: %{totalQty})"
 
 msgid "[Coming Soon]"
 msgstr "[近日公開]"
+
+msgid "A category with the same name already exists with the selected parent."
+msgstr "選択された親カテゴリですでに同じ名前のカテゴリが存在します。"
 
 msgid "About"
 msgstr "について"
@@ -487,6 +490,21 @@ msgstr "キャンセルリクエストを送信しますか？"
 msgid "Are you sure?"
 msgstr "よろしいですか？"
 
+msgid "Attribute created successfully "
+msgstr "属性が正常に作成されました"
+
+msgid "Attribute deleted successfully"
+msgstr "属性が正常に削除されました"
+
+msgid "Attribute name is missing"
+msgstr "属性名が欠落しています"
+
+msgid "Attribute not found or could not be deleted"
+msgstr "属性が見つからないか、削除できませんでした"
+
+msgid "Attribute updated successfully"
+msgstr "属性が正常に更新されました"
+
 msgid "Attributes List"
 msgstr "属性リスト"
 
@@ -537,6 +555,9 @@ msgstr "バーコード幅"
 
 msgid "Based on outlet order(s)"
 msgstr "店舗注文に基づいて"
+
+msgid "Basic"
+msgstr "基本"
 
 msgid "Basic Help"
 msgstr "基本ヘルプ"
@@ -658,8 +679,20 @@ msgstr "レジ係パネル"
 msgid "Category"
 msgstr "カテゴリー"
 
+msgid "Category created successfully"
+msgstr "カテゴリが正常に作成されました"
+
+msgid "Category deleted successfully"
+msgstr "カテゴリが正常に削除されました"
+
 msgid "Category Loading"
 msgstr "カテゴリ読み込み中"
+
+msgid "Category name is required"
+msgstr "カテゴリ名は必須です"
+
+msgid "Category updated successfully"
+msgstr "カテゴリが正常に更新されました"
 
 msgid "Change"
 msgstr "変更"
@@ -1361,8 +1394,14 @@ msgstr "%{brand} 支払いを有効にする"
 msgid "Enable %{brand} Payment support in pro version only."
 msgstr "%{brand} 支払いサポートはプロ バージョンでのみ有効になります。"
 
+msgid "Enable Drawer Previous Amount"
+msgstr "前回の引き出し金額を有効にする"
+
 msgid "Enable full stock management"
 msgstr "在庫管理を有効にする"
+
+msgid "Enable Order Total Rounding"
+msgstr "注文合計の端数処理を有効にする"
 
 msgid "Enable Other Method"
 msgstr "その他の方法を有効にする"
@@ -1384,6 +1423,11 @@ msgstr "Stripe Terminal Paymentのサポートはプロ版でのみ有効化で�
 
 msgid "Enable Swipe Payment"
 msgstr "スワイプ決済を有効にする"
+
+msgid ""
+"Enable this to allow entering the previous drawer amount during both drawer "
+"opening and closing."
+msgstr "これを有効にすると、引き出しの開始および終了時に前回の引き出し金額を入力できるようになります。"
 
 msgid "Enable Token No"
 msgstr "トークン番号を有効にする"
@@ -1418,6 +1462,11 @@ msgid ""
 "tracking."
 msgstr ""
 "トグルボタンを有効にすると、以下のキッチン手順を組み込むことができ、注文をレジ係ではなくシェフが完了させることができます。さらに、注文ステータスを大型画面に表示して、簡単に追跡できます。"
+
+msgid ""
+"Enabling this feature rounds the fractional part of the total amount to the "
+"nearest predefined value for easier cash handling."
+msgstr "この機能を有効にすると、合計金額の小数部分が事前に定義された値に丸められ、現金処理が簡単になります。"
 
 msgid "Enabling this feature, will enable RTL mode on POS."
 msgstr "この機能を有効にすると、POSでRTLモードが有効になります。"
@@ -1481,6 +1530,12 @@ msgstr "例 赤|青|緑"
 
 msgid "Failed"
 msgstr "失敗"
+
+msgid "Failed to add"
+msgstr "追加に失敗しました"
+
+msgid "Failed to delete"
+msgstr "削除に失敗しました"
 
 msgid "Failed to reset try again"
 msgstr "リセットに失敗しました。再度お試しください"
@@ -1640,6 +1695,9 @@ msgstr "食料品店"
 msgid "Grocery mode"
 msgstr "食料品モード"
 
+msgid "GTIN, UPC, EAN, or ISBN"
+msgstr "GTIN、UPC、EAN、またはISBN"
+
 msgid "Half Field"
 msgstr "ハーフフィールド"
 
@@ -1776,6 +1834,9 @@ msgstr ""
 msgid "In-stock"
 msgstr "在庫あり"
 
+msgid "Inactivate plugin"
+msgstr "プラグインを無効化する"
+
 msgid "Inactive"
 msgstr "無効"
 
@@ -1790,6 +1851,15 @@ msgstr "インストール"
 
 msgid "Installed"
 msgstr "インストール済み"
+
+msgid "Invalid attribute id"
+msgstr "無効な属性ID"
+
+msgid "Invalid attribute to update"
+msgstr "更新する属性が無効です"
+
+msgid "Invalid id"
+msgstr "無効なID"
 
 msgid "Invalid login information"
 msgstr "無効なログイン情報"
@@ -2207,6 +2277,9 @@ msgstr "名前"
 msgid "Name :"
 msgstr "名称："
 
+msgid "Name of the attribute is already exist"
+msgstr "属性名はすでに存在します"
+
 msgid "Need to close cash drawer to change outlet. Do you want to close now?"
 msgstr "店舗を変更するには現金ドロワーを閉じる必要があります。今閉じますか？"
 
@@ -2251,6 +2324,9 @@ msgstr "アクティブな注文が見つかりません"
 
 msgid "No address found"
 msgstr "住所が見つかりません"
+
+msgid "No attribute found with this id"
+msgstr "このIDの属性は見つかりませんでした"
 
 msgid "No barcode found for this product"
 msgstr "この商品にバーコードが見つかりません"
@@ -2928,6 +3004,9 @@ msgstr "非公開"
 msgid "Pro"
 msgstr "プロ"
 
+msgid "Pro Version Details"
+msgstr "プロ版の詳細"
+
 msgid "Pro version is required for this feature."
 msgstr "この機能を使用するには Pro バージョンが必要です。"
 
@@ -2936,6 +3015,9 @@ msgstr "プロ版が必要です"
 
 msgid "Pro Version Required for this feature"
 msgstr "この機能はPro版が必要です"
+
+msgid "Process failed"
+msgstr "処理に失敗しました"
 
 msgid "Processed By"
 msgstr "処理者"
@@ -3260,6 +3342,9 @@ msgstr "ロールのリセット"
 
 msgid "Resetting role"
 msgstr "ロールのリセット"
+
+msgid "Resolve Conflict"
+msgstr "競合を解決する"
 
 msgid "Restaurant"
 msgstr "レストラン"
@@ -3619,8 +3704,14 @@ msgstr "手数料行を表示"
 msgid "Show Footer"
 msgstr "フッターを表示"
 
+msgid "Show Full Row Item Name"
+msgstr "アイテム名をフル行で表示"
+
 msgid "Show Header"
 msgstr "ヘッダーを表示"
+
+msgid "Show Item Price"
+msgstr "アイテム価格を表示"
 
 msgid "Show Item Serial"
 msgstr "商品シリアル番号を表示"
@@ -3717,6 +3808,11 @@ msgstr "スキップして無効化"
 
 msgid "Skip For Now"
 msgstr "今はスキップ"
+
+msgid ""
+"Skip unnecessary plugins in Vitepos requests to improve speed and reduce "
+"conflicts."
+msgstr "Viteposリクエストで不要なプラグインをスキップして、速度を向上させ、競合を減らします。"
 
 msgid "SKU"
 msgstr "SKU"
@@ -3876,6 +3972,9 @@ msgstr "送信"
 msgid "Submit & Deactivate"
 msgstr "提出して無効化"
 
+msgid "Success "
+msgstr "成功"
+
 msgid "Successfully added"
 msgstr "正常に追加されました"
 
@@ -3926,6 +4025,9 @@ msgstr "注文を同期"
 
 msgid "Sync restaurant order list"
 msgstr "レストランの注文リストを同期"
+
+msgid "Sync Settings"
+msgstr "設定を同期"
 
 msgid "Syncing offline orders"
 msgstr "オフライン注文を同期中"
@@ -4334,6 +4436,9 @@ msgstr "この商品にさらに画像をアップロード"
 
 msgid "Upload Table Image"
 msgstr "テーブル画像をアップロード"
+
+msgid "Uploaded File type not allowed"
+msgstr "アップロードされたファイルタイプは許可されていません"
 
 msgid "Use camera on barcode scanning"
 msgstr "バーコードスキャンにカメラを使用する"

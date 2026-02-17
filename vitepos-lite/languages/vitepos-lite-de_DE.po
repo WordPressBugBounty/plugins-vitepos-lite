@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VitePOS\n"
 "POT-Creation-Date: 2024-10-24 04:27+0000\n"
-"PO-Revision-Date: 2025-06-04 06:02+0000\n"
+"PO-Revision-Date: 2026-01-06 10:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.3.6"
+"X-Loco-Version: 2.8.0; wp-6.9; php-8.3.6"
 
 #, php-format
 msgid " %s are required"
@@ -97,6 +97,11 @@ msgstr "(Artikel: %{totalItem} und Menge: %{totalQty})"
 
 msgid "[Coming Soon]"
 msgstr "[Demnächst verfügbar]"
+
+msgid "A category with the same name already exists with the selected parent."
+msgstr ""
+"Eine Kategorie mit demselben Namen existiert bereits unter dem ausgewählten "
+"übergeordneten Element."
 
 msgid "About"
 msgstr "Über"
@@ -510,6 +515,21 @@ msgstr "Sind Sie sicher, dass Sie eine Stornierungsanfrage stellen möchten?"
 msgid "Are you sure?"
 msgstr "Sind Sie sicher?"
 
+msgid "Attribute created successfully "
+msgstr "Attribut erfolgreich erstellt"
+
+msgid "Attribute deleted successfully"
+msgstr "Attribut erfolgreich gelöscht"
+
+msgid "Attribute name is missing"
+msgstr "Attributname fehlt"
+
+msgid "Attribute not found or could not be deleted"
+msgstr "Attribut nicht gefunden oder konnte nicht gelöscht werden"
+
+msgid "Attribute updated successfully"
+msgstr "Attribut erfolgreich aktualisiert"
+
 msgid "Attributes List"
 msgstr "Attributliste"
 
@@ -560,6 +580,9 @@ msgstr "Barcode-Breite"
 
 msgid "Based on outlet order(s)"
 msgstr "Basierend auf der(den) Outlet-Bestellung(en)"
+
+msgid "Basic"
+msgstr "Basis"
 
 msgid "Basic Help"
 msgstr "Grundlegende Hilfe"
@@ -683,8 +706,20 @@ msgstr "Kassenpanel"
 msgid "Category"
 msgstr "Kategorie"
 
+msgid "Category created successfully"
+msgstr "Kategorie erfolgreich erstellt"
+
+msgid "Category deleted successfully"
+msgstr "Kategorie erfolgreich gelöscht"
+
 msgid "Category Loading"
 msgstr "Kategorie wird geladen"
+
+msgid "Category name is required"
+msgstr "Kategoriename ist erforderlich"
+
+msgid "Category updated successfully"
+msgstr "Kategorie erfolgreich aktualisiert"
 
 msgid "Change"
 msgstr "Ändern"
@@ -1411,8 +1446,14 @@ msgid "Enable %{brand} Payment support in pro version only."
 msgstr ""
 "Aktivieren Sie die Zahlungsunterstützung von %{brand} nur in der Pro-Version."
 
+msgid "Enable Drawer Previous Amount"
+msgstr "Vorherigen Kassenbestand aktivieren"
+
 msgid "Enable full stock management"
 msgstr "Vollständige Lagerverwaltung aktivieren"
+
+msgid "Enable Order Total Rounding"
+msgstr "Gesamtrundung der Bestellung aktivieren"
 
 msgid "Enable Other Method"
 msgstr "Andere Methode aktivieren"
@@ -1438,6 +1479,13 @@ msgstr ""
 
 msgid "Enable Swipe Payment"
 msgstr "Swipe-Zahlung aktivieren"
+
+msgid ""
+"Enable this to allow entering the previous drawer amount during both drawer "
+"opening and closing."
+msgstr ""
+"Aktivieren Sie dies, um die Eingabe des vorherigen Kassenbetrags sowohl beim "
+"Öffnen als auch beim Schließen der Kasse zu ermöglichen."
 
 msgid "Enable Token No"
 msgstr "Token-Nummer aktivieren"
@@ -1485,6 +1533,14 @@ msgstr ""
 "einbeziehen, sodass die Bestellung vom Koch und nicht vom Kassierer "
 "abgeschlossen werden kann. Außerdem kann der Bestellstatus auf einem großen "
 "Bildschirm angezeigt werden, um die Nachverfolgung zu vereinfachen."
+
+msgid ""
+"Enabling this feature rounds the fractional part of the total amount to the "
+"nearest predefined value for easier cash handling."
+msgstr ""
+"Durch das Aktivieren dieser Funktion wird der Bruchteil des Gesamtbetrags "
+"auf den nächstgelegenen vordefinierten Wert gerundet, um die "
+"Bargeldhandhabung zu erleichtern."
 
 msgid "Enabling this feature, will enable RTL mode on POS."
 msgstr ""
@@ -1561,6 +1617,12 @@ msgstr "Beispiel Rot|Blau|Grün"
 
 msgid "Failed"
 msgstr "Fehler"
+
+msgid "Failed to add"
+msgstr "Hinzufügen fehlgeschlagen"
+
+msgid "Failed to delete"
+msgstr "Löschen fehlgeschlagen"
 
 msgid "Failed to reset try again"
 msgstr "Zurücksetzen fehlgeschlagen, versuchen Sie es erneut"
@@ -1730,6 +1792,9 @@ msgstr "Lebensmittel"
 msgid "Grocery mode"
 msgstr "Lebensmittelmodus"
 
+msgid "GTIN, UPC, EAN, or ISBN"
+msgstr "GTIN, UPC, EAN oder ISBN"
+
 msgid "Half Field"
 msgstr "Halbes Feld"
 
@@ -1883,6 +1948,9 @@ msgstr ""
 msgid "In-stock"
 msgstr "Auf Lager"
 
+msgid "Inactivate plugin"
+msgstr "Plugin deaktivieren"
+
 msgid "Inactive"
 msgstr "Inaktiv"
 
@@ -1897,6 +1965,15 @@ msgstr "Installieren"
 
 msgid "Installed"
 msgstr "Installiert"
+
+msgid "Invalid attribute id"
+msgstr "Ungültige Attribut-ID"
+
+msgid "Invalid attribute to update"
+msgstr "Ungültiges Attribut zum Aktualisieren"
+
+msgid "Invalid id"
+msgstr "Ungültige ID"
 
 msgid "Invalid login information"
 msgstr "Ungültige Anmeldeinformationen"
@@ -2321,6 +2398,9 @@ msgstr "Name"
 msgid "Name :"
 msgstr "Name :"
 
+msgid "Name of the attribute is already exist"
+msgstr "Der Name des Attributs existiert bereits"
+
 msgid "Need to close cash drawer to change outlet. Do you want to close now?"
 msgstr ""
 "Um die Filiale zu wechseln, muss die Kasse geschlossen werden. Möchten Sie "
@@ -2367,6 +2447,9 @@ msgstr "Keine aktiven Bestellungen gefunden"
 
 msgid "No address found"
 msgstr "Keine Adresse gefunden"
+
+msgid "No attribute found with this id"
+msgstr "Kein Attribut mit dieser ID gefunden"
 
 msgid "No barcode found for this product"
 msgstr "Kein Barcode für dieses Produkt gefunden"
@@ -3062,6 +3145,9 @@ msgstr "Privat"
 msgid "Pro"
 msgstr "Pro"
 
+msgid "Pro Version Details"
+msgstr "Pro-Version Details"
+
 msgid "Pro version is required for this feature."
 msgstr "Für diese Funktion ist die Pro-Version erforderlich."
 
@@ -3070,6 +3156,9 @@ msgstr "Pro-Version erforderlich"
 
 msgid "Pro Version Required for this feature"
 msgstr "Pro-Version für diese Funktion erforderlich"
+
+msgid "Process failed"
+msgstr "Prozess fehlgeschlagen"
 
 msgid "Processed By"
 msgstr "Bearbeitet von"
@@ -3400,6 +3489,9 @@ msgstr "Rolle zurücksetzen"
 
 msgid "Resetting role"
 msgstr "Rolle zurücksetzen"
+
+msgid "Resolve Conflict"
+msgstr "Konflikt lösen"
 
 msgid "Restaurant"
 msgstr "Restaurant"
@@ -3770,8 +3862,14 @@ msgstr "Gebührenzeile anzeigen"
 msgid "Show Footer"
 msgstr "Fußleiste anzeigen"
 
+msgid "Show Full Row Item Name"
+msgstr "Vollen Zeilenartikelname anzeigen"
+
 msgid "Show Header"
 msgstr "Kopfzeile anzeigen"
+
+msgid "Show Item Price"
+msgstr "Artikelpreis anzeigen"
 
 msgid "Show Item Serial"
 msgstr "Artikelseriennummer anzeigen"
@@ -3872,6 +3970,13 @@ msgstr "Überspringen & Deaktivieren"
 
 msgid "Skip For Now"
 msgstr "Vorläufig überspringen"
+
+msgid ""
+"Skip unnecessary plugins in Vitepos requests to improve speed and reduce "
+"conflicts."
+msgstr ""
+"Überspringen Sie unnötige Plugins in Vitepos-Anfragen, um die "
+"Geschwindigkeit zu verbessern und Konflikte zu reduzieren."
 
 msgid "SKU"
 msgstr "SKU"
@@ -4044,6 +4149,9 @@ msgstr "Absenden"
 msgid "Submit & Deactivate"
 msgstr "Senden & Deaktivieren"
 
+msgid "Success "
+msgstr "Erfolg"
+
 msgid "Successfully added"
 msgstr "Erfolgreich hinzugefügt"
 
@@ -4094,6 +4202,9 @@ msgstr "Bestellungen synchronisieren"
 
 msgid "Sync restaurant order list"
 msgstr "Restaurant-Bestellliste synchronisieren"
+
+msgid "Sync Settings"
+msgstr "Einstellungen synchronisieren"
 
 msgid "Syncing offline orders"
 msgstr "Offline-Bestellungen werden synchronisiert"
@@ -4536,6 +4647,9 @@ msgstr "Weitere Bilder für dieses Produkt hochladen"
 
 msgid "Upload Table Image"
 msgstr "Tisch-Bild hochladen"
+
+msgid "Uploaded File type not allowed"
+msgstr "Hochgeladener Dateityp nicht erlaubt"
 
 msgid "Use camera on barcode scanning"
 msgstr "Kamera beim Scannen von Barcodes verwenden"

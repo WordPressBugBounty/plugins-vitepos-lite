@@ -342,6 +342,7 @@ class Pos_Purchase_Api extends API_Base {
 				}
 				$user                   = get_user_by( 'ID', $purchase_obj->added_by );
 				$purchase_obj->added_by = $user->first_name ? $user->first_name . ' ' . $user->last_name : $user->user_nicename;
+				$purchase_obj->purchase_date = appsbd_get_wp_datetime_with_format( $purchase_obj->purchase_date );
 				$p_item                 = new Mapbd_Pos_Purchase_Item();
 				$p_item->purchase_id( $purchase_obj->id );
 				$purchase_obj->purchase_items = $p_item->select_all_grid_data();

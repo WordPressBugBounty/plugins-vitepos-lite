@@ -224,6 +224,8 @@ if ( ! function_exists( 'vitepos_get_product_cart_item' ) ) {
 				$cart_item->product_id   = $product_parent->get_id();
 				$cart_item->product_name = $product_parent->get_name();
 				$cart_item->variation_id = $product->get_id();
+				$cart_item->variation_name = $product->get_name();
+
 				foreach ( $product->get_variation_attributes( false ) as $key => $item ) {
 					if ( ! empty( $item ) ) {
 						$att_name         = wc_attribute_label( $key, $product );
@@ -237,13 +239,16 @@ if ( ! function_exists( 'vitepos_get_product_cart_item' ) ) {
 				$cart_item->product_name = $product->get_name();
 				$cart_item->variation_id = '';
 			}
+			$cart_item->purchase_cost = get_post_meta( $product->get_id(), '_cogs_total_value', true );
 			$cart_item->price         = $product->get_price();
 			$cart_item->regular_price = $product->get_regular_price();
+			$cart_item->manage_stock = $product->get_manage_stock();
 			$cart_item->barcode       = vitepos_apply_filters( 'vitepos/filter/get-product-barcode', $product );
 			$cart_item->image         = \VitePos_Lite\Libs\POS_Product::get_wc_product_image(
 				$product,
 				'woocommerce_thumbnail'
 			);
+			$cart_item->stock_quantity = ! empty( $product->get_stock_quantity() ) ? $product->get_stock_quantity() : 0;
 			if ( ! vitepos_apply_filters( 'woocommerce_prices_include_tax', get_option( 'woocommerce_prices_include_tax' ) === 'yes' ) ) {
 				$cart_item->tax       = NumberUtil::round(
 					( wc_get_price_including_tax( $product ) - $cart_item->price ),

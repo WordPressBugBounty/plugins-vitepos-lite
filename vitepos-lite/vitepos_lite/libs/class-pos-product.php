@@ -716,7 +716,7 @@ class POS_Product {
 				)
 			);
 		}
-		return $price;
+		return ! empty( $price ) ? $price : 0;
 	}
 	/**
 	 * Format a sale price for display.

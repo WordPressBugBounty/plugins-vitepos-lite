@@ -1407,7 +1407,7 @@ class POS_Settings extends Vitepos_Module {
 			} elseif ( is_user_logged_in() ) {
 				if ( 'page' == $post_link_page ) {
 					$pos_page = $this->get_option( 'pos_page', '' );
-					wp_redirect( get_permalink( $pos_page ) );
+					wp_safe_redirect( get_permalink( $pos_page ) );
 					exit;
 				}
 			}
@@ -1500,10 +1500,10 @@ class POS_Settings extends Vitepos_Module {
 				$login_url = $this->get_option( 'wp_login_url', '' );
 				if ( ! empty( $login_url ) ) {
 					$login_url = add_query_arg( 'redirect_to', urlencode( $this->get_pos_link() ), $login_url );
-					wp_redirect( $login_url );
+					wp_safe_redirect( $login_url );
 					exit;
 				}
-				wp_redirect( wp_login_url( $this->get_pos_link() ) );
+				wp_safe_redirect( wp_login_url( $this->get_pos_link() ) );
 				exit;
 			}
 		}

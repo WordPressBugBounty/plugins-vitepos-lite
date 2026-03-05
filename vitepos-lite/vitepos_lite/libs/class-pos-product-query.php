@@ -325,6 +325,12 @@ class POS_Product_Query {
 							$this->where .= "AND mt1.meta_value='{$prop_val}' ";
 						}
 						$this->reset_where();
+					} elseif ( 'GUI' == $barcode_type ) {
+						$this->set_join_table( 'mt1', '_global_unique_id', 'LEFT' );
+						if ( ! empty( $prop_val ) ) {
+							$this->where .= "AND mt1.meta_value='{$prop_val}' ";
+						}
+						$this->reset_where();
 					} else {
 						$this->where .= " AND({$this->wp_post}.ID = '{$prop_val}')";
 						$this->reset_where();

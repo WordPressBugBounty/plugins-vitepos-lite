@@ -100,8 +100,8 @@ class Mapbd_Pos_Cash_Drawer_Types extends ViteposModelLite {
 				'Rule' => 'required|max_length[11]|integer',
 			),
 			'order_id'       => array(
-				'Text' => 'Ref Id',
-				'Rule' => 'max_length[11]|integer',
+				'Text' => 'Order Id',
+				'Rule' => 'max_length[50]',
 			),
 
 			'amount'         => array(
@@ -322,7 +322,7 @@ GROUP BY ref_type";
 			$sql = "CREATE TABLE `{$table}` (
 					  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 					  `cash_drawer_id` int(11) NOT NULL,
-					  `order_id` int(50) NOT NULL,
+					  `order_id` varchar(50) NOT NULL,
 					  `payment_type` char(1) NOT NULL DEFAULT '',
 					  `amount` decimal(10,2) unsigned NOT NULL DEFAULT 0.00,
 					  `user_id` int(11) NOT NULL,

@@ -114,7 +114,7 @@ class Mapbd_Pos_Purchase_Item extends ViteposModelLite {
 			),
 			'product_id'         => array(
 				'Text' => 'Product Id',
-				'Rule' => 'required|max_length[11]|integer',
+				'Rule' => 'required',
 			),
 			'purchase_cost'      => array(
 				'Text' => 'Purchase Cost',
@@ -160,7 +160,7 @@ class Mapbd_Pos_Purchase_Item extends ViteposModelLite {
 			$sql = "CREATE TABLE `{$table}` (
 					  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 					  `purchase_id` int(11) unsigned NOT NULL,
-					  `product_id` int(11) unsigned NOT NULL,
+					  `product_id` bigint(20) unsigned NOT NULL,
 					  `purchase_cost` decimal(10,2) unsigned NOT NULL DEFAULT 0.00,
 					  `prev_purchase_cost` decimal(10,2) unsigned NOT NULL DEFAULT 0.00,
 					  `stock_quantity` decimal(8,2) unsigned NOT NULL DEFAULT 0.00,

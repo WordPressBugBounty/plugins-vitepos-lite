@@ -643,6 +643,11 @@ if ( ! class_exists( __NAMESPACE__ . '\Client_Language' ) ) {
 			$language['Enable Drawer Previous Amount']                                                                    = $kernel_object->__( 'Enable Drawer Previous Amount' );
 			$language['Enable this to allow entering the previous drawer amount during both drawer opening and closing.'] = $kernel_object->__( 'Enable this to allow entering the previous drawer amount during both drawer opening and closing.' );
 
+			$language['Show Tax Summary']                           = $kernel_object->__( 'Show Tax Summary' );
+			$language['Enable Gift Receipt']                        = $kernel_object->__( 'Enable Gift Receipt' );
+			$language['User can print a gift receipt after order.'] = $kernel_object->__( 'User can print a gift receipt after order.' );
+			$language['Enable Exchange']                            = $kernel_object->__( 'Enable Exchange' );
+
 			self::get_client_extra( $language, $kernel_object );
 
 			return $language;

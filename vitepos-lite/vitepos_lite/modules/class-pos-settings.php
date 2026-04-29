@@ -677,6 +677,28 @@ class POS_Settings extends Vitepos_Module {
 			Mapbd_Pos_Cash_Drawer_Log::db_column_add_or_modify( 'user_note', 'varchar', '255', '', 'NULL', 'ref_type', '' );
 			Mapbd_Pos_Cash_Drawer_Log::db_column_add_or_modify( 'extra_param', 'varchar', '255', '', 'NULL', 'user_note', '' );
 		}
+		if ( $is_force || version_compare( $previous_version, '3.1.6', '<' ) ) {
+			Mapbd_Pos_Cash_Drawer_Types::db_column_add_or_modify(
+				'order_id',
+				'varchar',
+				'50',
+				'',
+				'NULL',
+				'cash_drawer_id',
+				'This is for order id'
+			);
+		}
+		if ( $is_force || version_compare( $previous_version, '3.4.0', '<' ) ) {
+			Mapbd_Pos_Purchase_Item::db_column_add_or_modify(
+				'product_id',
+				'bigint',
+				'20',
+				'0',
+				'NOT NULL',
+				'purchase_id',
+				'unsigned'
+			);
+		}
 	}
 
 	/**

@@ -208,6 +208,10 @@ class Pos_Order_Api extends API_Base {
 			if ( $is_inclusive_enabled ) {
 				$total_amount = $order->get_total();
 
+				$sub_amount = $order->get_subtotal() + $order->get_total_tax( 'view' );
+				if ( $sub_amount != $this->get_payload( 'sub_total', 0.0 ) ) {
+					$order->add_meta_data( '_vt_sub_total', appsbd_wc_amount( $this->get_payload( 'sub_total', 0.0 ) ) );
+				}
 			} else {
 				$total_amount = $order->get_subtotal();
 			}

@@ -290,8 +290,11 @@ class POS_Order {
 			$v_order->taxes = array();
 			$include_tax    = $order->get_prices_include_tax();
 			if ( $include_tax ) {
-				$v_order->sub_total  = $order->get_subtotal() + $order->get_total_tax( 'view' );
-
+				if ( $order->meta_exists( '_vt_sub_total' ) ) {
+					$v_order->sub_total = vitepos_wc_amount( $order->get_meta( '_vt_sub_total' ) );
+				} else {
+					$v_order->sub_total = $order->get_subtotal() + $order->get_total_tax();
+				}
 			} else {
 				$v_order->sub_total = $order->get_subtotal();
 			}

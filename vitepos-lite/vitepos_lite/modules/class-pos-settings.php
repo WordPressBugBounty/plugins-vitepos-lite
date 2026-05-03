@@ -1674,6 +1674,7 @@ class POS_Settings extends Vitepos_Module {
 		all_category_list: vitePosBase + 'product/all-categories',
 		get_all_category_list: vitePosBase + 'product/get-all-categories',
 		add_category: vitePosBase + 'product/add-category',
+		make_category_hidden: vitePosBase + 'product/make-category-hidden',
 		update_category: vitePosBase + 'product/update-category',
 		delete_category: vitePosBase + 'product/delete-category',
 

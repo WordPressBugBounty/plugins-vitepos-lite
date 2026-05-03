@@ -596,6 +596,7 @@ class POS_Product {
 				$el_category->product_count    = $category->count;
 				$el_category->taxonomy         = $category->taxonomy;
 				$el_category->term_taxonomy_id = $category->term_taxonomy_id;
+				$el_category->is_hide          = get_term_meta( $category->term_id, '_vt_category_is_hidden', true ) ? get_term_meta( $category->term_id, '_vt_category_is_hidden', true ) : 'N';
 				if ( ! $is_parent ) {
 					$el_category->child = array();
 					$el_category->child = self::get_sub_categories( $category->term_id );
@@ -646,6 +647,7 @@ class POS_Product {
 				$item->is_selected = '';
 				$item->child       = self::get_sub_categories( $item->term_id );
 				$item->id          = $item->term_id;
+				$item->is_hide     = get_term_meta( $item->term_id, '_vt_category_is_hidden', true ) ? get_term_meta( $item->term_id, '_vt_category_is_hidden', true ) : 'N';
 				unset( $item->term_id );
 				$category[] = $item;
 			}

@@ -138,7 +138,7 @@ class Mapbd_Pos_Role extends ViteposModelLite {
 				 'Text' => 'Max discount',
 				 'Rule' => 'max_length[7]',
 			 ),
-
+			 
 			 'discount_type' => array(
 				 'Text' => 'Discount Type',
 				 'Rule' => 'max_length[1]',
@@ -223,6 +223,52 @@ class Mapbd_Pos_Role extends ViteposModelLite {
 			$res[] = $agent_role->slug;
 		}
 		return $res;
+	}
+
+	/**
+	 * Returns slugs of roles that are active, agent-type, and editable.
+	 * Excludes roles with is_editable=N (e.g. administrator).
+	 *
+	 * @return string[]
+	 */
+	public static function get_assignable_roles() {
+		$roles = self::find_all_by(
+			'status',
+			'A',
+			array(
+				'is_agent' => 'Y',
+				'is_editable' => 'Y',
+			)
+		);
+		$res   = array();
+		foreach ( $roles as $role ) {
+			$res[] = $role->slug;
+		}
+		return $res;
+	}
+
+	/**
+	 * Checks whether a given role slug is allowed to be assigned by POS users.
+	 * Returns false for administrator and any non-editable or non-agent role.
+	 *
+	 * @param string $role Role slug to validate.
+	 * @return bool
+	 */
+	public static function is_assignable_role( $role ) {
+		if ( empty( $role ) ) {
+			return false;
+		}
+		if ( ! in_array( $role, self::get_assignable_roles(), true ) ) {
+			return false;
+		}
+		$wp_role = get_role( $role );
+		if ( $wp_role && (
+			! empty( $wp_role->capabilities['manage_options'] ) ||
+			! empty( $wp_role->capabilities['manage_plugins'] )
+		) ) {
+			return false;
+		}
+		return true;
 	}
 
 	/**

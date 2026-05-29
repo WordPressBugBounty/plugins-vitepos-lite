@@ -140,7 +140,7 @@ class Pos_Order_Api extends API_Base {
 			$order_arg = array(
 				'customer_id' => $customer_id,
 			);
-
+			
 			$order        = wc_create_order( $order_arg );
 			$total_amount = 0.0;
 			$total_tax    = 0.0;
@@ -163,9 +163,9 @@ class Pos_Order_Api extends API_Base {
 
 						$arguments ['name'] = wc_get_product( $item['product_id'] )->get_name();
 						$product            = new \WC_Product_Variation( $item['variation_id'] );
-						$item_id            = $order->add_product( $product, $item['quantity'], $arguments );
+						$item_id            = $order->add_product( $product, $item['quantity'], $arguments ); 
 					} else {
-						$item_id = $order->add_product( wc_get_product( $item['product_id'] ), $item['quantity'], $arguments );
+						$item_id = $order->add_product( wc_get_product( $item['product_id'] ), $item['quantity'], $arguments ); 
 					}
 					$total_tax += ( $item['quantity'] * $item['tax_amount'] );
 					$oitem      = new \WC_Order_Item_Product( $item_id );
@@ -174,7 +174,7 @@ class Pos_Order_Api extends API_Base {
 					} else {
 						$oitem->add_meta_data( '_vtp_regular_price', '' );
 					}
-					$oitem->add_meta_data( '_vtp_items_price', $item['price'] );
+					$oitem->add_meta_data( '_vtp_items_price', $item['price'] ); 
 
 					$oitem->save();
 
@@ -182,7 +182,7 @@ class Pos_Order_Api extends API_Base {
 					$this->add_error( $e->getMessage() );
 				}
 			}
-
+			
 			if ( ! empty( $customer_id ) ) {
 				/**
 				 * Its for check is there any change before process
@@ -215,7 +215,8 @@ class Pos_Order_Api extends API_Base {
 			} else {
 				$total_amount = $order->get_subtotal();
 			}
-
+			
+			
 			$fee_total = 0.0;
 			if ( ! empty( $this->payload['fees'] ) && is_array( $this->payload['fees'] ) ) {
 				foreach ( $this->payload['fees'] as $item ) {
@@ -244,6 +245,7 @@ class Pos_Order_Api extends API_Base {
 				}
 			}
 
+			
 			$discount_total = 0.0;
 			$discount       = 0.0;
 			if ( ! empty( $this->payload['discounts'] ) && is_array( $this->payload['discounts'] ) ) {
@@ -310,7 +312,7 @@ class Pos_Order_Api extends API_Base {
 				$outlet_id  = $this->get_outlet_id();
 				$counter_id = $this->get_counter_id();
 			}
-
+			
 			$payment_list = $this->get_payload( 'payment_list', array() );
 			foreach ( $payment_list as &$pmt ) {
 				$pmt['is_paid'] = in_array( $pmt['type'], array( 'C', 'S', 'O' ) ) ? 'Y' : 'N';
@@ -336,7 +338,7 @@ class Pos_Order_Api extends API_Base {
 					$processed_by = $user->ID;
 					$order->add_meta_data( '_vtp_processed_by', $processed_by );
 				}
-
+				
 				$cashdrawer_id = $this->get_payload( 'cash_drawer_id', '' );
 				if ( ! empty( $cashdrawer_id ) ) {
 					$cashdrawer = Mapbd_Pos_Cash_Drawer::find_by(

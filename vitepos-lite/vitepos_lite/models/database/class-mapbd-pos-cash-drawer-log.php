@@ -230,11 +230,11 @@ class Mapbd_Pos_Cash_Drawer_Log extends ViteposModelLite {
 		$newobj->note( $note );
 		$newobj->pre_balance( $pre_balance );
 		$newobj->amount( $amount );
-		$newobj->log_type( $log_type );
-		$newobj->ref_type( $ref_type );
+		$newobj->log_type( $log_type ); 
+		$newobj->ref_type( $ref_type ); 
 		$newobj->user_note( $user_note );
 		$newobj->extra_param( $extra_param );
-		$newobj->ref_id( $ref_id );
+		$newobj->ref_id( $ref_id ); 
 		$newobj->entry_time( gmdate( 'Y-m-d' ) );
 		return $newobj->save();
 	}

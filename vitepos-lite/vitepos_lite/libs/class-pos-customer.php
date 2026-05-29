@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Appsbd_Lite\V5\Core\BaseModel;
+use VitePos_Lite\Models\Database\Mapbd_Pos_Role;
 use VitePos_Lite\Modules\POS_Role;
 
 /**
@@ -403,6 +404,7 @@ class POS_Customer extends BaseModel {
 	 */
 	public function save_user() {
 		$this->password = wp_generate_password();
+		
 
 		$user = new \WP_User();
 		if ( self::contact_exists( $this->contact_no ) ) {
@@ -429,6 +431,10 @@ class POS_Customer extends BaseModel {
 		}
 		$user->user_status = true;
 		$user->user_pass   = $this->password;
+		if ( ! Mapbd_Pos_Role::is_assignable_role( $this->role ) ) {
+			$this->add_error( 'Invalid or unpermitted role.' );
+			return false;
+		}
 		$user_id           = wp_insert_user( $user );
 		$user_get          = new \WP_User( $user_id );
 		$user_get->set_role( $this->role );
@@ -443,7 +449,7 @@ class POS_Customer extends BaseModel {
 		add_user_meta( $user_id, 'added_by', $this->added_by );
 		add_user_meta( $user_id, 'outlet_id', $this->outlet_id );
 		add_user_meta( $user_id, 'billing_city', $this->city );
-
+		
 		add_user_meta( $user_id, 'billing_country', $this->country );
 		add_user_meta( $user_id, 'billing_postcode', $this->postcode );
 		add_user_meta( $user_id, 'designation', $this->designation );
@@ -456,7 +462,7 @@ class POS_Customer extends BaseModel {
 			 */
 			do_action( 'apbd-vtpos/action/save-user-image', $user_id );
 		}
-
+		
 		if ( empty( $this->id ) && ! empty( $user_id ) ) {
 			$this->id = $user_id;
 		}
@@ -503,11 +509,11 @@ class POS_Customer extends BaseModel {
 			$user->last_name = $this->last_name;
 		}
 		if ( ! empty( $this->role ) ) {
-			if ( POS_Role::is_exists_role( $this->role ) ) {
+			if ( Mapbd_Pos_Role::is_assignable_role( $this->role ) ) {
 				$user->remove_role( $user->roles[0] );
 				$user->add_role( $this->role );
 			} else {
-				$this->add_error( 'Role does not exists' );
+				$this->add_error( 'Invalid or unpermitted role.' );
 				return false;
 			}
 		}
@@ -539,6 +545,10 @@ class POS_Customer extends BaseModel {
 			update_user_meta( $user_id, 'billing_city', $this->city );
 		}
 
+		
+		
+		
+		
 		if ( $this->postcode ) {
 			update_user_meta( $user_id, 'billing_postcode', $this->postcode );
 		}
@@ -598,7 +608,7 @@ class POS_Customer extends BaseModel {
 				'get_meta_sql',
 				function ( $sql ) use ( $search ) {
 					$appdb = self::get_db_object();
-
+					
 					static $nr = 0;
 					if ( 0 != $nr++ ) {
 						return $sql;

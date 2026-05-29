@@ -28,6 +28,8 @@ abstract class Vitepos_Module extends BaseModule {
 	 * @return bool
 	 */
 	public function app_check_ajax_referer( $is_return = false ) {
+		
+
 
 		if ( ! check_ajax_referer( 'vitepos', '_wpnonce', false ) ) {
 			if ( $is_return ) {

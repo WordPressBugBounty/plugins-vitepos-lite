@@ -67,7 +67,7 @@ class POS_Settings extends Vitepos_Module {
 		add_filter( 'display_post_states', array( $this, 'post_states' ), 10, 2 );
 		add_action( 'apbd-vtpos/action/save-category-image', array( $this, 'save_update_category_img' ) );
 		add_action( 'apbd-vtpos/action/save-user-image', array( $this, 'save_update_user_img' ) );
-
+		
 		if ( is_admin() ) {
 			add_action( 'show_user_profile', array( $this, 'add_user_fields' ) );
 			add_action( 'user_new_form', array( $this, 'add_user_fields' ) );
@@ -89,11 +89,11 @@ class POS_Settings extends Vitepos_Module {
 	public function vitepos_admin_bar_menu( $wp_admin_bar ) {
 		$args = array(
 			'id'     => 'vitepos',
-			'parent' => 'top-secondary',
+			'parent' => 'top-secondary', 
 			'title'  => '<span class="vps vps-vite-pos"></span> ' . $this->__( 'View POS' ),
 			'href'   => $this->get_pos_link(),
 			'meta'   => array(
-				'target' => '_blank',
+				'target' => '_blank', 
 			),
 		);
 		$wp_admin_bar->add_menu( $args );
@@ -205,9 +205,10 @@ class POS_Settings extends Vitepos_Module {
 		$manifest->set_display( 'standalone' );
 		$manifest->add_icon( self::get_module_instance()->get_favicon(), '256x256', 'image/png' );
 		$manifest->set_start_url( $this->get_pos_link() );
-
+		
 		$manifest->set_prop( 'kiosk_enabled', true );
 		$manifest->set_prop( 'kiosk_only', true );
+		
 
 		$manifest->set_prop( '$schema', 'https://json.schemastore.org/web-manifest-combined.json' );
 		wp_send_json( $manifest );
@@ -420,12 +421,13 @@ class POS_Settings extends Vitepos_Module {
 				$args['vt_meta_query'] = array();
 			}
 			foreach ( $args['meta_query'] as $key => $meta ) {
-
+				
 				if ( isset( $args['customer_id'] ) && '_customer_user' == $meta['key'] ) {
 					$args['customer_id'] = $meta['value'];
 					unset( $args['meta_query'][ $key ] );
 				}
 
+				
 				if ( isset( $args['date_completed'] ) && '_completed_date' == $meta['key'] ) {
 					if ( ! empty( $meta['value'] ) && is_array( $meta['value'] ) && ! empty( $meta['value'][0] ) && ! empty( $meta['value'][1] ) ) {
 						$args['date_completed'] = $meta['value'][0] . '...' . $meta['value'][1];
@@ -489,7 +491,7 @@ class POS_Settings extends Vitepos_Module {
 				$attach_id = $this->insert_media_attachment( $files['variations']['tmp_name'][ $v_index ]['image'], $files['variations']['name'][ $v_index ]['image'], $files['variations']['type'][ $v_index ]['image'], $variation_id );
 				if ( ! empty( $attach_id ) ) {
 					set_post_thumbnail( $variation_id, $attach_id );
-
+					
 				}
 			}
 		}
@@ -659,7 +661,7 @@ class POS_Settings extends Vitepos_Module {
 			Mapbd_Pos_Role::set_max_discount( 100 );
 		}
 		if ( $is_force || version_compare( $previous_version, '2.0', '<' ) ) {
-
+			
 			Mapbd_pos_purchase::db_column_add_or_modify( 'tax_total', 'decimal', '6,2', '0.0', 'unsigned NOT NULL', 'tax_type' );
 			Mapbd_pos_purchase::db_column_add_or_modify( 'discount_total', 'decimal', '6,2', '0.0', 'unsigned NOT NULL', 'discount_type' );
 			Mapbd_pos_purchase::db_column_add_or_modify( 'total_item', 'int', '10', '0', 'unsigned NOT NULL', 'added_by' );
@@ -669,11 +671,11 @@ class POS_Settings extends Vitepos_Module {
 
 		}
 		if ( $is_force || version_compare( $previous_version, '2.0.2', '<' ) ) {
-
+			
 			Mapbd_pos_cash_drawer::db_column_add_or_modify( 'closing_balance', 'decimal', '11,2', '0', 'NOT NULL', 'opening_balance', '' );
 		}
 		if ( $is_force || version_compare( $previous_version, '3.1.5', '<' ) ) {
-
+			
 			Mapbd_Pos_Cash_Drawer_Log::db_column_add_or_modify( 'user_note', 'varchar', '255', '', 'NULL', 'ref_type', '' );
 			Mapbd_Pos_Cash_Drawer_Log::db_column_add_or_modify( 'extra_param', 'varchar', '255', '', 'NULL', 'user_note', '' );
 		}
@@ -786,11 +788,11 @@ class POS_Settings extends Vitepos_Module {
 	 */
 	public function vitepos_column_in_order_list( $columns ) {
 		$reordered_columns = array();
-
+		
 		foreach ( $columns as $key => $column ) {
 			$reordered_columns[ $key ] = $column;
 			if ( 'order_status' == $key ) {
-
+				
 				$reordered_columns['is_vt_pos'] = '<i class="vps vps-vt-pos"></i>';
 			}
 		}
@@ -1210,6 +1212,7 @@ class POS_Settings extends Vitepos_Module {
 	 */
 	public function get_sw_link() {
 		return $this->get_plugin_url( 'templates/pos-assets/service-worker.js' );
+		
 	}
 
 	/**
@@ -1380,7 +1383,7 @@ class POS_Settings extends Vitepos_Module {
 	public function add_pos_rewrite() {
 		$asset_base = str_replace( site_url(), '', plugins_url( '', $this->plugin_file ) );
 		add_rewrite_rule( '([^/]*)/vt_sw[^/]*', 'index.php?vitepos_sw=true', 'top' );
-
+		
 		add_rewrite_rule( '([^/]*)/apbd_vt_manifest\.js', 'index.php?vitepos_mf=true', 'top' );
 		add_rewrite_rule( '^vitepos/?$', 'index.php?vitepos=true', 'top' );
 
@@ -1542,6 +1545,7 @@ class POS_Settings extends Vitepos_Module {
 		wp_enqueue_script( 'vitepos-inline-handler' );
 		wp_add_inline_script( 'vitepos-inline-handler', $this->pos_inline_js() );
 
+		
 		include_once plugin_dir_path( $this->plugin_file ) . '/templates/pos.php';
 		exit;
 	}
@@ -1756,7 +1760,7 @@ class POS_Settings extends Vitepos_Module {
 	 * The on active is generated by appsbd
 	 */
 	public function on_active() {
-		parent::on_active();
+		parent::on_active(); 
 
 		Mapbd_pos_purchase::create_db_table();
 		Mapbd_pos_purchase_item::create_db_table();
@@ -2069,7 +2073,7 @@ class POS_Settings extends Vitepos_Module {
 			<?php
 			$offline_id = $order->get_meta( '_vtp_offline_id', true );
 			if ( ! empty( $offline_id ) ) {
-
+				
 				$offline_date   = $order->get_meta( '_vtp_offline_process_date', true );
 				$offline_date   = gmdate( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( $offline_date ) );
 				$synced_user_id = $order->get_meta( '_vtp_offline_synced_by', true );

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitcf1a3d40be2db3d20e77f5829d3856fd
+class ComposerStaticInite253a25bd16bcce12d87a74e3774ca95
 {
     public static $files = array (
         'c33f23be1f768473540e11bdf37dab3a' => __DIR__ . '/..' . '/appsbd-wp/appsbd-lite/appsbd_lite/v5/core/class-kernel-lite.php',
@@ -14,22 +14,22 @@ class ComposerStaticInitcf1a3d40be2db3d20e77f5829d3856fd
     );
 
     public static $prefixLengthsPsr4 = array (
-        'V' => 
+        'V' =>
         array (
             'VitePos_Lite\\' => 13,
         ),
-        'A' => 
+        'A' =>
         array (
             'Appsbd_Lite\\' => 12,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'VitePos_Lite\\' => 
+        'VitePos_Lite\\' =>
         array (
             0 => __DIR__ . '/../..' . '/vitepos_lite',
         ),
-        'Appsbd_Lite\\' => 
+        'Appsbd_Lite\\' =>
         array (
             0 => __DIR__ . '/..' . '/appsbd-wp/appsbd-lite/appsbd_lite',
         ),
@@ -42,9 +42,9 @@ class ComposerStaticInitcf1a3d40be2db3d20e77f5829d3856fd
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitcf1a3d40be2db3d20e77f5829d3856fd::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitcf1a3d40be2db3d20e77f5829d3856fd::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitcf1a3d40be2db3d20e77f5829d3856fd::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite253a25bd16bcce12d87a74e3774ca95::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite253a25bd16bcce12d87a74e3774ca95::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite253a25bd16bcce12d87a74e3774ca95::$classMap;
 
         }, null, ClassLoader::class);
     }

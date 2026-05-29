@@ -156,9 +156,9 @@ class POS_Order {
 	public static function get_order_by_meta( $key, $value, $compare = '=' ) {
 		$args   = array(
 			'limit'        => 1,
-			'meta_key'     => $key,
-			'meta_value'   => $value,
-			'meta_compare' => $compare,
+			'meta_key'     => $key, 
+			'meta_value'   => $value, 
+			'meta_compare' => $compare, 
 		);
 		$orders = wc_get_orders( $args );
 		if ( ! empty( $orders ) && ! empty( $orders[0] ) && $orders[0] instanceof \WC_Order ) {
@@ -241,10 +241,10 @@ class POS_Order {
 					$dis_fee_obj->type = $item->get_meta( '_vtp_cal_type' );
 					$dis_fee_obj->val  = floatval( $item->get_meta( '_vtp_cal_val' ) );
 					if ( $item->get_total() > 0 ) {
-
+						
 						$v_order->fees[] = $dis_fee_obj;
 					} else {
-
+						
 						$v_order->discounts[] = $dis_fee_obj;
 					}
 				}
@@ -281,7 +281,7 @@ class POS_Order {
 			$v_order->given_amount    = floatval( $order->get_meta( '_vtp_tendered_amount' ) );
 			$v_order->returned_amount = floatval( $order->get_meta( '_vtp_change_amount' ) );
 			$v_order->sub_total       = $order->get_subtotal();
-
+			
 			$v_order->payment_list    = $order->get_meta( '_vtp_payment_list' );
 			$v_order->is_paid         = $order->get_meta( '_vt_is_paid' );
 			if ( empty( $v_order->is_paid ) ) {
@@ -313,7 +313,9 @@ class POS_Order {
 			$v_order->counter     = '';
 			$v_order->counter_id  = $order->get_meta( '_vtp_counter_id' );
 			if ( POS_Settings::is_restaurant_mode() ) {
+				
 
+				
 				$v_order->order_type = (array) $order->get_meta( '_vtp_order_type' );
 				$v_order->persons    = (int) $order->get_meta( '_vtp_persons' );
 				if ( $order->meta_exists( '_vt_can_cancel' ) ) {
@@ -363,7 +365,7 @@ class POS_Order {
 			$decimals_length = 0;
 		}
 		if ( 4 == $tried_count ) {
-
+			
 			$total_tax_cal  = 0.0;
 			$v_order->taxes = array();
 			$length = count( $taxes );
@@ -375,7 +377,7 @@ class POS_Order {
 				$tobj->tax_class = $item->get_tax_class();
 				$tobj->val       = vitepos_wc_amount( wc_round_discount( $item->get_tax_total( '' ), $decimals_length ) );
 				if ( $i == $length ) {
-
+					
 					if ( ( $tobj->val + $total_tax_cal ) != $tax_total ) {
 						$tobj->val = vitepos_wc_amount( $tax_total - $total_tax_cal );
 					}
@@ -536,7 +538,8 @@ class POS_Order {
 				if ( is_array( $outlets ) ) {
 					$args['meta_query'][] = array(
 						'key'     => 'outlet_id',
-
+						
+						
 						'value'   => '"(' . implode( '|', $outlets ) . ')"',
 						'compare' => 'REGEXP',
 					);

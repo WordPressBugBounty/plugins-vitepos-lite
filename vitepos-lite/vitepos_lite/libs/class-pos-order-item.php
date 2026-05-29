@@ -176,7 +176,7 @@ class POS_Order_Item {
 		$include_tax = $order->get_prices_include_tax();
 		if ( $item->meta_exists( '_vtp_items_price' ) ) {
 			$o_item->price = (float) $item->get_meta( '_vtp_items_price' );
-
+			
 			$o_item->regular_price = ( (float) $item->get_meta( '_vtp_regular_price' ) );
 		} else {
 			$o_item->price         = (float) $order->get_item_subtotal( $item, $include_tax, true );

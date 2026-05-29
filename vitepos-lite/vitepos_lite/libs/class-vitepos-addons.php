@@ -12,7 +12,7 @@ namespace VitePos_Lite\Libs;
 
 use Appsbd_Lite\V5\libs\App_Process;
 use Appsbd_Lite\V5\libs\Appsbd_Addon;
-use SimplePie\Exception;
+
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -138,7 +138,7 @@ if ( ! class_exists( __NAMESPACE__ . '\Vitepos_Addons' ) ) {
 			if ( function_exists( 'appsbd_is_activated_plugin' ) && appsbd_is_activated_plugin( 'vitepos/vitepos.php' ) ) {
 				$data_skip = true;
 			}
-
+			
 			vitepos_dci_dynamic_init(
 				array(
 					'sdk_version'          => '1.2.1',
@@ -146,14 +146,14 @@ if ( ! class_exists( __NAMESPACE__ . '\Vitepos_Addons' ) ) {
 					'plugin_name'          => 'Vitepos',
 					'data_skip'            => $data_skip,
 					'version'              => $this->loader->plugin_version,
-
+					
 					'plugin_title'         => 'Vitepos',
-
+					
 					'plugin_icon'          => plugins_url( '/assets/logo.svg', __FILE__ ),
-
+					
 					'api_endpoint'         => 'https://analytics.appsbd.com/wp-json/dci/v1/data-insights',
 					'slug'                 => 'vitepos-lite',
-
+					
 					'core_file'            => false,
 					'plugin_deactivate_id' => 'vitepos-lite',
 					'menu'                 => array(

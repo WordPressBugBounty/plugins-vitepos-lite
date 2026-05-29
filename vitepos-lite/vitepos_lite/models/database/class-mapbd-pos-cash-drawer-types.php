@@ -169,7 +169,7 @@ class Mapbd_Pos_Cash_Drawer_Types extends ViteposModelLite {
 		$newobj->order_id( $order_id );
 		$newobj->user_id( $user_id );
 		$newobj->amount( $amount );
-		$newobj->payment_type( $payment_type );
+		$newobj->payment_type( $payment_type ); 
 		$newobj->entry_time( gmdate( 'Y-m-d' ) );
 
 		return $newobj->save();

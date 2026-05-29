@@ -126,7 +126,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 			$this->load_payload();
 			$this->namespace     = $namespace;
 			$this->logged_user   = wp_get_current_user();
-
+			
 			ob_start();
 			$this->api_base = $this->set_api_base();
 			if ( appsbd_is_rest() ) {
@@ -164,10 +164,10 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		 */
 		public function set_outlet_location( $location, $tax_class, $customer ) {
 			if ( self::$is_vite_pos_request ) {
-
+				
 				$outlet = $this->get_outlet_obj();
 				if ( ! empty( $outlet ) ) {
-
+					
 					if ( ! empty( $outlet->country ) && ! empty( $outlet->state ) ) {
 						$location = array(
 							$outlet->country,
@@ -278,6 +278,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 
 			$this->payload =& self::$payload_obj;
 
+			
 			$vite_outlet = AppInput::get_server_data( 'HTTP_VITE_OUTLET' );
 			$outlet_parts = ! empty( $vite_outlet ) ? explode( '|', $vite_outlet ) : array();
 
@@ -314,7 +315,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 				if ( ! empty( $_FILES ) ) {
 					// phpcs:ignore WordPress.Security.NonceVerification.Missing
 					foreach ( $_FILES as $file ) {
-
+						
 						if ( empty( $file['name'] ) ) {
 							continue;
 						}
@@ -324,7 +325,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 							'gif'          => 'image/gif',
 							'webp'         => 'image/webp',
 						);
-
+						
 						$validate = wp_check_filetype_and_ext(
 							$file['tmp_name'],
 							$file['name'],

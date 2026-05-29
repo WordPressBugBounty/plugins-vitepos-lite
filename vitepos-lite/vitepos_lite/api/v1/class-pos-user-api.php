@@ -186,7 +186,7 @@ class Pos_User_Api extends API_Base {
 		$response_data->caps         = Mapbd_Pos_Role::set_capabilities_by_role( $user->caps, $user );
 		$response_data->outlets      = Mapbd_Pos_Warehouse::get_outlet_details( $user );
 		$response_data->is_temp_pass = get_user_meta( $user->ID, 'force_pw_change', true );
-
+			
 		/**
 		 * Its for logged user
 		 *
@@ -397,7 +397,7 @@ class Pos_User_Api extends API_Base {
 		$users_obj->username   = $user->user_nicename;
 		$users_obj->email      = $user->user_email;
 		$users_obj->city       = get_user_meta( $user->ID, 'billing_city', true );
-
+		
 		$users_obj->contact_no  = get_user_meta( $user->ID, 'billing_phone', true );
 		$users_obj->street      = get_user_meta( $user->ID, 'billing_address_1', true );
 		$users_obj->country     = get_user_meta( $user->ID, 'billing_country', true );
@@ -436,7 +436,8 @@ class Pos_User_Api extends API_Base {
 			if ( is_array( $outlets ) ) {
 				$args['meta_query'][] = array(
 					'key'     => 'outlet_id',
-
+					
+					
 					'value'   => '"(' . implode( '|', $outlets ) . ')"',
 					'compare' => 'REGEXP',
 				);
@@ -471,7 +472,7 @@ class Pos_User_Api extends API_Base {
 	 * @return \stdClass|stdClass|null
 	 */
 	private function get_user_object_by_id( $id ) {
-		 $user = get_user_by( 'id', $id );
+		$user = get_user_by( 'id', $id );
 		if ( ! empty( $user ) ) {
 			return $this->get_user_object( $user );
 		}
@@ -529,7 +530,7 @@ class Pos_User_Api extends API_Base {
 		$outlet_place->cash_drawer_id = ! empty( $existing_drawer->id ) ? $existing_drawer->id : 0;
 		$outlet_place->is_submitted   = 0 != $this->payload['is_submitted'];
 		if ( ! empty( $this->payload['is_new'] ) ) {
-
+			
 			$outlet_place->cd_balance = $this->payload['cd_balance'];
 			$cash_drawar              = Mapbd_Pos_Cash_Drawer::create_by_counter( $outlet_place->cd_balance, $outlet_place->outlet, $outlet_place->counter, $this->get_current_user_id() );
 			if ( ! empty( $cash_drawar->id ) ) {
@@ -595,6 +596,11 @@ class Pos_User_Api extends API_Base {
 					$this->response->set_response( false, '' );
 					return $this->response->get_response();
 				}
+				if ( ! empty( $this->get_payload( 'role' ) ) && ! Mapbd_Pos_Role::is_assignable_role( $this->get_payload( 'role' ) ) ) {
+					$this->add_error( 'Invalid or unpermitted role.' );
+					$this->response->set_response( false, '' );
+					return $this->response->get_response();
+				}
 				$user_obj = new POS_Customer();
 				$user_obj->set_from_array( $this->payload );
 				$outlet_id           = $this->get_payload( 'outlet_id' );
@@ -616,6 +622,11 @@ class Pos_User_Api extends API_Base {
 			} else {
 				if ( ! current_user_can( 'user-add' ) ) {
 					$this->add_error( 'You do not have permission to do this' );
+					$this->response->set_response( false, '' );
+					return $this->response->get_response();
+				}
+				if ( ! empty( $this->get_payload( 'role' ) ) && ! Mapbd_Pos_Role::is_assignable_role( $this->get_payload( 'role' ) ) ) {
+					$this->add_error( 'Invalid or unpermitted role.' );
 					$this->response->set_response( false, '' );
 					return $this->response->get_response();
 				}

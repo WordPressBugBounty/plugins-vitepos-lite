@@ -184,7 +184,6 @@ class VitePosLite extends Kernel_Lite {
 		$this->add_module( 'VitePos_Lite\Modules\POS_Settings' );
 		$this->add_module( 'VitePos_Lite\Modules\POS_Payment' );
 		$this->add_module( 'VitePos_Lite\Modules\Appsbd_Related_App' );
-		$this->add_module( 'VitePos_Lite\Modules\MU_Plugin_Settings' );
 	}
 
 	/**
@@ -200,7 +199,7 @@ class VitePosLite extends Kernel_Lite {
 		if ( empty( $src ) || 1 == $src || preg_match( '/apbd\-|/', $handle ) || preg_match( '/\/uilib|apbd\-|\/css\/all-css.css|\/wp-admin\/|\/wp-includes\/|\/plugins\/woocommerce\/assets\/|\/plugins\/elementor\/assets\/css\/admin/', $src ) ) {
 			return true;
 		}
-		return parent::wp_admin_check_default_css_script( $src, $handle ); 
+		return parent::wp_admin_check_default_css_script( $src, $handle );
 	}
 
 	/**

@@ -266,10 +266,9 @@ class POS_Role extends Vitepos_Module {
 	 * @return mixed Its string.
 	 */
 	public function default_resources( $resources ) {
-		
+
 		$resources[] = ACL_Resource::get_resource( 'pos-menu', 'POS Menu', '01. POS', '' );
 
-		
 		$resources[] = ACL_Resource::get_resource( 'order-list', 'Order List', '02. Order', '' );
 		$resources[] = ACL_Resource::get_resource( 'order-hold', 'Order Hold List', '02. Order', '' );
 		$resources[] = ACL_Resource::get_resource( 'order-offline', 'Order offline', '02. Order', '' );
@@ -286,23 +285,21 @@ class POS_Role extends Vitepos_Module {
 			'02. Order',
 			'This role user can view any outlets order details'
 		);
-		
+
 		$resources[] = ACL_Resource::get_resource( 'customer-menu', 'Customer Menu', '03. Customer', '' );
 		$resources[] = ACL_Resource::get_resource( 'customer-add', 'Customer Add', '03. Customer', '' );
 		$resources[] = ACL_Resource::get_resource( 'customer-edit', 'Customer Edit', '03. Customer', '' );
 		$resources[] = ACL_Resource::get_resource( 'customer-delete', 'Customer Delete', '03. Customer', '' );
 
-		
 		$resources[] = ACL_Resource::get_resource( 'product-menu', 'Product Menu', '04. Product', '' );
 		$resources[] = ACL_Resource::get_resource( 'product-add', 'Product Add', '04. Product', '' );
 		$resources[] = ACL_Resource::get_resource( 'product-edit', 'Product Edit', '04. Product', '' );
 		$resources[] = ACL_Resource::get_resource( 'product-delete', 'Product Delete', '04. Product', '' );
 		$resources[] = ACL_Resource::get_resource( 'make-favorite', 'Make Favourite', '04. Product', '' );
 
-		
 		$resources[] = ACL_Resource::get_resource( 'stock-menu', 'Stock Menu', '05. Stock', '' );
 		$resources[] = ACL_Resource::get_resource( 'stock-add', 'Stock Add', '05. Stock', '' );
-		
+
 		$resources[] = ACL_Resource::get_resource( 'purchase-menu', 'Purchase Menu', '06. Purchase', '' );
 		$resources[] = ACL_Resource::get_resource( 'purchase-details', 'Purchase Details', '06. Purchase', '' );
 		$resources[] = ACL_Resource::get_resource(
@@ -318,13 +315,11 @@ class POS_Role extends Vitepos_Module {
 			'This role user can see the products list which need to update the prices'
 		);
 
-		
 		$resources[] = ACL_Resource::get_resource( 'vendor-menu', 'Vendor Menu', '07. Vendor', '' );
 		$resources[] = ACL_Resource::get_resource( 'vendor-add', 'Vendor Add', '07. Vendor', '' );
 		$resources[] = ACL_Resource::get_resource( 'vendor-edit', 'Vendor Edit', '07. Vendor', '' );
 		$resources[] = ACL_Resource::get_resource( 'vendor-delete', 'Vendor delete', '07. Vendor', '' );
 
-		
 		$resources[] = ACL_Resource::get_resource( 'user-menu', 'User Menu', '08. User', '' );
 		$resources[] = ACL_Resource::get_resource( 'user-add', 'User Add', '08. User', '' );
 		$resources[] = ACL_Resource::get_resource( 'user-edit', 'User Edit', '08. User', '' );
@@ -342,9 +337,8 @@ class POS_Role extends Vitepos_Module {
 			'The role user can change any users password'
 		);
 
-		
 		$resources[] = ACL_Resource::get_resource( 'barcode-menu', 'Barcode Menu', '09. Barcode', '' );
-		
+
 		$resources[] = ACL_Resource::get_resource(
 			'drawer-log',
 			'Cash Drawer Log',
@@ -364,7 +358,6 @@ class POS_Role extends Vitepos_Module {
 			'This roles user can close any opened drawer'
 		);
 
-		
 		$resources[] = ACL_Resource::get_resource(
 			'addon-menu',
 			'Addon Menu',
@@ -379,7 +372,7 @@ class POS_Role extends Vitepos_Module {
 		);
 		$resources[] = ACL_Resource::get_resource( 'addon-edit', 'Addon Edit', '11. Addon Panel', '' );
 		$resources[] = ACL_Resource::get_resource( 'addon-delete', 'Addon Delete', '11. Addon Panel', '' );
-		
+
 		$resources[] = ACL_Resource::get_resource(
 			'cashier-menu',
 			'Cashier Menu',
@@ -406,7 +399,7 @@ class POS_Role extends Vitepos_Module {
 				'This roles user can make order and sent to kitchen'
 			);
 		}
-		
+
 		$resources[] = ACL_Resource::get_resource(
 			'table-menu',
 			'Table Menu',
@@ -432,17 +425,14 @@ class POS_Role extends Vitepos_Module {
 			'This roles user can see restaurant kitchen panel'
 		);
 
-		
 		$resources[] = ACL_Resource::get_resource( 'report-menu', 'Report Panel', '16. Report Panel', '' );
 
-		
 		$resources[] = ACL_Resource::get_resource( 'category-menu', 'Product Category Panel', '17. Product Category', '' );
 		$resources[] = ACL_Resource::get_resource( 'category-add', 'Product Category Add', '17. Product Category', '' );
 		$resources[] = ACL_Resource::get_resource( 'category-hide', 'Product Category Hide', '17. Product Category', '' );
 		$resources[] = ACL_Resource::get_resource( 'category-edit', 'Product Category Edit', '17. Product Category', '' );
 		$resources[] = ACL_Resource::get_resource( 'category-delete', 'Product Category Delete', '17. Product Category', '' );
 
-		
 		$resources[] = ACL_Resource::get_resource( 'attribute-menu', 'Product Attribute Panel', '18. Product Attribute', '' );
 		$resources[] = ACL_Resource::get_resource( 'attribute-add', 'Product Attribute Add', '18. Product Attribute', '' );
 		$resources[] = ACL_Resource::get_resource( 'attribute-edit', 'Product Attribute Edit', '18. Product Attribute', '' );
@@ -692,7 +682,7 @@ class POS_Role extends Vitepos_Module {
 		$mainobj = new Mapbd_pos_role();
 		$mainobj->set_search_by_param( $main_response->src_by, 'name,phone' );
 		$mainobj->set_sort_by_param( $main_response->sort_by );
-		
+
 		$records = $mainobj->count_all(
 			$main_response->src_item,
 			$main_response->src_text,
@@ -891,7 +881,7 @@ class POS_Role extends Vitepos_Module {
 		$is_updated    = false;
 		$final_status  = '';
 		if ( ! empty( $acl ) ) {
-			
+
 			$new_status = 'Y' == $acl->role_access ? 'N' : 'Y';
 			if ( Mapbd_pos_role_access::update_status( $acl->id, $new_status ) ) {
 				$is_updated   = true;
@@ -900,7 +890,7 @@ class POS_Role extends Vitepos_Module {
 				$final_status = $acl->role_access;
 			}
 		} else {
-			
+
 			$new_status = 'Y';
 			if ( Mapbd_pos_role_access::add_access_status( $role_slug, $res_id ) ) {
 				$is_updated   = true;

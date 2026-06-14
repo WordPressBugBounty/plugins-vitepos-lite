@@ -101,7 +101,7 @@ class Pos_Customer_Api extends API_Base {
 			$customer_obj->username   = $user->user_nicename;
 			$customer_obj->email      = $user->user_email;
 			$customer_obj->city       = $user->billing_city;
-			
+
 			$customer_obj->contact_no = $user->contact_no;
 			$customer_obj->street     = $user->street;
 			$customer_obj->country    = $user->billing_country;
@@ -162,7 +162,7 @@ class Pos_Customer_Api extends API_Base {
 			$customer_obj->username   = $user->user_nicename;
 			$customer_obj->email      = $user->user_email;
 			$customer_obj->city       = $user->billing_city;
-			
+
 			$customer_obj->contact_no = $user->billing_phone;
 			$customer_obj->street     = $user->billing_address_1;
 			$customer_obj->country    = $user->billing_country;
@@ -266,7 +266,7 @@ class Pos_Customer_Api extends API_Base {
 				$old_cus = get_user_by( 'ID', $this->payload['id'] );
 			}
 			if ( ! empty( $old_cus ) ) {
-				
+
 				if ( POS_Settings::is_pos_user( $old_cus ) ) {
 					$this->add_error( 'You cannot modify the information of this user because they have a higher-level role.' );
 					$this->response->set_response( false, '' );

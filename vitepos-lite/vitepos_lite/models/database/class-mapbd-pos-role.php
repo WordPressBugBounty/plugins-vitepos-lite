@@ -138,7 +138,7 @@ class Mapbd_Pos_Role extends ViteposModelLite {
 				 'Text' => 'Max discount',
 				 'Rule' => 'max_length[7]',
 			 ),
-			 
+
 			 'discount_type' => array(
 				 'Text' => 'Discount Type',
 				 'Rule' => 'max_length[1]',

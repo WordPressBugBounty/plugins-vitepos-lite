@@ -35,13 +35,13 @@ class POS_Product {
 	 *
 	 * @var int
 	 */
-	public $id;                
+	public $id;
 	/**
 	 * Its property barcode.
 	 *
 	 * @var int
 	 */
-	public $barcode;          
+	public $barcode;
 	/**
 	 * Its property name.
 	 *
@@ -59,7 +59,7 @@ class POS_Product {
 	 *
 	 * @var string
 	 */
-	public $image;             
+	public $image;
 
 	/**
 	 * Its property image.
@@ -73,37 +73,37 @@ class POS_Product {
 	 *
 	 * @var float
 	 */
-	public $sale_price;        
+	public $sale_price;
 	/**
 	 * Its property regular_price.
 	 *
 	 * @var float
 	 */
-	public $regular_price;     
+	public $regular_price;
 	/**
 	 * Its property price_html.
 	 *
 	 * @var string
 	 */
-	public $price_html;         
+	public $price_html;
 	/**
 	 * Its property price.
 	 *
 	 * @var float
 	 */
-	public $price;             
+	public $price;
 	/**
 	 * Its property cross_sale.
 	 *
 	 * @var string
 	 */
-	public $cross_sale;        
+	public $cross_sale;
 	/**
 	 * Its property up_sale.
 	 *
 	 * @var string
 	 */
-	public $up_sale;           
+	public $up_sale;
 	/**
 	 * Its property attributes.
 	 *
@@ -115,13 +115,13 @@ class POS_Product {
 	 *
 	 * @var string
 	 */
-	public $variations;        
+	public $variations;
 	/**
 	 * Its property group_product.
 	 *
 	 * @var string
 	 */
-	public $group_product;     
+	public $group_product;
 	/**
 	 * Its property parent_product.
 	 *
@@ -163,7 +163,7 @@ class POS_Product {
 	 *
 	 * @var string
 	 */
-	public $purchasable;       
+	public $purchasable;
 	/**
 	 * Its property average_rating.
 	 *
@@ -175,31 +175,31 @@ class POS_Product {
 	 *
 	 * @var int
 	 */
-	public $rating_count;      
+	public $rating_count;
 	/**
 	 * Its property slug.
 	 *
 	 * @var string
 	 */
-	public $slug;      
+	public $slug;
 	/**
 	 * Its property sku.
 	 *
 	 * @var string
 	 */
-	public $sku;               
+	public $sku;
 	/**
 	 * Its property description.
 	 *
 	 * @var string
 	 */
-	public $description;     
+	public $description;
 	/**
 	 * Its property purchase_cost.
 	 *
 	 * @var int
 	 */
-	public $purchase_cost;     
+	public $purchase_cost;
 	/**
 	 * Its property taxable.
 	 *
@@ -239,8 +239,8 @@ class POS_Product {
 	 */
 	public $tax_rates;
 
-	
-	
+
+
 	/**
 	 * Its property type.
 	 *
@@ -376,7 +376,7 @@ class POS_Product {
 
 					} elseif ( 'price' == $src_prop['prop'] ) {
 						$filter['meta_key'] = '_price';
-						if ( 'bt' == $src_prop['opr'] && isset( $src_prop['val'] ) ) { 
+						if ( 'bt' == $src_prop['opr'] && isset( $src_prop['val'] ) ) {
 							if ( isset( $src_prop['val'] ) && isset( $src_prop['val']['start'] ) && '' != $src_prop['val']['start'] ) {
 								$filter['meta_query'][] = array(
 									'key'     => '_price',
@@ -484,7 +484,7 @@ class POS_Product {
 	 * @return \stdClass
 	 */
 	public static function get_product_from_woo_products_with_variations( $page = 1, $limit = 10, $src_props = array(), $orders = array() ) {
-		
+
 		$post_type             = array( 'product', 'product_variation' );
 		$post_status           = POS_Settings::get_module_instance()->get_product_status();
 		$product_query         = POS_Product_Query::get_products( $page, $limit, $src_props, $orders, $post_type, $post_status );
@@ -516,7 +516,7 @@ class POS_Product {
 	 * @return \stdClass
 	 */
 	public static function get_product_from_woo_products_without_variables( $page = 1, $limit = 10, $src_props = array(), $orders = array() ) {
-		
+
 		$post_type             = array( 'product', 'product_variation' );
 		$post_status           = POS_Settings::get_module_instance()->get_product_status();
 		$product_query         = POS_Product_Query::get_products( $page, $limit, $src_props, $orders, $post_type, $post_status, true );
@@ -578,7 +578,7 @@ class POS_Product {
 		if ( ! $is_parent ) {
 			$cat_args['parent'] = 0;
 		}
-		
+
 		$product_categories = get_terms( $cat_args );
 		$final_response     = array();
 		if ( ! empty( $product_categories ) ) {
@@ -614,7 +614,7 @@ class POS_Product {
 	 * @return array
 	 */
 	public static function get_additional_taxes() {
-		$final_response = \WC_Tax::get_tax_rate_classes(); 
+		$final_response = \WC_Tax::get_tax_rate_classes();
 		if ( ! in_array( '', $final_response ) ) {
 			$standard       = new \stdClass();
 			$standard->name = 'Standard rate';
@@ -729,23 +729,19 @@ class POS_Product {
 	 * @return string
 	 */
 	public static function format_sale_price( $regular_price, $sale_price ) {
-		
+
 		$formatted_regular_price = is_numeric( $regular_price ) ? wc_price( $regular_price ) : $regular_price;
 		$formatted_sale_price    = is_numeric( $sale_price ) ? wc_price( $sale_price ) : $sale_price;
 
-		
 		$price = '<del aria-hidden="true">' . $formatted_regular_price . '</del> ';
 
-		
 		$price .= '<span class="screen-reader-text">';
 		// translators: %s is a product's regular price.
 
 		$price .= '</span>';
 
-		
 		$price .= '<ins aria-hidden="true">' . $formatted_sale_price . '</ins>';
 
-		
 		$price .= '<span class="screen-reader-text">';
 		// translators: %s is a product's current (sale) price.
 		$price .= '</span>';
@@ -901,7 +897,7 @@ class POS_Product {
 					'rate' => $rate['rate'],
 				);
 			}
-			$taxes = \WC_Tax::calc_tax( $pos_product->price, $tax_rates, false ); 
+			$taxes = \WC_Tax::calc_tax( $pos_product->price, $tax_rates, false );
 			$tax_amount = array_sum( $taxes );
 			$pos_product->tax_rate = $tax_amount;
 		}
@@ -915,8 +911,6 @@ class POS_Product {
 			}
 		}
 
-		
-
 		$pos_product->attributes = self::get_attributes( $product );
 		$pos_product->barcode    = (string) self::get_barcode_of_product( $product, $parent_product );
 		if ( method_exists( $product, 'get_global_unique_id' ) ) {
@@ -924,12 +918,11 @@ class POS_Product {
 		} else {
 			$pos_product->global_unique_id = $product->get_sku() ? $product->get_sku() : $product->get_id();
 		}
-		
+
 		if ( $parent_product instanceof \WC_Product ) {
 			$pos_product->parent_product = self::get_product_data( $parent_product );
 		}
 
-		
 		if ( $product->is_type( 'grouped' ) && $product->has_child() ) {
 			$pos_product->group_product = self::get_grouped_products_data( $product );
 		}
@@ -994,8 +987,6 @@ class POS_Product {
 		$pos_product->low_stock_amount = $product->get_low_stock_amount();
 		$pos_product->parent_product   = null;
 
-		
-
 		if ( $parent_product instanceof \WC_Product ) {
 			$pos_product->parent_product          = new \stdClass();
 			$pos_product->parent_product->id      = $parent_product->get_id();
@@ -1025,24 +1016,22 @@ class POS_Product {
 	public static function get_attributes2( &$product ) {
 		$return_attributes = array();
 		if ( $product->is_type( 'variable' ) ) {
-			
+
 			foreach ( $product->get_available_variations() as $key => $variation ) {
 
 				foreach ( $variation['attributes'] as $attribute => $term_slug ) {
-					
+
 					$taxonmomy = str_replace( 'attribute_', '', $attribute );
 
-					
 					$attr_label_name = wc_attribute_label( $taxonmomy );
 
-					
 					$term_name = get_term_by( 'slug', $term_slug, $taxonmomy );
 					if ( ! empty( $term_name->name ) ) {
 						$attr_label_name = $term_name->name;
 					} else {
 						$attr_label_name = $term_slug;
 					}
-					
+
 					if ( ! isset( $pos_product->attributes[ $taxonmomy ] ) ) {
 						$return_attributes[ $taxonmomy ] = array();
 					}
@@ -1123,16 +1112,15 @@ class POS_Product {
 	 * @since 2.1
 	 */
 	private static function query_args( $args ) {
-		
+
 		$query_args = array(
 			'fields'      => 'ids',
 			'post_type'   => 'product',
-			
+
 			'post_status' => POS_Settings::get_module_instance()->get_product_status(),
 			'meta_query'  => array(),
 		);
 
-		
 		if ( ! empty( $args['sku'] ) ) {
 			if ( ! is_array( $query_args['meta_query'] ) ) {
 				$query_args['meta_query'] = array();
@@ -1162,12 +1150,10 @@ class POS_Product {
 	public static function merge_query_args( $base_args, $request_args ) {
 		$args = array();
 
-		
 		if ( ! empty( $request_args['created_at_min'] ) || ! empty( $request_args['created_at_max'] ) || ! empty( $request_args['updated_at_min'] ) || ! empty( $request_args['updated_at_max'] ) ) {
 
 			$args['date_query'] = array();
 
-			
 			if ( ! empty( $request_args['created_at_min'] ) ) {
 				$args['date_query'][] = array(
 					'column'    => 'post_date_gmt',
@@ -1176,7 +1162,6 @@ class POS_Product {
 				);
 			}
 
-			
 			if ( ! empty( $request_args['created_at_max'] ) ) {
 				$args['date_query'][] = array(
 					'column'    => 'post_date_gmt',
@@ -1185,7 +1170,6 @@ class POS_Product {
 				);
 			}
 
-			
 			if ( ! empty( $request_args['updated_at_min'] ) ) {
 				$args['date_query'][] = array(
 					'column'    => 'post_modified_gmt',
@@ -1194,7 +1178,6 @@ class POS_Product {
 				);
 			}
 
-			
 			if ( ! empty( $request_args['updated_at_max'] ) ) {
 				$args['date_query'][] = array(
 					'column'    => 'post_modified_gmt',
@@ -1204,31 +1187,25 @@ class POS_Product {
 			}
 		}
 
-		
 		if ( ! empty( $request_args['q'] ) ) {
 			$args['s'] = $request_args['q'];
 		}
 
-		
 		if ( ! empty( $request_args['limit'] ) ) {
 			$args['posts_per_page'] = $request_args['limit'];
 		}
 
-		
 		if ( ! empty( $request_args['offset'] ) ) {
 			$args['offset'] = $request_args['offset'];
 		}
 
-		
 		if ( ! empty( $request_args['order'] ) ) {
 			$args['order'] = $request_args['order'];
 		}
 
-		
 		if ( ! empty( $request_args['orderby'] ) ) {
 			$args['orderby'] = $request_args['orderby'];
 
-			
 			if ( ! empty( $request_args['orderby_meta_key'] ) ) {
 				$args['meta_key'] = $request_args['orderby_meta_key'];
 			}
@@ -1240,25 +1217,21 @@ class POS_Product {
 			$args['api_sort'] = $request_args['api_sort'];
 		}
 
-		
 		if ( ! empty( $request_args['post_status'] ) ) {
 			$args['post_status'] = $request_args['post_status'];
 			unset( $request_args['post_status'] );
 		}
 
-		
 		if ( ! empty( $request_args['in'] ) ) {
 			$args['post__in'] = explode( ',', $request_args['in'] );
 			unset( $request_args['in'] );
 		}
 
-		
 		if ( ! empty( $request_args['in'] ) ) {
 			$args['post__in'] = explode( ',', $request_args['in'] );
 			unset( $request_args['in'] );
 		}
 
-		
 		$args['paged'] = ( isset( $request_args['page'] ) ) ? absint( $request_args['page'] ) : 1;
 		/**
 		 * Its for api query args.
@@ -1308,7 +1281,7 @@ class POS_Product {
 			if ( ! empty( $outletinfo->id ) ) {
 				$variation_obj->outlet_id = absint( $outletinfo->id );
 			}
-			$variation_obj->price_html     = wc_price( $variation_obj->price ); 
+			$variation_obj->price_html     = wc_price( $variation_obj->price );
 			$variation_obj->manage_stock   = $variation->managing_stock();
 			$variation_obj->stock_quantity = $variation->get_stock_quantity() ? $variation->get_stock_quantity() : 0;
 
@@ -1366,10 +1339,8 @@ class POS_Product {
 
 		if ( $product->is_type( 'variation' ) ) {
 
-			
 			foreach ( $product->get_variation_attributes() as $attribute_name => $attribute ) {
 
-				
 				$attributes[] = array(
 					'name'   => wc_attribute_label( str_replace( 'attribute_', '', $attribute_name ), $product ),
 					'slug'   => str_replace( 'attribute_', '', wc_attribute_taxonomy_slug( $attribute_name ) ),
@@ -1382,9 +1353,9 @@ class POS_Product {
 				$attributes[] = array(
 					'id'        => $attribute['id'],
 					'name'      => wc_attribute_label( $attribute['name'], $product ),
-					
+
 					'slug'      => wc_sanitize_taxonomy_name( $attribute['name'] ),
-					
+
 					'visible'   => (bool) $attribute['is_visible'],
 					'variation' => (bool) $attribute['is_variation'],
 					'options'   => self::get_attribute_options( $product->get_id(), $attribute ),
@@ -1437,12 +1408,11 @@ class POS_Product {
 	 * @since 2.1
 	 */
 	public static function parse_datetime( $datetime ) {
-		
+
 		if ( strpos( $datetime, '.' ) !== false ) {
 			$datetime = preg_replace( '/\.\d+/', '', $datetime );
 		}
 
-		
 		$datetime = preg_replace( '/[+-]\d+:+\d+$/', '+00:00', $datetime );
 
 		try {

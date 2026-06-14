@@ -61,10 +61,10 @@ if ( ! function_exists( 'vitepos_order_add_fee_on_order' ) ) {
 	 */
 	function vitepos_order_add_fee_on_order( &$order, $title, $amount, $metas = array() ) {
 		$item_fee = new WC_Order_Item_Fee();
-		$item_fee->set_name( $title ); 
+		$item_fee->set_name( $title );
 		$item_fee->set_tax_class( '' );
 		$item_fee->set_tax_status( 'none' );
-		$item_fee->set_total( $amount ); 
+		$item_fee->set_total( $amount );
 		foreach ( $metas as $meta_key => $m_value ) {
 			$item_fee->add_meta_data( $meta_key, $m_value, true );
 		}
@@ -81,7 +81,7 @@ if ( ! function_exists( 'vitepos_order_add_tax' ) ) {
 	 */
 	function vitepos_order_add_tax( &$order, $title, $amount ) {
 		$item = new WC_Order_Item_Tax();
-		$item->set_name( $title ); 
+		$item->set_name( $title );
 		$item->set_tax_total( $amount );
 		$item->set_order_id( $order->get_id() );
 		$order->add_item( $item );
@@ -271,7 +271,7 @@ if ( ! function_exists( 'vitepos_product_tax_rates' ) ) {
 	 */
 	function vitepos_product_tax_rates( &$item ) {
 		$tax_rates = \WC_Tax::get_rates( $item->tax_class );
-		
+
 		foreach ( $tax_rates as $rate ) {
 			$item->tax_rates[] = array(
 				'label' => $rate['label'],
@@ -282,7 +282,7 @@ if ( ! function_exists( 'vitepos_product_tax_rates' ) ) {
 			$item->price,
 			$tax_rates,
 			false
-		); 
+		);
 		$tax_amount = array_sum( $taxes );
 		$item->tax  = $tax_amount;
 	}
@@ -362,7 +362,7 @@ if ( ! function_exists( 'vitepos_get_product_by_barcode' ) ) {
 				$product_id = $product_query->posts[0]->ID;
 			}
 		} else {
-			
+
 			$product_id = (int) preg_replace( '#[^0-9]#', '', $barcode );
 		}
 		if ( ! empty( $product_id ) ) {
@@ -389,7 +389,6 @@ if ( ! function_exists( 'vitepos_number_format' ) ) {
 
 		$original_price = $price;
 
-		
 		$price = (float) $price;
 
 		$negative = $price < 0;
@@ -531,9 +530,6 @@ if ( ! function_exists( 'vitepos_apply_filters' ) ) {
 	 * @return mixed
 	 */
 	function vitepos_apply_filters( ...$params ) {
-
-		
-		
 
 		/**
 		 * Fires a dynamic hook inside vitepos_apply_filters().

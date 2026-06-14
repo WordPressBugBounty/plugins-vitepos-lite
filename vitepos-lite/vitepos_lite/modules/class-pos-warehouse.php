@@ -370,7 +370,7 @@ class POS_Warehouse extends Vitepos_Module {
 		$users_obj->username   = $user->user_nicename;
 		$users_obj->email      = $user->user_email;
 		$users_obj->city       = get_user_meta( $user->ID, 'billing_city', true );
-		
+
 		$users_obj->contact_no  = get_user_meta( $user->ID, 'billing_phone', true );
 		$users_obj->street      = get_user_meta( $user->ID, 'billing_address_1', true );
 		$users_obj->country     = get_user_meta( $user->ID, 'billing_country', true );

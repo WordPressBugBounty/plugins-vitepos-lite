@@ -46,7 +46,6 @@ class POS_Payment extends Vitepos_Module {
 		add_filter( 'vitepos/filter/payment/methods', array( $this, 'register_default_payment_methods' ) );
 		add_filter( 'vitepos/filter/payment-name', array( $this, 'payment_name_by_id' ), 10, 2 );
 
-		
 		add_action( $this->kernel_object->plugin_base . '/module-loaded', array( $this, 'on_all_module_loaded' ) );
 	}
 

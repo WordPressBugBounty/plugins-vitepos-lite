@@ -50,7 +50,7 @@ class Pos_User_Api extends API_Base {
 		$this->register_rest_route( 'POST', 'change-pass', array( $this, 'change_pass' ) );
 		$this->register_rest_route( 'POST', 'change-pass-force', array( $this, 'change_pass_force' ) );
 		$this->register_rest_route( 'POST', 'delete-user', array( $this, 'delete_user' ) );
-		$this->register_rest_route( 'GET', 'close-cash-drawer', array( $this, 'close_cash_drawer' ) );
+		$this->register_rest_route( 'POST', 'close-cash-drawer', array( $this, 'close_cash_drawer' ) );
 		$this->register_rest_route( 'GET', 'cash-drawer-list', array( $this, 'cash_drawer_list' ) );
 		$this->register_rest_route( 'GET', 'roles', array( $this, 'roles' ) );
 		$this->register_rest_route( 'POST', 'create', array( $this, 'create_user' ) );
@@ -186,7 +186,7 @@ class Pos_User_Api extends API_Base {
 		$response_data->caps         = Mapbd_Pos_Role::set_capabilities_by_role( $user->caps, $user );
 		$response_data->outlets      = Mapbd_Pos_Warehouse::get_outlet_details( $user );
 		$response_data->is_temp_pass = get_user_meta( $user->ID, 'force_pw_change', true );
-			
+
 		/**
 		 * Its for logged user
 		 *
@@ -397,7 +397,7 @@ class Pos_User_Api extends API_Base {
 		$users_obj->username   = $user->user_nicename;
 		$users_obj->email      = $user->user_email;
 		$users_obj->city       = get_user_meta( $user->ID, 'billing_city', true );
-		
+
 		$users_obj->contact_no  = get_user_meta( $user->ID, 'billing_phone', true );
 		$users_obj->street      = get_user_meta( $user->ID, 'billing_address_1', true );
 		$users_obj->country     = get_user_meta( $user->ID, 'billing_country', true );
@@ -436,8 +436,7 @@ class Pos_User_Api extends API_Base {
 			if ( is_array( $outlets ) ) {
 				$args['meta_query'][] = array(
 					'key'     => 'outlet_id',
-					
-					
+
 					'value'   => '"(' . implode( '|', $outlets ) . ')"',
 					'compare' => 'REGEXP',
 				);
@@ -530,7 +529,7 @@ class Pos_User_Api extends API_Base {
 		$outlet_place->cash_drawer_id = ! empty( $existing_drawer->id ) ? $existing_drawer->id : 0;
 		$outlet_place->is_submitted   = 0 != $this->payload['is_submitted'];
 		if ( ! empty( $this->payload['is_new'] ) ) {
-			
+
 			$outlet_place->cd_balance = $this->payload['cd_balance'];
 			$cash_drawar              = Mapbd_Pos_Cash_Drawer::create_by_counter( $outlet_place->cd_balance, $outlet_place->outlet, $outlet_place->counter, $this->get_current_user_id() );
 			if ( ! empty( $cash_drawar->id ) ) {

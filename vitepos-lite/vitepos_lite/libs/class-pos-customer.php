@@ -404,7 +404,6 @@ class POS_Customer extends BaseModel {
 	 */
 	public function save_user() {
 		$this->password = wp_generate_password();
-		
 
 		$user = new \WP_User();
 		if ( self::contact_exists( $this->contact_no ) ) {
@@ -449,7 +448,7 @@ class POS_Customer extends BaseModel {
 		add_user_meta( $user_id, 'added_by', $this->added_by );
 		add_user_meta( $user_id, 'outlet_id', $this->outlet_id );
 		add_user_meta( $user_id, 'billing_city', $this->city );
-		
+
 		add_user_meta( $user_id, 'billing_country', $this->country );
 		add_user_meta( $user_id, 'billing_postcode', $this->postcode );
 		add_user_meta( $user_id, 'designation', $this->designation );
@@ -462,7 +461,7 @@ class POS_Customer extends BaseModel {
 			 */
 			do_action( 'apbd-vtpos/action/save-user-image', $user_id );
 		}
-		
+
 		if ( empty( $this->id ) && ! empty( $user_id ) ) {
 			$this->id = $user_id;
 		}
@@ -545,10 +544,6 @@ class POS_Customer extends BaseModel {
 			update_user_meta( $user_id, 'billing_city', $this->city );
 		}
 
-		
-		
-		
-		
 		if ( $this->postcode ) {
 			update_user_meta( $user_id, 'billing_postcode', $this->postcode );
 		}
@@ -608,7 +603,7 @@ class POS_Customer extends BaseModel {
 				'get_meta_sql',
 				function ( $sql ) use ( $search ) {
 					$appdb = self::get_db_object();
-					
+
 					static $nr = 0;
 					if ( 0 != $nr++ ) {
 						return $sql;

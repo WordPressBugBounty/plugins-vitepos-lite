@@ -37,15 +37,14 @@ if ( ! function_exists( 'vitepos_move_uploaded_file' ) ) {
 	 * @return bool
 	 */
 	function vitepos_move_uploaded_file( $file, $destination ) {
-		
+
 		if ( copy( $file, $destination ) ) {
-			
+
 			wp_delete_file( $file );
 
-			
 			return true;
 		} else {
-			
+
 			return false;
 		}
 	}
@@ -62,22 +61,19 @@ if ( ! function_exists( 'vitepos_read_file_with_wp_filesystem' ) ) {
 	function vitepos_read_file_with_wp_filesystem( $file_path ) {
 		global $wp_filesystem;
 
-		
 		if ( ! function_exists( 'request_filesystem_credentials' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/file.php';
 		}
 
-		
 		if ( ! WP_Filesystem() ) {
-			return false; 
+			return false;
 		}
 
-		
 		if ( $wp_filesystem->exists( $file_path ) ) {
-			
+
 			return $wp_filesystem->get_contents( $file_path );
 		} else {
-			return false; 
+			return false;
 		}
 	}
 }

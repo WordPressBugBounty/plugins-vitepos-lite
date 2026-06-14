@@ -113,5 +113,5 @@ if ( ! function_exists( 'vitepos_dci_insights_popup_notice' ) ) {
 		<?php
 	}
 
-	
+
 }

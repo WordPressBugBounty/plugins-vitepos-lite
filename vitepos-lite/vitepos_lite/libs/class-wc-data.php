@@ -195,20 +195,16 @@ class WC_Data {
 
 		$product = wc_get_product( $id );
 
-		
 		$product_data = $this->get_product_data( $product );
 
-		
 		if ( $product->is_type( 'variable' ) && $product->has_child() ) {
 			$product_data['variations'] = $this->get_variation_data( $product );
 		}
 
-		
 		if ( $product->is_type( 'variation' ) && $product->get_parent_id() ) {
 			$product_data['parent'] = $this->get_product_data( $product->get_parent_id() );
 		}
 
-		
 		if ( $product->is_type( 'grouped' ) && $product->has_child() ) {
 			$product_data['grouped_products'] = $this->get_grouped_products_data( $product );
 		}
@@ -260,7 +256,6 @@ class WC_Data {
 	 */
 	public function query_products( $args ) {
 
-		
 		$query_args = array(
 			'fields'      => 'ids',
 			'post_type'   => 'product',
@@ -268,11 +263,8 @@ class WC_Data {
 			'meta_query'  => array(),
 		);
 
-		
-		
 		$tax_query = array();
 
-		
 		$taxonomies_arg_map = array(
 			'product_type'           => 'type',
 			'product_cat'            => 'category',
@@ -280,12 +272,10 @@ class WC_Data {
 			'product_shipping_class' => 'shipping_class',
 		);
 
-		
 		foreach ( wc_get_attribute_taxonomy_names() as $attribute_name ) {
 			$taxonomies_arg_map[ $attribute_name ] = $attribute_name;
 		}
 
-		
 		foreach ( $taxonomies_arg_map as $tax_name => $arg ) {
 			if ( ! empty( $args[ $arg ] ) ) {
 				$terms = explode( ',', $args[ $arg ] );
@@ -304,7 +294,6 @@ class WC_Data {
 			$query_args['tax_query'] = $tax_query;
 		}
 
-		
 		if ( ! empty( $args['sku'] ) ) {
 			if ( ! is_array( $query_args['meta_query'] ) ) {
 				$query_args['meta_query'] = array();
@@ -335,12 +324,10 @@ class WC_Data {
 
 		$args = array();
 
-		
 		if ( ! empty( $request_args['created_at_min'] ) || ! empty( $request_args['created_at_max'] ) || ! empty( $request_args['updated_at_min'] ) || ! empty( $request_args['updated_at_max'] ) ) {
 
 			$args['date_query'] = array();
 
-			
 			if ( ! empty( $request_args['created_at_min'] ) ) {
 				$args['date_query'][] = array(
 					'column'    => 'post_date_gmt',
@@ -349,7 +336,6 @@ class WC_Data {
 				);
 			}
 
-			
 			if ( ! empty( $request_args['created_at_max'] ) ) {
 				$args['date_query'][] = array(
 					'column'    => 'post_date_gmt',
@@ -358,7 +344,6 @@ class WC_Data {
 				);
 			}
 
-			
 			if ( ! empty( $request_args['updated_at_min'] ) ) {
 				$args['date_query'][] = array(
 					'column'    => 'post_modified_gmt',
@@ -367,7 +352,6 @@ class WC_Data {
 				);
 			}
 
-			
 			if ( ! empty( $request_args['updated_at_max'] ) ) {
 				$args['date_query'][] = array(
 					'column'    => 'post_modified_gmt',
@@ -377,55 +361,45 @@ class WC_Data {
 			}
 		}
 
-		
 		if ( ! empty( $request_args['q'] ) ) {
 			$args['s'] = $request_args['q'];
 		}
 
-		
 		if ( ! empty( $request_args['limit'] ) ) {
 			$args['posts_per_page'] = $request_args['limit'];
 		}
 
-		
 		if ( ! empty( $request_args['offset'] ) ) {
 			$args['offset'] = $request_args['offset'];
 		}
 
-		
 		if ( ! empty( $request_args['order'] ) ) {
 			$args['order'] = $request_args['order'];
 		}
 
-		
 		if ( ! empty( $request_args['orderby'] ) ) {
 			$args['orderby'] = $request_args['orderby'];
 
-			
 			if ( ! empty( $request_args['orderby_meta_key'] ) ) {
 				$args['meta_key'] = $request_args['orderby_meta_key'];
 			}
 		}
 
-		
 		if ( ! empty( $request_args['post_status'] ) ) {
 			$args['post_status'] = $request_args['post_status'];
 			unset( $request_args['post_status'] );
 		}
 
-		
 		if ( ! empty( $request_args['in'] ) ) {
 			$args['post__in'] = explode( ',', $request_args['in'] );
 			unset( $request_args['in'] );
 		}
 
-		
 		if ( ! empty( $request_args['in'] ) ) {
 			$args['post__in'] = explode( ',', $request_args['in'] );
 			unset( $request_args['in'] );
 		}
 
-		
 		$args['paged'] = ( isset( $request_args['page'] ) ) ? absint( $request_args['page'] ) : 1;
 		/**
 		 * Its for api query args.
@@ -537,15 +511,12 @@ class WC_Data {
 		$attachment_ids = array();
 		$product_image  = $product->get_image_id();
 
-		
 		if ( ! empty( $product_image ) ) {
 			$attachment_ids[] = $product_image;
 		}
 
-		
 		$attachment_ids = array_merge( $attachment_ids, $product->get_gallery_image_ids() );
 
-		
 		foreach ( $attachment_ids as $position => $attachment_id ) {
 
 			$attachment_post = get_post( $attachment_id );
@@ -571,12 +542,11 @@ class WC_Data {
 			);
 		}
 
-		
 		if ( empty( $images ) ) {
 
 			$images[] = array(
 				'id'         => 0,
-				'created_at' => $this->format_datetime( time() ), 
+				'created_at' => $this->format_datetime( time() ),
 				'updated_at' => $this->format_datetime( time() ),
 				'src'        => wc_placeholder_img_src(),
 				'title'      => $this->__( 'Placeholder', 'vitepos-lite' ),
@@ -601,10 +571,8 @@ class WC_Data {
 
 		if ( $product->is_type( 'variation' ) ) {
 
-			
 			foreach ( $product->get_variation_attributes() as $attribute_name => $attribute ) {
 
-				
 				$attributes[] = array(
 					'name'   => wc_attribute_label( str_replace( 'attribute_', '', $attribute_name ), $product ),
 					'slug'   => str_replace( 'attribute_', '', wc_attribute_taxonomy_slug( $attribute_name ) ),
@@ -643,7 +611,7 @@ class WC_Data {
 			foreach ( $product->get_downloads() as $file_id => $file ) {
 
 				$downloads[] = array(
-					'id'   => $file_id, 
+					'id'   => $file_id,
 					'name' => $file['name'],
 					'file' => $file['file'],
 				);
@@ -700,7 +668,6 @@ class WC_Data {
 				$date = new DateTime( $timestamp, $timezone );
 			}
 
-			
 			if ( $convert_to_utc ) {
 				$date->modify( -1 * $date->getOffset() . ' seconds' );
 			}

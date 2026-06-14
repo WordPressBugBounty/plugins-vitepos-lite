@@ -179,7 +179,7 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 		$this_obj->closed_by( get_current_user_id() );
 		$this_obj->set_where_update( 'id', $this->id );
 		if ( $this_obj->update() ) {
-			
+
 			if ( empty( $note ) ) {
 				$note = 'Drawer closed';
 			}
@@ -343,7 +343,7 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 			$this_obj->closing_time( gmdate( 'Y-m-d H:i:s' ) );
 			$this_obj->set_where_update( 'id', $cash_drawer->id );
 			if ( $this_obj->update() ) {
-				
+
 				Mapbd_Pos_Cash_Drawer_Log::AddLog(
 					$cash_drawer->id,
 					'Order Processed',
@@ -388,7 +388,7 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 			$this_obj->set_where_update( 'id', $cash_drawer->id );
 
 			if ( $this_obj->update() ) {
-				
+
 				Mapbd_Pos_Cash_Drawer_Log::AddLog(
 					$cash_drawer->id,
 					$narration,
@@ -433,7 +433,7 @@ class Mapbd_Pos_Cash_Drawer extends ViteposModelLite {
 				} else {
 					$closing_balance = $cashdrawer->closing_balance - $amount;
 				}
-				
+
 				Mapbd_Pos_Cash_Drawer_Log::AddLog(
 					$cashdrawer->id,
 					'Order Change amount',

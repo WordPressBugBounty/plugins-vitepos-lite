@@ -65,7 +65,7 @@ class Pos_Order_Api extends API_Base {
 				return current_user_can( 'pos-menu' );
 			case 'order-list':
 				return current_user_can( 'order-list' );
-			case 'order_details':
+			case 'details':
 				return current_user_can( 'order-details' );
 			default:
 				return POS_Settings::is_pos_user();
@@ -543,6 +543,19 @@ class Pos_Order_Api extends API_Base {
 			$id    = intval( $data['id'] );
 			$order = wc_get_order( $id );
 			if ( ! empty( $order ) ) {
+				if ( 'Y' !== $order->get_meta( '_is_vitepos' ) ) {
+					$this->response->set_response( false, 'Order not found', null );
+					return $this->response;
+				}
+
+				if ( ! POS_Settings::is_admin_user() && ! current_user_can( 'can-see-any-outlet-orders' ) ) {
+					$outlets = get_user_meta( $this->get_current_user_id(), 'outlet_id', true );
+					if ( ! is_array( $outlets ) || ! in_array( $order->get_meta( '_vtp_outlet_id' ), $outlets ) ) {
+						$this->response->set_response( false, 'Order not found', null );
+						return $this->response;
+					}
+				}
+
 				$order_data         = POS_Order::get_from_woo_order_details( $order );
 				$order_data->status = $order->get_status();
 				$this->response->set_response( true, 'Order Found', $order_data );

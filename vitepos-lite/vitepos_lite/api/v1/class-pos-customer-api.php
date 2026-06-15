@@ -185,9 +185,23 @@ class Pos_Customer_Api extends API_Base {
 	public function delete_customer() {
 		if ( ! empty( $this->payload ) ) {
 			$id = intval( $this->payload['id'] );
+
 			require_once ABSPATH . 'wp-admin/includes/user.php';
 			$user = get_user_by( 'ID', $id );
 			if ( ! empty( $user ) ) {
+
+				if ( POS_Settings::is_pos_user( $user ) ) {
+					$this->add_error( 'You cannot delete this user because they have a higher-level role.' );
+					$this->response->set_response( false, '' );
+					return $this->response->get_response();
+				}
+
+				$roles = (array) $user->roles;
+				if ( empty( $roles ) || array_diff( $roles, array( 'customer', 'subscriber' ) ) ) {
+					$this->add_error( 'Only customer accounts can be deleted.' );
+					$this->response->set_response( false, '' );
+					return $this->response->get_response();
+				}
 				if ( wp_delete_user( $user->ID ) ) {
 					$this->add_info( 'Successfully deleted' );
 					$this->response->set_response( true, '' );

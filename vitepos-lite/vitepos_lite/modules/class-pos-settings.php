@@ -450,6 +450,17 @@ class POS_Settings extends Vitepos_Module {
 		$upload_dir       = wp_upload_dir();
 		$unique_file_name = wp_unique_filename( $upload_dir['path'], $filename );
 		$filename         = basename( $unique_file_name );
+		$allowed          = array(
+			'jpg|jpeg|jpe' => 'image/jpeg',
+			'png' => 'image/png',
+			'gif' => 'image/gif',
+			'webp' => 'image/webp',
+		);
+		$check            = wp_check_filetype_and_ext( $temp_file, $filename, $allowed );
+		if ( empty( $check['ext'] ) || empty( $check['type'] ) ) {
+			return null;
+		}
+
 		if ( wp_mkdir_p( $upload_dir['path'] ) ) {
 			$file = $upload_dir['path'] . '/' . $filename;
 		} else {
@@ -458,7 +469,7 @@ class POS_Settings extends Vitepos_Module {
 
 		if ( vitepos_move_uploaded_file( $temp_file, $file ) ) {
 			$attachment = array(
-				'post_mime_type' => $type,
+				'post_mime_type' => $check['type'],
 				'post_title'     => sanitize_file_name( $filename ),
 				'post_content'   => '',
 				'post_status'    => 'inherit',

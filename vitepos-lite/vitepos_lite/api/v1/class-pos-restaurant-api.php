@@ -89,13 +89,25 @@ class Pos_Restaurant_Api extends API_Base {
 					'value'   => 'Y',
 					'compare' => '=',
 				),
-				array(
-					'key'     => '_vtp_outlet_id',
-					'value'   => $this->get_outlet_id(),
-					'compare' => '=',
-				),
+
 			),
 		);
+		if ( ! POS_Settings::is_admin_user() && ! current_user_can( 'can-see-any-outlet-orders' ) ) {
+			$outlets = get_user_meta( $this->get_current_user_id(), 'outlet_id', true );
+			if ( is_array( $outlets ) && in_array( $this->get_outlet_id(), $outlets ) ) {
+				$args['vt_meta_query'][] = array(
+					'key' => '_vtp_outlet_id',
+					'value' => $this->get_outlet_id(),
+					'compare' => '=',
+				);
+			} else {
+				$this->add_error( "You don't have permission to view details of this outlet" );
+				$response_data->set_total_records( 0 );
+				$this->response->set_response( false, '', $response_data );
+				return $this->response->get_response();
+			}
+		}
+
 		$src_props     = $this->get_payload( 'src_by', array() );
 		$sort_by_props = $this->get_payload( 'sort_by', array() );
 		POS_Order::order_search_props( $args, $src_props );

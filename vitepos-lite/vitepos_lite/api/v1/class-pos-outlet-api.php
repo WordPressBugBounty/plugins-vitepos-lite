@@ -127,7 +127,24 @@ class Pos_Outlet_Api extends API_Base {
 				$obj->total        = $withdrawn;
 				$data_summary[]    = $obj;
 			}
-			$this->set_response( true, '', $data_summary );
+
+			$closed_drawer = new Mapbd_Pos_Cash_Drawer();
+			$closed_drawer->id( $data['id'] );
+			if ( $closed_drawer->select() ) {
+				if ( 'Y' === POS_Settings::get_module_instance()->get_option( 'drawer_counted_amount', 'N' ) ) {
+					$counted_amount = $closed_drawer->counted_amount;
+					$this->set_response(
+						true,
+						'',
+						array(
+							'data' => $data_summary,
+							'counted_amount' => $counted_amount,
+						)
+					);
+				} else {
+					$this->set_response( true, '', array( 'data' => $data_summary ) );
+				}
+			}
 
 			return $this->response->get_response();
 		}

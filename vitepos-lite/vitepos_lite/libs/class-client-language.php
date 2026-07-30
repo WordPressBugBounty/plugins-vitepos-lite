@@ -651,6 +651,16 @@ if ( ! class_exists( __NAMESPACE__ . '\Client_Language' ) ) {
 			$language['Install Pro']                                              = $kernel_object->__( 'Install Pro' );
 			$language['To watch how to active Vitepos Pro, show the below video'] = $kernel_object->__( 'To watch how to active Vitepos Pro, show the below video' );
 
+			$language['This modules allow you to chose customer to enable debit and credit for the customer with the limit setting option. you can set a customer debt limit as much you want.'] = $kernel_object->__( 'This modules allow you to chose customer to enable debit and credit for the customer with the limit setting option. you can set a customer debt limit as much you want.' );
+			$language['This modules allow you to see the debt enabled customer list with their debt and credit amounts as in a table. You can download customer list with their debt and credit balance And also you can choose a specific customer to see their debt or credit ledgers.'] = $kernel_object->__( 'This modules allow you to see the debt enabled customer list with their debt and credit amounts as in a table. You can download customer list with their debt and credit balance And also you can choose a specific customer to see their debt or credit ledgers.' );
+			$language['This modules allow you to see the debt details based on outlet. You can check and download reports for each outlet debts and credit history.'] = $kernel_object->__( 'This modules allow you to see the debt details based on outlet. You can check and download reports for each outlet debts and credit history.' );
+			$language['Credit &amp; Debt'] = $kernel_object->__( 'Credit &amp; Debt' );
+			$language['Outlet Debt Report'] = $kernel_object->__( 'Outlet Debt Report' );
+			$language['Customer Debt Reports'] = $kernel_object->__( 'Customer Debt Reports' );
+			$language['Credit Customers'] = $kernel_object->__( 'Credit Customers' );
+			$language['Credit Management'] = $kernel_object->__( 'Credit Management' );
+			$language['It will allow you to take payment using %{brand} Payment gateway, make sure you have set the %{brand} limits in %{brand} settings tab.'] = $kernel_object->__( 'It will allow you to take payment using %{brand} Payment gateway, make sure you have set the %{brand} limits in %{brand} settings tab.' );
+
 			self::get_client_extra( $language, $kernel_object );
 
 			return $language;
@@ -1516,6 +1526,10 @@ if ( ! class_exists( __NAMESPACE__ . '\Client_Language' ) ) {
 			$language['Product ID']                             = $kernel_object->__( 'Product ID' );
 			$language['Enter Barcode/Scan']                     = $kernel_object->__( 'Enter Barcode/Scan' );
 			$language['Enter SKU ']                             = $kernel_object->__( 'Enter SKU' );
+			$language['Credit Reports']                                     = $kernel_object->__( 'Credit Reports' );
+			$language['%{featureName} is supported in pro version']                                     = $kernel_object->__( '%{featureName} is supported in pro version' );
+			$language['Credit Report']                                     = $kernel_object->__( 'Credit Report' );
+			$language['Credit']                                     = $kernel_object->__( 'Credit' );
 			$language['To']                                     = $kernel_object->__( 'To' );
 
 			self::get_client_extra( $language, $kernel_object );

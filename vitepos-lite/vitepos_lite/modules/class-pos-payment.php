@@ -17,6 +17,7 @@ use Appsbd_Lite\V5\libs\AppInput;
 use VitePos_Lite\Core\Vitepos_Module;
 use VitePos_Lite\Libs\Payment_Cash_Method;
 use VitePos_Lite\Libs\Payment_Method_Base;
+use VitePos_Lite\Libs\Payment_On_Account_Method;
 use VitePos_Lite\Libs\Payment_Other_Method;
 use VitePos_Lite\Libs\Payment_Stripe_Method;
 use vitepos_lite\libs\Payment_Stripe_Terminal_Method;
@@ -307,6 +308,9 @@ class POS_Payment extends Vitepos_Module {
 		$methods[ $obj->id ] = $obj;
 
 		$obj                 = new Payment_Wallee_Terminal_Method();
+		$methods[ $obj->id ] = $obj;
+
+		$obj                 = new Payment_On_Account_Method();
 		$methods[ $obj->id ] = $obj;
 
 		$obj                 = new Payment_Woo_Methods();

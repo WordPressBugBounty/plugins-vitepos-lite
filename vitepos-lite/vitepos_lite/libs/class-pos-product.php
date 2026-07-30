@@ -815,7 +815,7 @@ class POS_Product {
 		if ( ! ( $product instanceof \WC_Product ) ) {
 			return;
 		}
-
+		$parent_product    = $product->get_parent_id() ? wc_get_product( $product->get_parent_id() ) : null;
 		$pos_product       = new self();
 		$pos_product->id   = $product->get_id();
 		$pos_product->type = $product->get_type();
@@ -974,6 +974,7 @@ class POS_Product {
 		if ( ! empty( $outlet_info->id ) ) {
 			$pos_product->outlet_id = absint( $outlet_info->id );
 		}
+		$parent_product                = $product->get_parent_id() ? wc_get_product( $product->get_parent_id() ) : null;
 		$pos_product->barcode          = self::get_barcode_of_product( $product, $parent_product );
 		$pos_product->type             = $product->get_type();
 		$pos_product->name             = $product->get_name();

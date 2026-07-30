@@ -301,10 +301,43 @@ class Pos_User_Api extends API_Base {
 	 */
 	public function change_pass_force() {
 		if ( ! empty( $this->payload['newPass'] ) ) {
-			if ( $this->payload['user_id'] ) {
+			if ( ! empty( $this->payload['user_id'] ) ) {
+				$target_id = absint( $this->payload['user_id'] );
 				if ( current_user_can( 'change-any-user-pass' ) ) {
-					$user_data = get_user_by( 'ID', $this->payload['user_id'] );
+					$user_data = get_user_by( 'ID', $target_id );
 					if ( ! empty( $user_data->ID ) ) {
+
+						$current_id = absint( $this->get_current_user_id() );
+						if ( $target_id === $current_id ) {
+
+							$allowed = true;
+						} elseif ( is_super_admin( $target_id )
+							|| user_can( $target_id, 'manage_options' )
+							|| user_can( $target_id, 'edit_users' ) ) {
+
+							$allowed = false;
+						} elseif ( current_user_can( 'edit_users' ) ) {
+
+							$allowed = current_user_can( 'edit_user', $target_id );
+						} else {
+
+							$agent_roles  = Mapbd_Pos_Role::get_agent_roles();
+							$target_roles = (array) $user_data->roles;
+							$allowed      = ! empty( $target_roles )
+								&& ! user_can( $target_id, 'change-any-user-pass' );
+							foreach ( $target_roles as $target_role ) {
+								if ( ! in_array( $target_role, $agent_roles, true ) ) {
+									$allowed = false;
+									break;
+								}
+							}
+						}
+						if ( ! $allowed ) {
+							$this->add_error( 'You are not allowed to change this user\'s password.' );
+							$this->response->set_response( false, 'You do not have permission to do this' );
+
+							return $this->response->get_response();
+						}
 						wp_set_password( $this->payload['newPass'], $user_data->ID );
 						if ( metadata_exists( 'user', $user_data->ID, 'force_pw_change' ) ) {
 							update_user_meta( $user_data->ID, 'force_pw_change', 'Y' );

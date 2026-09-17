@@ -161,7 +161,7 @@ if ( ! function_exists( 'vitepos_get_last_order_id' ) ) {
 	 * @return mixed
 	 */
 	function vitepos_get_last_order_id() {
-		$posdb    = \Appsbd_Lite\V5\Core\BaseModel::get_db_object();
+		$posdb    = \Appsbd_Lite\V6\Core\BaseModel::get_db_object();
 		$statuses = array_keys( wc_get_order_statuses() );
 		$statuses = "'" . implode( "','", $statuses ) . "'";
 		$results  = $posdb->get_col(
@@ -179,7 +179,7 @@ if ( ! function_exists( 'vitepos_loader' ) ) {
 	 * @param mixed $session_id Its the session id.
 	 */
 	function vitepos_loader( $session_id ) {
-		\Appsbd_Lite\V5\Core\Kernel::vitepos_loader( $session_id );
+		\Appsbd_Lite\V6\Core\Kernel::vitepos_loader( $session_id );
 	}
 }
 

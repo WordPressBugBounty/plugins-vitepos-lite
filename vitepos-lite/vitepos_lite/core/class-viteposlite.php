@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V5\Core\Kernel_Lite;
+use Appsbd_Lite\V6\Core\Kernel_Lite;
 use VitePos_Lite\Api\V1\Pos_Restaurant_Api;
 use VitePos_Lite\Api\V1\heartbit_api;
 use VitePos_Lite\Api\V1\pos_api_config;

@@ -2873,13 +2873,13 @@ if ( ! class_exists( __NAMESPACE__ . '\BaseModel' ) ) {
 						} elseif ( 'eq' == $src_prop->opr ) {
 							$this->{$src_prop->prop}( $src_prop->val );
 						} elseif ( 'lt' == $src_prop->opr ) {
-							$this->{$src_prop->prop}( "< {$src_prop->val}", true );
+							$this->{$src_prop->prop}( "< '" . esc_sql( $src_prop->val ) . "'", true );
 						} elseif ( 'gt' == $src_prop->opr ) {
-							$this->{$src_prop->prop}( "> {$src_prop->val}", true );
+							$this->{$src_prop->prop}( "> '" . esc_sql( $src_prop->val ) . "'", true );
 						} elseif ( 'le' == $src_prop->opr ) {
-							$this->{$src_prop->prop}( "<= {$src_prop->val}", true );
+							$this->{$src_prop->prop}( "<= '" . esc_sql( $src_prop->val ) . "'", true );
 						} elseif ( 'ge' == $src_prop->opr ) {
-							$this->{$src_prop->prop}( ">= {$src_prop->val}", true );
+							$this->{$src_prop->prop}( ">= '" . esc_sql( $src_prop->val ) . "'", true );
 						} elseif ( 'dt' == $src_prop->opr ) {
 							$src_prop->val;
 							if ( ! empty( $src_prop->val ) ) {

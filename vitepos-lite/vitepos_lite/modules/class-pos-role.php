@@ -11,12 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V5\Core\BaseModule;
-use Appsbd_Lite\V5\Libs\ACL_Resource;
-use Appsbd_Lite\V5\libs\Ajax_Confirm_Response;
-use Appsbd_Lite\V5\libs\Ajax_Data_Response;
-use Appsbd_Lite\V5\libs\Ajax_Response;
-use Appsbd_Lite\V5\libs\AppInput;
+use Appsbd_Lite\V6\Core\BaseModule;
+use Appsbd_Lite\V6\Libs\ACL_Resource;
+use Appsbd_Lite\V6\libs\Ajax_Confirm_Response;
+use Appsbd_Lite\V6\libs\Ajax_Data_Response;
+use Appsbd_Lite\V6\libs\Ajax_Response;
+use Appsbd_Lite\V6\libs\AppInput;
 use Automattic\WooCommerce\Admin\RemoteInboxNotifications\Transformers\Count;
 use VitePos_Lite\Core\Vitepos_Module;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Role;

@@ -170,7 +170,9 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_loader' ) ) {
 			if ( ! is_admin() ) {
 				return false;
 			}
-
+			if(empty($this->pro_plugin_file)){
+				return true;
+			}
 			$action = ( ( isset( $this->requested_data['action'] ) && ( - 1 !== intval( $this->requested_data['action'] ) ) ) ? $this->requested_data['action'] : '' );
 			$action = ( ( empty( $action ) && isset( $this->requested_data['action2'] ) && ( - 1 !== intval( $this->requested_data['action2'] ) ) ) ? $this->requested_data['action2'] : $action );
 

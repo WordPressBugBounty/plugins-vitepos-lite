@@ -2,26 +2,28 @@
     "packages": [
         {
             "name": "appsbd-wp/appsbd-lite",
-            "version": "v5.0.3",
-            "version_normalized": "5.0.3.0",
+            "version": "v6.0.5",
+            "version_normalized": "6.0.5.0",
             "source": {
                 "type": "git",
-                "url": "https://bitbucket.org/appsbd/appsbd-lite.git",
-                "reference": "27549057d8942781f85c2571f56df51ba7366a2c"
+                "url": "https://github.com/appsbd/appsbd-lite.git",
+                "reference": "2a1189d293350aaebc97d259f63c2cf4452f02ed"
             },
             "require": {
                 "php": ">=7.2"
             },
-            "time": "2025-06-04T07:30:09+00:00",
+            "time": "2026-09-17T11:07:37+00:00",
             "type": "framework",
             "installation-source": "source",
             "autoload": {
                 "files": [
-                    "appsbd_lite/v5/core/class-kernel-lite.php",
-                    "appsbd_lite/v5/helper/base-helper.php"
+                    "appsbd_lite/v6/core/class-kernel-lite.php",
+                    "appsbd_lite/v6/helper/base-helper.php"
                 ],
                 "psr-4": {
-                    "Appsbd_Lite\\": "appsbd_lite/"
+                    "Appsbd_Lite\\V5\\": "appsbd_lite/v5/",
+                    "Appsbd_Lite\\V6\\": "appsbd_lite/v6/",
+                    "Appsbd_Lite\\V4\\": "appsbd_lite/v4/"
                 }
             },
             "authors": [

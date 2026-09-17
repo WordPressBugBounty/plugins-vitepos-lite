@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInitcf1a3d40be2db3d20e77f5829d3856fd
 {
     public static $files = array (
-        'c33f23be1f768473540e11bdf37dab3a' => __DIR__ . '/..' . '/appsbd-wp/appsbd-lite/appsbd_lite/v5/core/class-kernel-lite.php',
-        'fa9e236262162c72a39dd210fcd21a04' => __DIR__ . '/..' . '/appsbd-wp/appsbd-lite/appsbd_lite/v5/helper/base-helper.php',
+        '632577a169802e8825cf41367ab3130d' => __DIR__ . '/..' . '/appsbd-wp/appsbd-lite/appsbd_lite/v6/core/class-kernel-lite.php',
+        '1adb0d09bdfb1b3428f647ec34b0e5ea' => __DIR__ . '/..' . '/appsbd-wp/appsbd-lite/appsbd_lite/v6/helper/base-helper.php',
         '75918ec4267601268984e7c4c38aea11' => __DIR__ . '/../..' . '/vitepos_lite/helper/global-helper.php',
         '1e30ec1bad4eed8f5d0e5240bdf9cb82' => __DIR__ . '/../..' . '/vitepos_lite/libs/class-vitepos-loader.php',
     );
@@ -20,7 +20,9 @@ class ComposerStaticInitcf1a3d40be2db3d20e77f5829d3856fd
         ),
         'A' => 
         array (
-            'Appsbd_Lite\\' => 12,
+            'Appsbd_Lite\\V6\\' => 15,
+            'Appsbd_Lite\\V5\\' => 15,
+            'Appsbd_Lite\\V4\\' => 15,
         ),
     );
 
@@ -29,9 +31,17 @@ class ComposerStaticInitcf1a3d40be2db3d20e77f5829d3856fd
         array (
             0 => __DIR__ . '/../..' . '/vitepos_lite',
         ),
-        'Appsbd_Lite\\' => 
+        'Appsbd_Lite\\V6\\' => 
         array (
-            0 => __DIR__ . '/..' . '/appsbd-wp/appsbd-lite/appsbd_lite',
+            0 => __DIR__ . '/..' . '/appsbd-wp/appsbd-lite/appsbd_lite/v6',
+        ),
+        'Appsbd_Lite\\V5\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/appsbd-wp/appsbd-lite/appsbd_lite/v5',
+        ),
+        'Appsbd_Lite\\V4\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/appsbd-wp/appsbd-lite/appsbd_lite/v4',
         ),
     );
 

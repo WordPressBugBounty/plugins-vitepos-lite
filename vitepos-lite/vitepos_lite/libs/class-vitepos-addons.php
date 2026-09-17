@@ -10,8 +10,8 @@
 
 namespace VitePos_Lite\Libs;
 
-use Appsbd_Lite\V5\libs\App_Process;
-use Appsbd_Lite\V5\libs\Appsbd_Addon;
+use Appsbd_Lite\V6\libs\App_Process;
+use Appsbd_Lite\V6\libs\Appsbd_Addon;
 
 
 if ( ! defined( 'ABSPATH' ) ) {

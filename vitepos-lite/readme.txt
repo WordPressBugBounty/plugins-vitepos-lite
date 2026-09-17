@@ -4,9 +4,9 @@ Donate link: https://appsbd.com/
 Author URI: https://appsbd.com/
 Tags: pos, pos plugin, woocommerce pos, point of sale, store
 Requires at least: 5.9
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.2
-Stable tag: 3.5.1
+Stable tag: 3.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,9 @@ You can report vulnerabilities through the Patchstack Vulnerability Disclosure P
 No upgrade notices available yet.
 
 == Changelog ==
+= 3.6.0 =
+* Security: Fixed a SQL injection in the `src_by[].val` filter (gt/lt/le/ge operators) reachable by any POS role, e.g. via vendor/product/order list endpoints.
+
 = 3.5.0 =
 * Security: Fixed a privilege escalation in the POS password-reset endpoint where an Outlet Manager could reset other users' passwords. Reported by Real_King_Engine (ISAL FRAMEWORK).
 * Security: Fixed a SQL injection in the product details report endpoint. Reported by Real_King_Engine (ISAL FRAMEWORK).

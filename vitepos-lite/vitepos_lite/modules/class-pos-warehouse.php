@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V5\libs\Ajax_Confirm_Response;
-use Appsbd_Lite\V5\libs\Ajax_Data_Response;
-use Appsbd_Lite\V5\libs\AppInput;
+use Appsbd_Lite\V6\libs\Ajax_Confirm_Response;
+use Appsbd_Lite\V6\libs\Ajax_Data_Response;
+use Appsbd_Lite\V6\libs\AppInput;
 use VitePos_Lite\Core\Vitepos_Module;
 use VitePos_Lite\Libs\POS_Customer;
 use VitePos_Lite\Models\Database\Mapbd_pos_counter;
@@ -105,7 +105,7 @@ class POS_Warehouse extends Vitepos_Module {
 					$response->display_with_response( true );
 					return;
 				} else {
-					$this->add_error( \Appsbd_Lite\V5\Core\Kernel_Lite::get_msg_for_api() );
+					$this->add_error( \Appsbd_Lite\V6\Core\Kernel_Lite::get_msg_for_api() );
 					$response->display_with_response( false );
 					return;
 				}

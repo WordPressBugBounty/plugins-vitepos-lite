@@ -14,8 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V5\libs\API_Data_Response;
-use Appsbd_Lite\V5\libs\API_Response;
+use Appsbd_Lite\V6\libs\API_Data_Response;
+use Appsbd_Lite\V6\libs\API_Response;
 use VitePos_Lite\Libs\API_Base;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Cash_Drawer;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Cash_Drawer_Log;

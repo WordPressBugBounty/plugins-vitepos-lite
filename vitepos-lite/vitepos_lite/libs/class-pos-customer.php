@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V5\Core\BaseModel;
+use Appsbd_Lite\V6\Core\BaseModel;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Role;
 use VitePos_Lite\Modules\POS_Role;
 

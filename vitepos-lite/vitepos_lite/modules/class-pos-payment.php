@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V5\Core\BaseModule;
-use Appsbd_Lite\V5\libs\Ajax_Confirm_Response;
-use Appsbd_Lite\V5\libs\AppInput;
+use Appsbd_Lite\V6\Core\BaseModule;
+use Appsbd_Lite\V6\libs\Ajax_Confirm_Response;
+use Appsbd_Lite\V6\libs\AppInput;
 use VitePos_Lite\Core\Vitepos_Module;
 use VitePos_Lite\Libs\Payment_Cash_Method;
 use VitePos_Lite\Libs\Payment_Method_Base;

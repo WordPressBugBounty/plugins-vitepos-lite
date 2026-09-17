@@ -14,8 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V5\libs\API_Response;
-use Appsbd_Lite\V5\libs\AppInput;
+use Appsbd_Lite\V6\libs\API_Response;
+use Appsbd_Lite\V6\libs\AppInput;
 use VitePos_Lite\Core\VitePos;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Counter;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Warehouse;
@@ -421,7 +421,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		public function add_error( $message, $parameter = null, $_ = null ) {
 			$args    = func_get_args();
 			$message = call_user_func_array( array( $this->kernel_object, '__' ), $args );
-			\Appsbd_Lite\V5\Core\Kernel_Lite::add_error( $message );
+			\Appsbd_Lite\V6\Core\Kernel_Lite::add_error( $message );
 		}
 
 		/**
@@ -441,7 +441,44 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		 * @return mixed|string|null Its string.
 		 */
 		public function get_payload( $key, $default = null ) {
-			return ! empty( $this->payload[ $key ] ) ? $this->payload[ $key ] : $default;
+			$value = ! empty( $this->payload[ $key ] ) ? $this->payload[ $key ] : $default;
+			if ( 'src_by' === $key && is_array( $value ) ) {
+				$value = $this->sanitize_src_by_payload( $value );
+			}
+			return $value;
+		}
+
+		/**
+		 * Defense-in-depth for the `src_by` filter payload consumed by
+		 * BaseModel::set_search_by_param(). For the gt/lt/le/ge comparison
+		 * operators that framework splices the value into a raw (unescaped)
+		 * SQL fragment, so a value containing SQL metacharacters or keywords
+		 * (quotes, parens, `--`, `SLEEP`, ...) is a SQL injection regardless
+		 * of which appsbd-lite version is installed. Restrict those operators
+		 * to characters valid for a number or a `Y-m-d H:i:s` date/time —
+		 * i.e. no letters, quotes, or punctuation that could break out of
+		 * the comparison — so the sink is closed here even if the vendored
+		 * framework is not (yet) patched.
+		 *
+		 * @param array $src_props Its src_by array from the request payload.
+		 *
+		 * @return array
+		 */
+		protected function sanitize_src_by_payload( $src_props ) {
+			foreach ( $src_props as &$src_prop ) {
+				$prop = (array) $src_prop;
+				if ( isset( $prop['opr'], $prop['val'] ) && in_array( $prop['opr'], array( 'gt', 'lt', 'le', 'ge' ), true ) && is_scalar( $prop['val'] ) ) {
+					$safe_val = preg_replace( '/[^0-9.\-:\s]/', '', (string) $prop['val'] );
+
+					$safe_val = preg_replace( '/-{2,}/', '-', $safe_val );
+					if ( is_array( $src_prop ) ) {
+						$src_prop['val'] = $safe_val;
+					} else {
+						$src_prop->val = $safe_val;
+					}
+				}
+			}
+			return $src_props;
 		}
 
 		/**
@@ -454,7 +491,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		public function add_info( $message, $parameter = null, $_ = null ) {
 			$args    = func_get_args();
 			$message = call_user_func_array( array( $this->kernel_object, '__' ), $args );
-			\Appsbd_Lite\V5\Core\Kernel_Lite::add_info( $message );
+			\Appsbd_Lite\V6\Core\Kernel_Lite::add_info( $message );
 		}
 
 		/**
@@ -463,7 +500,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		 * @param any $obj Its string.
 		 */
 		public function add_debug( $obj ) {
-			\Appsbd_Lite\V5\Core\Kernel_Lite::add_debug( $obj );
+			\Appsbd_Lite\V6\Core\Kernel_Lite::add_debug( $obj );
 		}
 
 		/**
@@ -476,7 +513,7 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		public function add_warning( $message, $parameter = null, $_ = null ) {
 			$args    = func_get_args();
 			$message = call_user_func_array( array( $this->kernel_object, '__' ), $args );
-			\Appsbd_Lite\V5\Core\Kernel_Lite::add_warning( $message );
+			\Appsbd_Lite\V6\Core\Kernel_Lite::add_warning( $message );
 		}
 
 		/**

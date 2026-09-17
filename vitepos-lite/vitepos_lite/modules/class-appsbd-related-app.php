@@ -11,10 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Appsbd_Lite\V5\libs\Ajax_Confirm_Response;
-use Appsbd_Lite\V5\libs\Ajax_Response;
-use Appsbd_Lite\V5\libs\App_Process;
-use Appsbd_Lite\V5\libs\AppInput;
+use Appsbd_Lite\V6\libs\Ajax_Confirm_Response;
+use Appsbd_Lite\V6\libs\Ajax_Response;
+use Appsbd_Lite\V6\libs\App_Process;
+use Appsbd_Lite\V6\libs\AppInput;
 use SimplePie\Exception;
 use VitePos_Lite\Core\Vitepos_Module;
 

@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once __DIR__ . '/class-vitepos-addons.php';
 
-use Appsbd_Lite\V5\libs\WP_Loader;
+use Appsbd_Lite\V6\libs\WP_Loader;
 
 if ( ! class_exists( __NAMESPACE__ . '\Vitepos_Loader' ) ) {
 	/**

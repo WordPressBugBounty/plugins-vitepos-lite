@@ -3,7 +3,7 @@
         'name' => 'appsbd/vitepos-lite',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '3857a27596cc4312c2bdce5667d621e871967762',
+        'reference' => '288fe86d12e301c2f9c437b1b4061660b504e2dc',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'appsbd-wp/appsbd-lite' => array(
-            'pretty_version' => 'v6.0.5',
-            'version' => '6.0.5.0',
-            'reference' => '2a1189d293350aaebc97d259f63c2cf4452f02ed',
+            'pretty_version' => 'v6.0.7',
+            'version' => '6.0.7.0',
+            'reference' => 'bfd493a479fbb1673b831ed482b2ca3ae0ab2eb9',
             'type' => 'framework',
             'install_path' => __DIR__ . '/../appsbd-wp/appsbd-lite',
             'aliases' => array(),
@@ -22,7 +22,7 @@
         'appsbd/vitepos-lite' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '3857a27596cc4312c2bdce5667d621e871967762',
+            'reference' => '288fe86d12e301c2f9c437b1b4061660b504e2dc',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

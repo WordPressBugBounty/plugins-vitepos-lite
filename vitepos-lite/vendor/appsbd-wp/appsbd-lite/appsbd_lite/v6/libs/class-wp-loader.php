@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Its for check the everything
  *
@@ -16,6 +17,7 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_loader' ) ) {
 	 * @package Appsbd_Lite\V6\libs
 	 */
 	abstract class WP_Loader {
+
 		/**
 		 * Its property base_file
 		 *
@@ -76,6 +78,13 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_loader' ) ) {
 		 * @var mixed
 		 */
 		public $plugin_title;
+
+		/**
+		 * Its return the instance of the class
+		 *
+		 * @return mixed
+		 */
+		protected static $extender_files = array();
 
 		/**
 		 * WP_loader constructor.
@@ -170,11 +179,11 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_loader' ) ) {
 			if ( ! is_admin() ) {
 				return false;
 			}
-			if(empty($this->pro_plugin_file)){
+			if ( empty( $this->pro_plugin_file ) ) {
 				return true;
 			}
-			$action = ( ( isset( $this->requested_data['action'] ) && ( - 1 !== intval( $this->requested_data['action'] ) ) ) ? $this->requested_data['action'] : '' );
-			$action = ( ( empty( $action ) && isset( $this->requested_data['action2'] ) && ( - 1 !== intval( $this->requested_data['action2'] ) ) ) ? $this->requested_data['action2'] : $action );
+			$action = ( ( isset( $this->requested_data['action'] ) && ( -1 !== intval( $this->requested_data['action'] ) ) ) ? $this->requested_data['action'] : '' );
+			$action = ( ( empty( $action ) && isset( $this->requested_data['action2'] ) && ( -1 !== intval( $this->requested_data['action2'] ) ) ) ? $this->requested_data['action2'] : $action );
 
 			$plugin  = ( isset( $this->requested_data['plugin'] ) ? $this->requested_data['plugin'] : '' );
 			$checked = ( ( isset( $this->posted_data['checked'] ) && is_array( $this->posted_data['checked'] ) ) ? $this->posted_data['checked'] : array() );
@@ -198,6 +207,26 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_loader' ) ) {
 
 			return true;
 		}
+		/**
+		 * Its return the pro plugin version
+		 *
+		 * @return mixed
+		 */
+		public static function get_extender_version() {
+			if ( empty( self::$extender_files[ static::class ] ) ) {
+				return null;
+			}
+			if ( ! function_exists( 'get_plugin_data' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
+			$prefix = App_Process::get_dir_data( 'plugin_dir' );
+			$data = get_plugin_data( $prefix . DIRECTORY_SEPARATOR . self::$extender_files[ static::class ], false, false );
+			if ( isset( $data['Version'] ) ) {
+				return $data['Version'];
+			}
+
+			return null;
+		}
 
 		/**
 		 * Is pro edition being deactivated.
@@ -207,8 +236,8 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_loader' ) ) {
 				return false;
 			}
 
-			$action = ( ( isset( $this->requested_data['action'] ) && ( - 1 !== intval( $this->requested_data['action'] ) ) ) ? $this->requested_data['action'] : '' );
-			$action = ( ( empty( $action ) && isset( $this->requested_data['action2'] ) && ( - 1 !== intval( $this->requested_data['action2'] ) ) ) ? $this->requested_data['action2'] : $action );
+			$action = ( ( isset( $this->requested_data['action'] ) && ( -1 !== intval( $this->requested_data['action'] ) ) ) ? $this->requested_data['action'] : '' );
+			$action = ( ( empty( $action ) && isset( $this->requested_data['action2'] ) && ( -1 !== intval( $this->requested_data['action2'] ) ) ) ? $this->requested_data['action2'] : $action );
 
 			$plugin  = ( isset( $this->requested_data['plugin'] ) ? $this->requested_data['plugin'] : '' );
 			$checked = ( ( isset( $this->posted_data['checked'] ) && is_array( $this->posted_data['checked'] ) ) ? $this->posted_data['checked'] : array() );
@@ -239,7 +268,7 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_loader' ) ) {
 			if ( ! function_exists( 'get_plugin_data' ) ) {
 				require_once ABSPATH . 'wp-admin/includes/plugin.php';
 			}
-			$data = get_plugin_data( $this->base_file,false,false  );
+			$data = get_plugin_data( $this->base_file, false, false );
 			if ( isset( $data['Version'] ) ) {
 				$this->plugin_version = $data['Version'];
 			}
@@ -274,6 +303,7 @@ if ( ! class_exists( __NAMESPACE__ . '\WP_loader' ) ) {
 			$instance->base_file = $base_file;
 			$instance->set_plugin_data();
 			$instance->load_before_ready( $instance->result );
+			self::$extender_files[ static::class ] = $instance->pro_plugin_file;
 			return $instance->result;
 		}
 	}

@@ -1664,6 +1664,7 @@ class POS_Settings extends Vitepos_Module {
 		withdraw_cash: vitePosBase + "outlet/withdraw-cash",
 		close_drawer: vitePosBase + "outlet/close-drawer",
 		drawer_log_details: vitePosBase + "outlet/details",
+		drawer_summary: vitePosBase + "outlet/summary",
 		//
 		eod_data: vitePosBase + 'outlet/end-of-day-data',
 

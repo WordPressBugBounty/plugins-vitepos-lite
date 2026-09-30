@@ -69,8 +69,7 @@ if ( ! function_exists( 'appsbd_add_query_error_v1' ) ) {
 	function appsbd_add_query_error_v1( $msg ) {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			
-			return appsbd_add_error_v1_lite( $msg );
-			
+
 		}
 	}
 }

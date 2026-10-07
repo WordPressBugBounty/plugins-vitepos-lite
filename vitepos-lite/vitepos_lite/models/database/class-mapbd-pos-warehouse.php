@@ -307,27 +307,20 @@ class Mapbd_Pos_Warehouse extends ViteposModelLite {
 
 			$outlet_obj = new self();
 			$outlet_obj->status( 'A' );
-			$in_str = '';
 			if ( ! $has_multi_outlet_access ) {
-				$user_outlets = get_user_meta( $user->ID, 'outlet_id', true );
+				$user_outlets = \VitePos_Lite\Libs\POS_Customer::get_user_outlet_ids( $user->ID );
 				if ( empty( $user_outlets ) ) {
 					return array();
 				}
-				$user_outlets = array_map(
-					function ( $value ) {
-						return intval( $value );
-					},
-					$user_outlets
-				);
-				$in_str       = '(' . implode( ',', $user_outlets ) . ')';
-				$outlet_obj->id( "in {$in_str}", true );
+
+				$outlet_obj->id( 'IN (' . implode( ',', empty( $user_outlets ) ? array( 0 ) : $user_outlets ) . ')', true );
 			}
 
 			$outlets = $outlet_obj->select_all_grid_data( 'id,name,country,state,city,street,zip_code,status' );
 			if ( ! empty( $outlets ) ) {
 				$cash_counter = new Mapbd_pos_counter();
 				if ( ! $has_multi_outlet_access ) {
-					$cash_counter->outlet_id( "in {$in_str}", true );
+					$cash_counter->outlet_id( 'IN (' . implode( ',', empty( $user_outlets ) ? array( 0 ) : $user_outlets ) . ')', true );
 				}
 				$cash_counters = $cash_counter->select_all_grid_data();
 				$outlet_ids    = array();

@@ -532,12 +532,15 @@ class POS_Order {
 				'count_total'  => true,
 			);
 			if ( ! POS_Settings::is_admin_user() && ! current_user_can( 'any-outlet-user-create' ) ) {
-				$outlets = get_user_meta( get_current_user_id(), 'outlet_id', true );
+				$outlets = POS_Customer::get_user_outlet_ids( get_current_user_id() );
 				if ( is_array( $outlets ) ) {
+					if ( empty( $outlets ) ) {
+						$outlets = array( 0 );
+					}
 					$args['meta_query'][] = array(
 						'key'     => 'outlet_id',
 
-						'value'   => '"(' . implode( '|', $outlets ) . ')"',
+						'value'   => POS_Customer::outlet_meta_regex( $outlets ),
 						'compare' => 'REGEXP',
 					);
 				}

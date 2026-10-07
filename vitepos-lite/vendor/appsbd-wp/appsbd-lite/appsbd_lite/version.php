@@ -7,5 +7,5 @@
  */
 
 if ( ! defined( 'APPSBD_LITE_VER' ) ) {
-	define( 'APPSBD_LITE_VER', '6.0.7' );
+	define( 'APPSBD_LITE_VER', '6.0.8' );
 }

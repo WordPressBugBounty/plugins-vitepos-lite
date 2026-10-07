@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Appsbd_Lite\V6\Core\BaseModel;
 use VitePos_Lite\Models\Database\Mapbd_Pos_Role;
+use VitePos_Lite\Models\Database\Mapbd_Pos_Warehouse;
 use VitePos_Lite\Modules\POS_Role;
 
 /**
@@ -24,6 +25,79 @@ use VitePos_Lite\Modules\POS_Role;
  * @package VitePos_Lite\Libs
  */
 class POS_Customer extends BaseModel {
+	/**
+	 * Cast outlet ids to unique positive integers, optionally keeping only existing outlets.
+	 *
+	 * @param mixed $outlets Raw outlet id value.
+	 * @param bool  $only_existing Drop ids that are not existing outlets.
+	 *
+	 * @return int[]
+	 */
+	public static function sanitize_outlet_ids( $outlets, $only_existing = false ) {
+		if ( ! is_array( $outlets ) ) {
+			return array();
+		}
+		$ids = array();
+		foreach ( $outlets as $outlet ) {
+			if ( is_scalar( $outlet ) ) {
+				$outlet = absint( $outlet );
+				if ( $outlet > 0 ) {
+					$ids[ $outlet ] = $outlet;
+				}
+			}
+		}
+		$ids = array_values( $ids );
+		if ( $only_existing && ! empty( $ids ) ) {
+			$existing = array_map( 'absint', array_keys( Mapbd_Pos_Warehouse::fetch_all_key_value( 'id', 'name' ) ) );
+			$ids      = array_values( array_intersect( $ids, $existing ) );
+		}
+		return $ids;
+	}
+
+	/**
+	 * Outlet ids as strings, the form usermeta has always stored them in
+	 * (serialized as s:1:"5";), so existing REGEXP outlet filters keep matching.
+	 *
+	 * @param int[] $ids Sanitized outlet ids.
+	 *
+	 * @return string[]
+	 */
+	public static function outlet_ids_for_storage( $ids ) {
+		return array_map( 'strval', (array) $ids );
+	}
+
+	/**
+	 * Build the REGEXP used to find users assigned to any of the given outlets.
+	 * Matches both string ("5") and integer (i:5;) serialized elements.
+	 *
+	 * @param mixed $ids Outlet ids (sanitized to integers here).
+	 *
+	 * @return string
+	 */
+	public static function outlet_meta_regex( $ids ) {
+		$ids = self::sanitize_outlet_ids( is_array( $ids ) ? $ids : explode( ',', (string) $ids ) );
+		if ( empty( $ids ) ) {
+			$ids = array( 0 );
+		}
+		$list = implode( '|', $ids );
+		return '"(' . $list . ')";|i:[0-9]+;i:(' . $list . ');';
+	}
+
+	/**
+	 * Get the sanitized outlet ids stored for a user, or null when none are stored as an array.
+	 *
+	 * @param int $user_id User id.
+	 *
+	 * @return int[]|null
+	 */
+	public static function get_user_outlet_ids( $user_id ) {
+		$outlets = get_user_meta( $user_id, 'outlet_id', true );
+		if ( ! is_array( $outlets ) ) {
+			return null;
+		}
+		return self::sanitize_outlet_ids( $outlets );
+	}
+
 	/**
 	 * Its property id
 	 *
@@ -426,8 +500,9 @@ class POS_Customer extends BaseModel {
 		$user->user_nicename = $this->username;
 		$user->user_login    = $this->username;
 		if ( is_string( $this->outlet_id ) ) {
-			$this->outlet_id = unserialize( $this->outlet_id );
+			$this->outlet_id = unserialize( $this->outlet_id, array( 'allowed_classes' => false ) );
 		}
+		$this->outlet_id   = self::outlet_ids_for_storage( self::sanitize_outlet_ids( $this->outlet_id, true ) );
 		$user->user_status = true;
 		$user->user_pass   = $this->password;
 		if ( ! Mapbd_Pos_Role::is_assignable_role( $this->role ) ) {
@@ -526,8 +601,9 @@ class POS_Customer extends BaseModel {
 		}
 		$user_id = wp_update_user( $user );
 		if ( is_string( $this->outlet_id ) ) {
-			$this->outlet_id = unserialize( $this->outlet_id );
+			$this->outlet_id = unserialize( $this->outlet_id, array( 'allowed_classes' => false ) );
 		}
+		$this->outlet_id = self::outlet_ids_for_storage( self::sanitize_outlet_ids( $this->outlet_id, true ) );
 		if ( $this->street ) {
 			update_user_meta( $user_id, 'billing_address_1', $this->street );
 		}
@@ -684,7 +760,7 @@ class POS_Customer extends BaseModel {
 					$filter_param['meta_key']     = $src_prop['prop'];
 					$filter_param['meta_query'][] = array(
 						'key'     => $src_prop['prop'],
-						'value'   => '"(' . $src_prop['val'] . ')"',
+						'value'   => self::outlet_meta_regex( $src_prop['val'] ),
 						'compare' => 'REGEXP',
 					);
 				}

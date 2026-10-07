@@ -204,6 +204,9 @@ if ( ! class_exists( __NAMESPACE__ . '\QueryBuilder' ) ) {
 		 */
 		protected function _like( $field, $match = '', $type = 'AND', $side = 'both', $not = '', $escape = null ) {
 			$field = ( $escape ) ? $this->escape_key( $field ) : $field;
+			if ( $escape ) {
+				$match = esc_sql( (string) $match );
+			}
 			if ( 'none' === $side ) {
 				$like_statement = "{$field} {$not} LIKE '{$match}'";
 			} elseif ( 'before' === $side ) {

@@ -86,10 +86,9 @@ class Pos_Purchase_Api extends API_Base {
 		$src_props            = $this->get_payload( 'src_by', array() );
 		$mainobj->set_search_by_param( $src_props );
 		if ( ! POS_Settings::is_admin_user() && ! current_user_can( 'can-see-any-outlet-purchases' ) ) {
-			$outlets = get_user_meta( $this->get_current_user_id(), 'outlet_id', true );
+			$outlets = \VitePos_Lite\Libs\POS_Customer::get_user_outlet_ids( $this->get_current_user_id() );
 			if ( is_array( $outlets ) ) {
-				$outlet_in = "'" . implode( "','", $outlets ) . "'";
-				$mainobj->warehouse_id( "IN ($outlet_in)", true );
+				$mainobj->warehouse_id( 'IN (' . implode( ',', empty( $outlets ) ? array( 0 ) : $outlets ) . ')', true );
 			} else {
 				$response_data->set_total_records( 0 );
 				return $response_data;
@@ -324,10 +323,9 @@ class Pos_Purchase_Api extends API_Base {
 			$purchase_obj = new Mapbd_pos_purchase();
 			$purchase_obj->id( $id );
 			if ( ! POS_Settings::is_admin_user() && ! current_user_can( 'can-see-any-outlet-purchases' ) ) {
-				$outlets = get_user_meta( $this->get_current_user_id(), 'outlet_id', true );
+				$outlets = \VitePos_Lite\Libs\POS_Customer::get_user_outlet_ids( $this->get_current_user_id() );
 				if ( is_array( $outlets ) ) {
-					$outlet_in = "'" . implode( "','", $outlets ) . "'";
-					$purchase_obj->warehouse_id( "IN ($outlet_in)", true );
+					$purchase_obj->warehouse_id( 'IN (' . implode( ',', empty( $outlets ) ? array( 0 ) : $outlets ) . ')', true );
 				} else {
 					$this->add_error( "You don't have permission to view details of this outlet" );
 					$this->set_response( false );

@@ -168,11 +168,10 @@ class Pos_Outlet_Api extends API_Base {
 			$mainobj->set_search_by_param( $src_props );
 			$mainobj->set_sort_by_param( $srt_props );
 			if ( ! POS_Settings::is_admin_user() && ! current_user_can( 'any-drawer-log' ) ) {
-				$outlets = get_user_meta( $this->get_current_user_id(), 'outlet_id', true );
+				$outlets = \VitePos_Lite\Libs\POS_Customer::get_user_outlet_ids( $this->get_current_user_id() );
 				if ( is_array( $outlets ) ) {
-					if ( ! $mainobj->is_set_prperty( 'outlet_id' ) || ! in_array( $mainobj->outlet_id, $outlets ) ) {
-						$outlet_in = "'" . implode( "','", $outlets ) . "'";
-						$mainobj->outlet_id( "IN ($outlet_in)", true );
+					if ( ! $mainobj->is_set_prperty( 'outlet_id' ) || ! in_array( absint( $mainobj->outlet_id ), $outlets, true ) ) {
+						$mainobj->outlet_id( 'IN (' . implode( ',', empty( $outlets ) ? array( 0 ) : $outlets ) . ')', true );
 					}
 				} else {
 					$response_data->set_total_records( 0 );

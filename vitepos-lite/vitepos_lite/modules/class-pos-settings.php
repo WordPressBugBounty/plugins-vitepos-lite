@@ -998,6 +998,7 @@ class POS_Settings extends Vitepos_Module {
 		$basic_settings['p_sync_intval']        = 60000;
 
 		$settings->basic_settings               = $basic_settings;
+		$settings->v_lite = self::get_module_instance()->kernel_object->plugin_version;
 		$settings->inv_settings                 = Invoice_Settings::get_settings();
 		if ( 'G' == $basic_settings['pos_mode'] ) {
 			$settings->inv_settings->show_waiter_info    = false;

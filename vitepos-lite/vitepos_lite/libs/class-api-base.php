@@ -389,10 +389,10 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 			$vite_outlet            = AppInput::get_server_data( 'HTTP_VITE_OUTLET' );
 			$request_outlet_counter = ! empty( $vite_outlet ) ? explode( '|', $vite_outlet ) : array();
 			if ( ! empty( $request_outlet_counter[0] ) ) {
-				$this->outlet_id = $request_outlet_counter[0];
+				$this->outlet_id = intval( $request_outlet_counter[0] );
 			}
 			if ( ! empty( $request_outlet_counter[1] ) ) {
-				$this->counter_id = $request_outlet_counter[1];
+				$this->counter_id = intval( $request_outlet_counter[1] );
 			}
 			if ( isset( $this->payload['page'] ) ) {
 				$this->payload['page'] = intval( $this->payload['page'] );
@@ -467,18 +467,49 @@ if ( ! class_exists( __NAMESPACE__ . '\API_Base' ) ) {
 		protected function sanitize_src_by_payload( $src_props ) {
 			foreach ( $src_props as &$src_prop ) {
 				$prop = (array) $src_prop;
-				if ( isset( $prop['opr'], $prop['val'] ) && in_array( $prop['opr'], array( 'gt', 'lt', 'le', 'ge' ), true ) && is_scalar( $prop['val'] ) ) {
-					$safe_val = preg_replace( '/[^0-9.\-:\s]/', '', (string) $prop['val'] );
+				if ( ! isset( $prop['val'] ) ) {
+					continue;
+				}
+				$opr       = isset( $prop['opr'] ) ? $prop['opr'] : '';
+				$prop_name = isset( $prop['prop'] ) ? $prop['prop'] : '';
+				$safe_val  = $prop['val'];
+				if ( in_array( $opr, array( 'gt', 'lt', 'le', 'ge' ), true ) && is_scalar( $safe_val ) ) {
+					$safe_val = self::strip_to_numeric_chars( $safe_val );
+				} elseif ( 'bt' === $opr ) {
 
-					$safe_val = preg_replace( '/-{2,}/', '-', $safe_val );
-					if ( is_array( $src_prop ) ) {
-						$src_prop['val'] = $safe_val;
-					} else {
-						$src_prop->val = $safe_val;
+					$range = (array) $safe_val;
+					$safe_val = array(
+						'start' => isset( $range['start'] ) && is_scalar( $range['start'] ) ? self::strip_to_numeric_chars( $range['start'] ) : '',
+						'end'   => isset( $range['end'] ) && is_scalar( $range['end'] ) ? self::strip_to_numeric_chars( $range['end'] ) : '',
+					);
+				} elseif ( 'like' === $opr || '*' === $prop_name ) {
+
+					if ( is_scalar( $safe_val ) ) {
+						$safe_val = str_replace( array( "'", '"', '\\', '`', "\0" ), '', (string) $safe_val );
 					}
+				} else {
+					continue;
+				}
+				if ( is_array( $src_prop ) ) {
+					$src_prop['val'] = $safe_val;
+				} else {
+					$src_prop->val = $safe_val;
 				}
 			}
 			return $src_props;
+		}
+
+		/**
+		 * Keep only characters valid in a number or a `Y-m-d H:i:s` date/time.
+		 *
+		 * @param mixed $value Raw value.
+		 *
+		 * @return string
+		 */
+		protected static function strip_to_numeric_chars( $value ) {
+			$safe = preg_replace( '/[^0-9.\-:\s]/', '', (string) $value );
+
+			return preg_replace( '/-{2,}/', '-', $safe );
 		}
 
 		/**

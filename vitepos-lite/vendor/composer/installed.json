@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "appsbd-wp/appsbd-lite",
-            "version": "v6.0.7",
-            "version_normalized": "6.0.7.0",
+            "version": "v6.0.8",
+            "version_normalized": "6.0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/appsbd/appsbd-lite.git",
-                "reference": "bfd493a479fbb1673b831ed482b2ca3ae0ab2eb9"
+                "reference": "4cf64ad11ee0e4bb598b7391e86f961aa3b09c25"
             },
             "require": {
                 "php": ">=7.2"
             },
-            "time": "2026-09-24T11:37:50+00:00",
+            "time": "2026-10-04T08:47:32+00:00",
             "type": "framework",
             "installation-source": "source",
             "autoload": {
